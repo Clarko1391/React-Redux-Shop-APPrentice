@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import img from '../../img/left.png'
+import img from '../../assets/img/left.png'
 import BackButton from '../pageComponents/BackButton'
-import chart from '../../charts.JSON/TapChart.json'
+import chart from '../../assets/charts.JSON/TapChart.json'
 import TapAndDieEntry from './PageComponents/TapAndDieEntry'
 
 // CSS

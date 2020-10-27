@@ -1,0 +1,44 @@
+.logButton {
+    width: 40px;
+    height: 40px;
+    font-size: 3.5vh;
+    background: transparent;
+    color: #DA1622;
+    border: none;
+}
+
+.calculatorButton {
+    background-color: #da1622;
+    color: #fcfbfc;
+    top: 0px;
+    right: 0px;
+    height: 30px;
+    width: 40%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.calculatorButton :hover {
+    background-color: #6b2b2f;
+}
+
+.calculatorButton :focus {
+    outline: none;
+}
+
+.backButton {
+    height: 80%;
+    margin: 0px;
+    width: 80%;
+    border-radius: 4px;
+    background-color: #da1622;
+    color: #fcfbfc;
+    border: none;
+    cursor: pointer;
+}
+
+.backButton :focus {
+    outline: none;
+}
+

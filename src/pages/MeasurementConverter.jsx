@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import { fraction, number, floor, round } from 'mathjs'
-import img from '../img/left.png'
+import img from '../assets/img/left.png'
 import ConvertInput from './pageComponents/ConvertInput'
 import ConvertOutput from './pageComponents/ConvertOutput'
 import ConvertSelect from './pageComponents/ConvertSelect'

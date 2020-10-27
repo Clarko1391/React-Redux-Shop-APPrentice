@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { fraction, number, floor, round } from 'mathjs'
 import styled from 'styled-components'
-import img from '../img/right.png'
+import img from '../assets/img/right.png'
 import CalculatorInput from './pageComponents/CalculatorInput'
 import CalculatorSelect from './pageComponents/CalculatorSelect'
 import CalculatorOutput from './pageComponents/CalculatorOutput'

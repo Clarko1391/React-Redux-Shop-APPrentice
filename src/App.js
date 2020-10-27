@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import styled from 'styled-components'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer';
+import LandingPage from './pages/LandingPage';
 import MeasurementConverter from './pages/MeasurementConverter'
 import FractionalCalculator from './pages/FractionalCalculator'
 import ReferenceManual from './pages/ReferenceManual'
@@ -25,7 +26,7 @@ function App() {
       <Router>
           <Navbar />
           <Switch>
-              <Route path='/' exact component={MeasurementConverter} />
+              <Route path='/' exact component={LandingPage} />
               <Route path='/MeasurementConverter' component={MeasurementConverter} />
               <Route path='/FractionalCalculator' component={FractionalCalculator} />
               <Route path='/ReferenceManual' exact component={ReferenceManual} />

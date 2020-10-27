@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import img from '../../img/left.png'
+import img from '../../assets/img/left.png'
 import BackButton from '../pageComponents/BackButton'
-import chart from '../../charts.JSON/WrenchSize.json'
-import WrenchSizeEntry from './PageComponents/WrenchSizeEntry'
+import chart from '../../assets/charts.JSON/DrillSize.json'
+import DrillSizeEntry from './PageComponents/DrillSizeEntry'
 
 // CSS
 const ReferenceContainer = styled.div`
@@ -34,9 +34,7 @@ const Table = styled.table`
     background-color: rgba(78,77,78, 0.9);
     margin: 0px 20px 10px 10px;
 `
-
-function WrenchSize() {
-
+function DrillSize() {
     const [chartData, setChartData] = useState([]);
 
     useEffect(() => {
@@ -48,16 +46,20 @@ function WrenchSize() {
         <>
             <ReferenceContainer >
                 <ReferenceContent >
-                    <ChartTitle >Wrench Size Chart</ChartTitle>
+                    <ChartTitle >Drill Bit Size Chart</ChartTitle>
                     <Table >
                         <tbody >
                         {chartData.map(chart => (
-                            <WrenchSizeEntry
-                                key={chart.metric}
-                                boltDiam={chart.boltDiam}
-                                SAE={chart.SAE}
-                                metric={chart.metric}
-                                
+                            <DrillSizeEntry
+                                key={chart.decEquiv0}
+                                size0={chart.size0}
+                                decEquiv0={chart.decEquiv0}
+                                size1={chart.size1}
+                                decEquiv1={chart.decEquiv1}
+                                size2={chart.size2}
+                                decEquiv2={chart.decEquiv2}
+                                size3={chart.size3}
+                                decEquiv3={chart.decEquiv3}
                             />))}
                         </tbody>
                     </Table>
@@ -68,4 +70,4 @@ function WrenchSize() {
     )
 }
 
-export default WrenchSize
+export default DrillSize

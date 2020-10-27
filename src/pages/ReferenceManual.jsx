@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import img from '../img/right.png'
+import img from '../assets/img/right.png'
 
 // CSS
 const ReferenceManualContainer = styled.div`
