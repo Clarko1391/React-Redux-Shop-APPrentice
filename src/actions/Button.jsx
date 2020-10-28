@@ -9,4 +9,13 @@ export const buttonClicked = (event) => {
   };
 };
 
-// export const intiializeButton
+export const buttonInitialized = (props) => {
+  return {
+    type: actionTypes.BUTTON_INITIALIZED,
+    payload: {
+      buttonStyle: props.buttonStyle,
+      isNavButton: props.isNavButton,
+      navigateTo: props.navigateTo,
+    },
+  };
+};

@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
     buttonClicked: (event) => {
       dispatch(actions.buttonClicked(event));
     },
+    buttonInitialized: (props) => {
+        dispatch(actions.buttonInitialized(props))
+    },
   };
 };
 
