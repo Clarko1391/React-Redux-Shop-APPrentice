@@ -1,4 +1,6 @@
 import React from "react";
+import { PropTypes } from "prop-types";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
 
@@ -41,12 +43,22 @@ const STContainer = styled.div`
   margin-bottom: 30px;
 `;
 
-function LandingPage(props) {
+// PropTypes
+const propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+  userName: PropTypes.string,
+};
+
+// Functional Component
+function LandingPage ({
+  isLogged,
+  userName,
+}) {
   return (
     <HeroContainer>
       <TitleContainer>
         <Title> Welcome </Title>
-        {props.isLogged ? <span> {props.name} </span> : ""}
+        {isLogged ? <span> {userName} </span> : ""}
       </TitleContainer>
       <UIContainer>
         <ButtonContainer
@@ -54,8 +66,7 @@ function LandingPage(props) {
           isNavButton={false}
           navigateTo=""
         >
-          {" "}
-          Log in{" "}
+          Log in
         </ButtonContainer>
         <ButtonContainer
           buttonStyle="LogButton"
@@ -74,5 +85,7 @@ function LandingPage(props) {
     </HeroContainer>
   );
 }
+
+LandingPage.propTypes = propTypes;
 
 export default LandingPage;

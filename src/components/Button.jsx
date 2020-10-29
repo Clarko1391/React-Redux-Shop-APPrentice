@@ -1,20 +1,31 @@
 import React from "react";
-import { PropTypes } from 'prop-types';
+import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
-import './Button.css';
+import "./Button.css";
 
 const propTypes = {
+  buttonId: PropTypes.string.isRequired,
   buttonStyle: PropTypes.string.isRequired,
   navigateTo: PropTypes.string,
   isNavButton: PropTypes.bool.isRequired,
   buttonClicked: PropTypes.func.isRequired,
 };
 
-function Button( {buttonStyle, buttonClicked, isNavButton, navigateTo} ) {
+function Button({
+  buttonId,
+  buttonStyle,
+  buttonClicked,
+  isNavButton,
+  navigateTo,
+}) {
   return (
     <div>
-      <button className={buttonStyle} onClick={buttonClicked}>
-        {isNavButton ? <Link to={navigateTo} ></Link> : ''}
+      <button
+        buttonId={buttonId}
+        className={buttonStyle}
+        onClick={buttonClicked}
+      >
+        {isNavButton ? <Link to={navigateTo}></Link> : ""}
       </button>
     </div>
   );
