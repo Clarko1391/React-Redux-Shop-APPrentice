@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import LandingPage from "../components/LandingPage";
-import * as actions from "../actions/LandingPage";
 import React from "react";
 
 class LandingPageContainer extends React.Component {
@@ -24,18 +23,18 @@ class LandingPageContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    userName: state.Button.userName,
-    isLogged: state.Button.isLogged,
+    userName: state.LoginPage.userName,
+    isLogged: state.LoginPage.isLogged,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    buttonClicked: (event) => {
-      dispatch(actions.buttonClicked(event));
-    },
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     buttonClicked: (event) => {
+//       dispatch(actions.buttonClicked(event));
+//     },
+//   };
+// };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LandingPageContainer);
+export default connect(mapStateToProps, {/*mapDispatchToProps*/})(LandingPageContainer);

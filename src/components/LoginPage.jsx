@@ -1,4 +1,6 @@
 import React from "react";
+import { PropTypes } from "prop-types";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
 
@@ -18,11 +20,6 @@ const HeroContainer = styled.div`
   align-items: center;
 `;
 
-const Title = styled.h1`
-  color: #fcfbfc;
-  font-size: 4vh;
-`;
-
 const UIContainer = styled.div`
   width: 80%;
   display: flex;
@@ -35,44 +32,29 @@ const SubTitle = styled.h3`
   padding: 0px;
   margin: 0px;
 `;
-const TitleContainer = styled.div``;
 
-const STContainer = styled.div`
-  margin-bottom: 30px;
-`;
+// PropTypes
+const propTypes = {};
 
-function LandingPage(props) {
+// Functional Component
+function LoginPage() {
   return (
     <HeroContainer>
-      <TitleContainer>
-        <Title> Welcome </Title>
-        {props.isLogged ? <span> {props.userName} </span> : ""}
-      </TitleContainer>
       <UIContainer>
+        <SubTitle>UserName</SubTitle>
+        <SubTitle>Password</SubTitle>
         <ButtonContainer
           buttonStyle="LogButton"
           isNavButton={false}
           navigateTo=""
         >
-          {" "}
-          Log in{" "}
-        </ButtonContainer>
-        <ButtonContainer
-          buttonStyle="LogButton"
-          isNavButton={false}
-          navigateTo=""
-        >
-          {" "}
-          Register{" "}
+          Log in
         </ButtonContainer>
       </UIContainer>
-      <SubTitle> or </SubTitle>
-      <STContainer>
-        <SubTitle> Select an option </SubTitle>
-        <SubTitle>above to get started </SubTitle>
-      </STContainer>
     </HeroContainer>
   );
 }
 
-export default LandingPage;
+LoginPage.propTypes = propTypes;
+
+export default LoginPage;
