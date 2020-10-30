@@ -23,8 +23,9 @@ class RegistrationPageContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    userName: state.RegistrationPage.userName,
-    isLogged: state.RegistrationPage.isLogged,
+    userName: state.userName,
+    password: state.password,
+    isLogged: state.isLogged,
   };
 };
 

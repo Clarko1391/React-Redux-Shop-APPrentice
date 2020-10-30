@@ -6,7 +6,7 @@ import * as actions from "../actions/";
 class LoginPageContainer extends React.Component {
   
     constructor() {
-        
+
   };
 
   render() {
@@ -15,8 +15,9 @@ class LoginPageContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    userName: state.LandingPage.userName,
-    password: state.LandingPage.password,
+    userName: state.userName,
+    password: state.password,
+    isLogged: state.isLogged,
   };
 };
 

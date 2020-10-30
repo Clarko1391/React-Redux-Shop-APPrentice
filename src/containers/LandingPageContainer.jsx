@@ -23,8 +23,8 @@ class LandingPageContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    userName: state.LoginPage.userName,
-    isLogged: state.LoginPage.isLogged,
+    userName: state.userName,
+    isLogged: state.isLogged,
   };
 };
 
