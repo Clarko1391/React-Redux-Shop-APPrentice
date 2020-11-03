@@ -44,6 +44,7 @@ function LoginPage() {
         <SubTitle>UserName</SubTitle>
         <SubTitle>Password</SubTitle>
         <ButtonContainer
+          buttonId="log-in-button"
           buttonStyle="LogButton"
           isNavButton={false}
           navigateTo=""

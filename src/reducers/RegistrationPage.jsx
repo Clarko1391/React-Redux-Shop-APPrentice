@@ -1,14 +1,13 @@
 import actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  userId: "",
   userName: "",
   password: "",
   isLogged: false,
 };
 
-const userLoginAttempted = (state, action) => {
-  console.log("user login attempted");
+const userRegistrationCompleted = (state, action) => {
+  console.log("user registered");
   return {
     ...state,
     userName: action.payload.userName,
@@ -20,7 +19,7 @@ const userLoginAttempted = (state, action) => {
 const Button = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.USER_LOGIN_ATTEMPTED:
-      return userLoginAttempted(state, action);
+      return userRegistrationCompleted(state, action);
     default:
       return state;
   }

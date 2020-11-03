@@ -1,13 +1,17 @@
 import { connect } from "react-redux";
 import LoginPage from "../components/LoginPage";
 import React from "react";
-import * as actions from "../actions/";
+import * as actions from "../actions/LoginPage";
 
 class LoginPageContainer extends React.Component {
-  
-    constructor() {
-
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: props.userName,
+      password: props.password,
+      isLogged: props.isLogged,
+    };
+  }
 
   render() {
     return <LoginPage />;

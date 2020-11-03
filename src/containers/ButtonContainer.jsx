@@ -8,10 +8,10 @@ class ButtonContainer extends React.Component {
     super(props);
 
     this.state = {
-      buttonId: props.buttonId.bind(this),
-      buttonStyle: props.buttonStyle.bind(this),
-      isNavButton: props.isNavButton.bind(this),
-      navigateTo: props.navigateTo.bind(this),
+      buttonId: props.buttonId,
+      buttonStyle: props.buttonStyle,
+      isnavButton: props.isNavButton,
+      navigateTo: props.navigateTo,
       buttonClicked: props.buttonClicked.bind(this),
     };
   }
@@ -47,6 +47,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-// const ButtonContainer = connect(mapStateToProps, mapDispatchToProps)(Button);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonContainer);

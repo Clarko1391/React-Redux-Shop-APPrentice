@@ -50,15 +50,12 @@ const propTypes = {
 };
 
 // Functional Component
-function LandingPage ({
-  isLogged,
-  userName,
-}) {
+function LandingPage (props) {
   return (
     <HeroContainer>
       <TitleContainer>
         <Title> Welcome </Title>
-        {isLogged ? <span> {userName} </span> : ""}
+        {props.isLogged ? <span> {props.userName} </span> : ""}
       </TitleContainer>
       <UIContainer>
         <ButtonContainer
