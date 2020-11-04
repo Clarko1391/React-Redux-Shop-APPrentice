@@ -23,19 +23,16 @@ function Button({
   buttonTitleSecondary,
 }) {
   return (
-    <div>
-      <button
-        buttonid={buttonId}
-        className={buttonStyle}
-        onClick={buttonClicked}
-      >
-        {buttonTitlePrimary}{buttonTitleSecondary}
-        {isNavButton ? <Link to={navigateTo}></Link> : ""}
-      </button>
-    </div>
+    <button buttonid={buttonId} className={`"${buttonStyle}"`} onClick={buttonClicked}>
+      {buttonTitlePrimary}
+      {buttonTitleSecondary}
+      {isNavButton ? <Link to={navigateTo}></Link> : ""}
+    </button>
   );
 }
 
 Button.propTypes = propTypes;
 
 export default Button;
+
+

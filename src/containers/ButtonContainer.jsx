@@ -16,6 +16,12 @@ class ButtonContainer extends React.Component {
       buttonTitleSecondary: props.buttonTitleSecondary,
     };
 
+    this.buttonId = props.buttonid;
+    this.buttonStyle = props.buttonstyle;
+    this.isNavButton = props.isnavbutton;
+    this.navigateTo = props.navigateto;
+    this.buttonTitlePrimary = props.buttonTitlePrimary;
+    this.buttonTitleSecondary = props.buttonTitleSecondary;
 
     props.dispatch(actions.buttonInitialized(initialState));
 
@@ -23,11 +29,8 @@ class ButtonContainer extends React.Component {
     // this.buttonClicked = props.buttonClicked.bind(this);
     // this.buttonInitialized = props.buttonInitialized.bind(this);
   }
-  
-  // write local functions here, these are specifically for callback functions and dispatching actions to the reducer
-  
 
-  
+  // write local functions here, these are specifically for callback functions and dispatching actions to the reducer
 
   // This render is used to pass props only, no JSX should be coded here
   render() {
@@ -51,7 +54,6 @@ const mapStateToProps = (state) => {
     navigateTo: state.navigateTo,
   };
 };
-
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {

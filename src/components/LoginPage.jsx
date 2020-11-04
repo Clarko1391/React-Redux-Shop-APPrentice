@@ -1,6 +1,6 @@
 import React from "react";
-import { PropTypes } from "prop-types";
-import { Link } from "react-router-dom";
+// import { PropTypes } from "prop-types";
+// import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
 
@@ -34,7 +34,7 @@ const SubTitle = styled.h3`
 `;
 
 // PropTypes
-const propTypes = {};
+ const propTypes = {};
 
 // Functional Component
 function LoginPage() {
@@ -45,7 +45,7 @@ function LoginPage() {
         <SubTitle>Password</SubTitle>
         <ButtonContainer
           buttonid="log-in-button"
-          buttonstyle="LogButton"
+          buttonstyle="logButton"
           isnavbutton={false}
           navigateto=""
           buttonTitlePrimary="Log"

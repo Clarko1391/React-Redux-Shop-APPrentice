@@ -1,6 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
 
@@ -60,7 +60,7 @@ function LandingPage(props) {
       <UIContainer>
         <ButtonContainer
           buttonid="LandingPageLoginButton"
-          buttonstyle="LogButton"
+          buttonstyle="calculatorButton"
           isnavbutton={false}
           navigateto=""
           buttonTitlePrimary="Log"
@@ -68,7 +68,7 @@ function LandingPage(props) {
         />
         <ButtonContainer
           buttonid="LandingPageRegisterButton"
-          buttonstyle="LogButton"
+          buttonstyle="logButton"
           isnavbutton={false}
           navigateto=""
           buttonTitlePrimary="Register"
