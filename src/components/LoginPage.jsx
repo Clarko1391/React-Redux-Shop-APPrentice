@@ -3,6 +3,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
+import UserInputStringContainer from '../containers/UserInputStringContainer';
 
 // CSS
 const HeroContainer = styled.div`
@@ -22,15 +23,11 @@ const HeroContainer = styled.div`
 
 const UIContainer = styled.div`
   width: 80%;
+  height: 60vh;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-`;
-
-const SubTitle = styled.h3`
-  color: #fcfbfc;
-  font-size: 3vh;
-  padding: 0px;
-  margin: 0px;
+  align-items: center;
 `;
 
 // PropTypes
@@ -41,8 +38,18 @@ function LoginPage() {
   return (
     <HeroContainer>
       <UIContainer>
-        <SubTitle>UserName</SubTitle>
-        <SubTitle>Password</SubTitle>
+        <UserInputStringContainer
+          inputid="LogInPageUserName"
+          inputstyle="userInputString"
+          placeholder="enter your user name"
+          value=""
+        />
+        <UserInputStringContainer
+          inputid="LogInPagePassword"
+          inputStyle="userInputString"
+          placeholder="enter your password"
+          value=""
+        />
         <ButtonContainer
           buttonid="log-in-button"
           buttonstyle="logButton"

@@ -10,7 +10,7 @@ const buttonClicked = (state, action) => {
 };
 
 const buttonInitialized = (state, action) => {
-  // console.log("Button initialized!");
+  console.log("Button initialized!");
   return {
     ...state,
     buttons: {

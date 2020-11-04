@@ -18,6 +18,7 @@
 }
 
 .calculatorButton {
+    position: relative;
     background-color: #da1622;
     color: #fcfbfc;
     top: 0px;
@@ -38,6 +39,7 @@
 }
 
 .backButton {
+    position: relative;
     height: 80%;
     margin: 0px;
     width: 80%;
