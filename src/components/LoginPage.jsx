@@ -46,10 +46,10 @@ function LoginPage() {
         <ButtonContainer
           buttonid="log-in-button"
           buttonstyle="logButton"
-          isnavbutton={false}
-          navigateto=""
+          isnavbutton={true}
+          navigateto="/"
           buttonTitlePrimary="Log"
-          buttonTitleSecondary="in"
+          buttonTitleSecondary=" in"
         />
       </UIContainer>
     </HeroContainer>

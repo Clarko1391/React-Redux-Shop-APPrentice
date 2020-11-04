@@ -31,8 +31,8 @@ function App( {store} ) {
             <Navbar />
             <Switch>
                 <Route path='/' exact component={LandingPageContainer} />
-                <Route path='/Login' exact component={LoginPageContainer} />
-                <Route path='/Registration' exact component={RegistrationPageContainer} />
+                <Route path='/Login' component={LoginPageContainer} />
+                <Route path='/Registration' component={RegistrationPageContainer} />
                 <Route path='/MeasurementConverter' component={MeasurementConverter} />
                 <Route path='/FractionalCalculator' component={FractionalCalculator} />
                 <Route path='/ReferenceManual' exact component={ReferenceManual} />

@@ -40,6 +40,8 @@ class ButtonContainer extends React.Component {
         buttonStyle={this.buttonStyle}
         isNavButton={this.isNavButton}
         navigateTo={this.navigateTo}
+        buttonTitlePrimary={this.buttonTitlePrimary}
+        buttonTitleSecondary={this.buttonTitleSecondary}
       />
     );
   }

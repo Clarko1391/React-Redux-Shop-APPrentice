@@ -3,14 +3,14 @@ import actionTypes from "../actions/actionTypes";
 const initialState = {};
 
 const buttonClicked = (state, action) => {
-  console.log("Button clicked!");
+  // console.log("Button clicked!");
   return Object.assign({}, state, {
     navigateTo: action.payload.buttonName,
   });
 };
 
 const buttonInitialized = (state, action) => {
-  console.log("Button initialized!");
+  // console.log("Button initialized!");
   return {
     ...state,
     buttons: {
