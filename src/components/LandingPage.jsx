@@ -45,12 +45,12 @@ const STContainer = styled.div`
 
 // PropTypes
 const propTypes = {
-  isLogged: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool,
   userName: PropTypes.string,
 };
 
 // Functional Component
-function LandingPage (props) {
+function LandingPage(props) {
   return (
     <HeroContainer>
       <TitleContainer>
@@ -59,20 +59,21 @@ function LandingPage (props) {
       </TitleContainer>
       <UIContainer>
         <ButtonContainer
-          buttonStyle="LogButton"
-          isNavButton={false}
-          navigateTo=""
-        >
-          Log in
-        </ButtonContainer>
+          buttonid="LandingPageLoginButton"
+          buttonstyle="LogButton"
+          isnavbutton={false}
+          navigateto=""
+          buttonTitlePrimary="Log"
+          buttonTitleSecondary="in"
+        />
         <ButtonContainer
-          buttonStyle="LogButton"
-          isNavButton={false}
-          navigateTo=""
-        >
-          {" "}
-          Register{" "}
-        </ButtonContainer>
+          buttonid="LandingPageRegisterButton"
+          buttonstyle="LogButton"
+          isnavbutton={false}
+          navigateto=""
+          buttonTitlePrimary="Register"
+          buttonTitleSecondary=""
+        />
       </UIContainer>
       <SubTitle> or </SubTitle>
       <STContainer>

@@ -17,6 +17,8 @@ export const buttonInitialized = (props) => {
       buttonStyle: props.buttonStyle,
       isNavButton: props.isNavButton,
       navigateTo: props.navigateTo,
+      buttonTitlePrimary: props.buttonTitlePrimary,
+        buttonTitleSecondary: props.buttonTitleSecondary,
     },
   };
 };

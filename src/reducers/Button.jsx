@@ -1,11 +1,6 @@
 import actionTypes from "../actions/actionTypes";
 
-const initialState = {
-  buttonId: "",
-  buttonStyle: "LogButton",
-  isNavButton: false,
-  navigateTo: "",
-};
+const initialState = {};
 
 const buttonClicked = (state, action) => {
   console.log("Button clicked!");
@@ -19,10 +14,13 @@ const buttonInitialized = (state, action) => {
   return {
     ...state,
     buttons: {
+      ...state.buttons,
       [action.payload.buttonId]: {
         buttonStyle: action.payload.buttonStyle,
         isNavButton: action.payload.isNavButton,
         navigateTo: action.payload.navigateTo,
+        buttonTitlePrimary: action.payload.buttonTitlePrimary,
+        buttonTitleSecondary: action.payload.buttonTitleSecondary,
       },
     },
   };

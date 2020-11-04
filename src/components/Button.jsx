@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import "./Button.css";
 
 const propTypes = {
-  buttonId: PropTypes.string.isRequired,
-  buttonStyle: PropTypes.string.isRequired,
+  buttonId: PropTypes.string,
+  buttonStyle: PropTypes.string,
   navigateTo: PropTypes.string,
-  isNavButton: PropTypes.bool.isRequired,
-  buttonClicked: PropTypes.func.isRequired,
+  isNavButton: PropTypes.bool,
+  buttonClicked: PropTypes.func,
+  buttonTitlePrimary: PropTypes.string,
+  buttonTitleSecondary: PropTypes.string,
 };
 
 function Button({
@@ -17,14 +19,17 @@ function Button({
   buttonClicked,
   isNavButton,
   navigateTo,
+  buttonTitlePrimary,
+  buttonTitleSecondary,
 }) {
   return (
     <div>
       <button
-        buttonId={buttonId}
+        buttonid={buttonId}
         className={buttonStyle}
         onClick={buttonClicked}
       >
+        {buttonTitlePrimary}{buttonTitleSecondary}
         {isNavButton ? <Link to={navigateTo}></Link> : ""}
       </button>
     </div>

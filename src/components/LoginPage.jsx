@@ -44,13 +44,13 @@ function LoginPage() {
         <SubTitle>UserName</SubTitle>
         <SubTitle>Password</SubTitle>
         <ButtonContainer
-          buttonId="log-in-button"
-          buttonStyle="LogButton"
-          isNavButton={false}
-          navigateTo=""
-        >
-          Log in
-        </ButtonContainer>
+          buttonid="log-in-button"
+          buttonstyle="LogButton"
+          isnavbutton={false}
+          navigateto=""
+          buttonTitlePrimary="Log"
+          buttonTitleSecondary="in"
+        />
       </UIContainer>
     </HeroContainer>
   );
