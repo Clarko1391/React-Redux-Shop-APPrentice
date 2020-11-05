@@ -46,7 +46,7 @@ function LoginPage() {
         />
         <UserInputStringContainer
           inputid="LogInPagePassword"
-          inputStyle="userInputString"
+          inputstyle="userInputString"
           placeholder="enter your password"
           value=""
         />

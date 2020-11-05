@@ -13,6 +13,7 @@ export const inputInitialized = (props) => {
   return {
     type: actionTypes.INPUT_INITIALIZED,
     payload: {
+      inputId: props.inputId,
       placeHolder: props.placeHolder,
       value: props.value,
       onChange: props.onChange,
