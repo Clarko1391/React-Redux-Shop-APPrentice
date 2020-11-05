@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
 import UserInputStringContainer from '../containers/UserInputStringContainer';
-import UserInputNumericContainer from '../containers/UserInputNumericContainer';
+import UserInputDropdownContainer from '../containers/UserInputDropdownContainer';
 
 // CSS
 const HeroContainer = styled.div`
@@ -34,6 +34,9 @@ const UIContainer = styled.div`
 // PropTypes
  const propTypes = {};
 
+ //Define dropdown 'options' array
+ const dropdownOptions = ['one', 'two', 'three'];
+
 // Functional Component
 function LoginPage() {
   return (
@@ -51,10 +54,11 @@ function LoginPage() {
           placeholder="enter your password"
           value=""
         />
-        <UserInputNumericContainer
-          inputid="log-in-test-input"
-          inputstyle="userInputNumeric"
-          placeholder="enter a number"
+        <UserInputDropdownContainer 
+        inputid="log-in-dropdown-input"
+        inputstyle="userInputDropdown"
+        inputoptions={dropdownOptions}
+        
         />
         <ButtonContainer
           buttonid="log-in-button"
