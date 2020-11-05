@@ -3,6 +3,7 @@ import { PropTypes } from "prop-types";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
+import UserInputCheckBoxContainer from '../containers/UserInputCheckBoxContainer';
 
 // CSS
 const HeroContainer = styled.div`
@@ -59,7 +60,7 @@ function LandingPage(props) {
       </TitleContainer>
       <UIContainer>
         <ButtonContainer
-          buttonid="LandingPageLoginButton"
+          buttonid="land-page-log-in-button"
           buttonstyle="logButton"
           isnavbutton={true}
           navigateto="/Login"
@@ -67,12 +68,17 @@ function LandingPage(props) {
           buttonTitleSecondary="in"
         />
         <ButtonContainer
-          buttonid="LandingPageRegisterButton"
+          buttonid="land-page-register-button"
           buttonstyle="logButton"
           isnavbutton={true}
           navigateto="/Registration"
           buttonTitlePrimary="Register "
           buttonTitleSecondary=""
+        />
+        <UserInputCheckBoxContainer 
+          inputid="land-page-check-box"
+          inputstyle="checkBox"
+          checked={true}
         />
       </UIContainer>
       <SubTitle> or </SubTitle>

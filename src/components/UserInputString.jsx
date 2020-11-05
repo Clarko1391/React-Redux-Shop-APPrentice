@@ -14,11 +14,11 @@ function UserInputString({placeHolder, value, onChange, inputStyle, inputId}) {
   return (
     <input
       type="text"
+      inputid={inputId}
+      className={inputStyle}
       placeholder={placeHolder}
       value={value}
       onChange={() => onChange}
-      className={inputStyle}
-      inputid={inputId}
     />
   );
 }
