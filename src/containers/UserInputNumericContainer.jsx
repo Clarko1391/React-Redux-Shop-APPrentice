@@ -1,21 +1,19 @@
 import { connect } from "react-redux";
-import UserInputString from "../components/UserInputString";
-import * as actions from "../actions/UserInputString";
+import UserInputNumeric from "../components/UserInputNumeric";
+import * as actions from "../actions/UserInputNumeric";
 import React from "react";
 
-class UserInputStringContainer extends React.Component {
+class UserInputNumericContainer extends React.Component {
   constructor(props) {
     super(props);
 
     const initialState = {
         placeHolder: props.placeholder,
-        value: props.value,
         inputStyle: props.inputstyle,
         inputId: props.inputid,
     };
 
     this.placeHolder = props.placeholder;
-    this.value = props.value;
     this.inputStyle = props.inputstyle;
     this.inputId = props.inputid;
 
@@ -24,9 +22,8 @@ class UserInputStringContainer extends React.Component {
 
   render() {
     return (
-      <UserInputString
+      <UserInputNumeric
         placeHolder={this.placeHolder}
-        value={this.value}
         inputStyle={this.inputStyle}
         inputId={this.inputId}
       />
@@ -37,7 +34,6 @@ class UserInputStringContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     placeHolder: state.placeHolder,
-    value: state.value,
     inputStyle: state.inputStyle,
     inputId: state.inputId,
   };
@@ -50,4 +46,4 @@ const mapStateToProps = (state) => {
 //     },
 // };
 
-export default connect(mapStateToProps)(UserInputStringContainer);
+export default connect(mapStateToProps)(UserInputNumericContainer);

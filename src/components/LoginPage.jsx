@@ -4,6 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
 import UserInputStringContainer from '../containers/UserInputStringContainer';
+import UserInputNumericContainer from '../containers/UserInputNumericContainer';
 
 // CSS
 const HeroContainer = styled.div`
@@ -39,16 +40,21 @@ function LoginPage() {
     <HeroContainer>
       <UIContainer>
         <UserInputStringContainer
-          inputid="LogInPageUserName"
+          inputid="log-in-userName-input"
           inputstyle="userInputString"
           placeholder="enter your user name"
           value=""
         />
         <UserInputStringContainer
-          inputid="LogInPagePassword"
+          inputid="log-in-password-input"
           inputstyle="userInputString"
           placeholder="enter your password"
           value=""
+        />
+        <UserInputNumericContainer
+          inputid="log-in-test-input"
+          inputstyle="userInputNumeric"
+          placeholder="enter a number"
         />
         <ButtonContainer
           buttonid="log-in-button"

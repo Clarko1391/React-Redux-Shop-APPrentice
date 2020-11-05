@@ -11,11 +11,10 @@ export const onChange = (event) => {
 
 export const inputInitialized = (props) => {
   return {
-    type: actionTypes.STRING_INPUT_INITIALIZED,
+    type: actionTypes.NUMERIC_INPUT_INITIALIZED,
     payload: {
       inputId: props.inputId,
       placeHolder: props.placeHolder,
-      value: props.value,
       onChange: props.onChange,
       inputStyle: props.inputStyle,
     },
