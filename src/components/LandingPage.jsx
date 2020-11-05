@@ -4,6 +4,7 @@ import { PropTypes } from "prop-types";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
 import UserInputCheckBoxContainer from '../containers/UserInputCheckBoxContainer';
+import ResultsOutputContainer from '../containers/ResultsOutputContainer';
 
 // CSS
 const HeroContainer = styled.div`
@@ -79,6 +80,13 @@ function LandingPage(props) {
           inputid="land-page-check-box"
           inputstyle="checkBox"
           checked={true}
+        />
+        <ResultsOutputContainer 
+        outputid="land-page-output-test"
+        header="testing output"
+        downMeasurement="one down"
+        measurement="on point"
+        upMeasurement="one up"
         />
       </UIContainer>
       <SubTitle> or </SubTitle>
