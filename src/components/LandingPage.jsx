@@ -83,10 +83,14 @@ function LandingPage(props) {
         />
         <ResultsOutputContainer 
         outputid="land-page-output-test"
+        converter={true}
+        calculator={false}
         header="testing output"
         downMeasurement="one down"
         measurement="on point"
         upMeasurement="one up"
+        decimalResult=""
+        fractionalResult=""
         />
       </UIContainer>
       <SubTitle> or </SubTitle>
