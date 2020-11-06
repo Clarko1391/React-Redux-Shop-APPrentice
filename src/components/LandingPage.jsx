@@ -3,8 +3,10 @@ import { PropTypes } from "prop-types";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
-import UserInputCheckBoxContainer from '../containers/UserInputCheckBoxContainer';
-import ResultsOutputContainer from '../containers/ResultsOutputContainer';
+// import UserInputCheckBoxContainer from '../containers/UserInputCheckBoxContainer';
+// import UserInputNumericContainer from '../containers/UserInputNumericContainer';
+// import UserInputStringContainer from '../containers/UserInputStringContainer';
+import ResultsOutputContainer from "../containers/ResultsOutputContainer";
 
 // CSS
 const HeroContainer = styled.div`
@@ -76,23 +78,38 @@ function LandingPage(props) {
           buttonTitlePrimary="Register "
           buttonTitleSecondary=""
         />
-        <UserInputCheckBoxContainer 
-          inputid="land-page-check-box"
-          inputstyle="checkBox"
-          checked={true}
-        />
-        <ResultsOutputContainer 
-        outputid="land-page-output-test"
-        converter={true}
-        calculator={false}
-        header="testing output"
-        downMeasurement="one down"
-        measurement="on point"
-        upMeasurement="one up"
-        decimalResult=""
-        fractionalResult=""
+      </UIContainer>
+      <UIContainer>
+        <ResultsOutputContainer
+          outputid="land-page-output-test"
+          converter={true}
+          calculator={false}
+          header="testing-output"
+          downMeasurement="one-down"
+          measurement="on-point"
+          upMeasurement="one-up"
+          decimalResult="test"
+          fractionalResult="test"
         />
       </UIContainer>
+      {/* <UIContainer>
+        <UserInputCheckBoxContainer 
+            inputid="land-page-check-box"
+            inputstyle="checkBox"
+            checked={true}
+        />
+        <UserInputNumericContainer 
+            inputid="land-page-numeric-test"
+            className="test"
+            placeholder="test"
+        />
+        <UserInputStringContainer 
+          inputid="land-page-numeric-test"
+          className="test"
+          placeholder="test"
+          value="test"
+        />
+      </UIContainer> */}
       <SubTitle> or </SubTitle>
       <STContainer>
         <SubTitle> Select an option </SubTitle>
