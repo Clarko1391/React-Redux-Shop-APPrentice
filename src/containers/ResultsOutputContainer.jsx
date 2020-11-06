@@ -30,13 +30,8 @@ class ResultsOutputContainer extends React.Component {
     this.fractionalResult = props.fractionalResult;
 
     props.dispatch(actions.outputInitialized(initialState));
-
-    // rebind functions to 'this' within the constructor, these functions are for local use
-    // this.buttonClicked = props.buttonClicked.bind(this);
-    // this.buttonInitialized = props.buttonInitialized.bind(this);
   }
 
-  // write local functions here, these are specifically for callback functions and dispatching actions to the reducer
 
   // This render is used to pass props only, no JSX should be coded here
   render() {
