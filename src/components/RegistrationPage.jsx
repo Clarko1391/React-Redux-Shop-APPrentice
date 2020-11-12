@@ -88,10 +88,10 @@ function RegistrationPage() {
           value=""
         />
         <ButtonContainer
-          buttonid="reg-button"
-          buttonstyle="logButton"
-          isnavbutton={false}
-          navigateto="/"
+          buttonId="reg-button"
+          buttonStyle="logButton"
+          isNavButton={false}
+          navigateTo="/"
           buttonTitlePrimary="Register"
           buttonTitleSecondary=""
         />

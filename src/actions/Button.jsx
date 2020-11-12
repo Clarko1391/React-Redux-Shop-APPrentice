@@ -12,8 +12,8 @@ export const buttonClicked = (event) => {
 export const buttonInitialized = (props) => {
   return {
     type: actionTypes.BUTTON_INITIALIZED,
+    id: props.buttonId,
     payload: {
-      buttonId: props.buttonId,
       buttonStyle: props.buttonStyle,
       isNavButton: props.isNavButton,
       navigateTo: props.navigateTo,

@@ -15,14 +15,10 @@ const buttonInitialized = (state, action) => {
     ...state,
     buttons: {
       ...state.buttons,
-      [action.payload.buttonId]: {
-        buttonStyle: action.payload.buttonStyle,
-        isNavButton: action.payload.isNavButton,
-        navigateTo: action.payload.navigateTo,
-        buttonTitlePrimary: action.payload.buttonTitlePrimary,
-        buttonTitleSecondary: action.payload.buttonTitleSecondary,
-      },
-    },
+      [action.id]: {
+        ...action.payload
+      }
+    }
   };
 };
 

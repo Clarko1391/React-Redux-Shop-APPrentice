@@ -61,10 +61,10 @@ function LoginPage() {
         
         />
         <ButtonContainer
-          buttonid="log-in-button"
-          buttonstyle="logButton"
-          isnavbutton={true}
-          navigateto="/"
+          buttonId="log-in-button"
+          buttonStyle="logButton"
+          isNavButton={true}
+          navigateTo="/"
           buttonTitlePrimary="Log"
           buttonTitleSecondary=" in"
         />

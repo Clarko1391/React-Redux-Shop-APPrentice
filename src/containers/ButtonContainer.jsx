@@ -7,23 +7,14 @@ class ButtonContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    const initialState = {
-      buttonId: props.buttonid,
-      buttonStyle: props.buttonstyle,
-      isNavButton: props.isnavbutton,
-      navigateTo: props.navigateto,
-      buttonTitlePrimary: props.buttonTitlePrimary,
-      buttonTitleSecondary: props.buttonTitleSecondary,
-    };
-
-    this.buttonId = props.buttonid;
-    this.buttonStyle = props.buttonstyle;
-    this.isNavButton = props.isnavbutton;
-    this.navigateTo = props.navigateto;
+    this.buttonId = props.buttonId;
+    this.buttonStyle = props.buttonStyle;
+    this.isNavButton = props.isNavButton;
+    this.navigateTo = props.navigateTo;
     this.buttonTitlePrimary = props.buttonTitlePrimary;
     this.buttonTitleSecondary = props.buttonTitleSecondary;
 
-    props.dispatch(actions.buttonInitialized(initialState));
+    props.dispatch(actions.buttonInitialized(props));
 
     // rebind functions to 'this' within the constructor, these functions are for local use
     // this.buttonClicked = props.buttonClicked.bind(this);
@@ -48,13 +39,17 @@ class ButtonContainer extends React.Component {
 }
 
 // mapStateToProps will pull existing state from the store and connect it to this container
-const mapStateToProps = (state) => {
-  return {
-    buttonId: state.buttonId,
-    buttonStyle: state.buttonStyle,
-    isNavButton: state.isNavButton,
-    navigateTo: state.navigateTo,
-  };
+const mapStateToProps = (state, ownProps) => {
+  if (state.Button.buttons && state.Button.buttons[ownProps.buttonId]) {
+    return {
+      buttonId: ownProps.buttonId,
+      ...state.Button.buttons[ownProps.buttonId] 
+    };
+  } else {
+    return {
+      ownProps
+    };        
+  }
 };
 
 // const mapDispatchToProps = (dispatch) => {

@@ -63,18 +63,18 @@ function LandingPage(props) {
       </TitleContainer>
       <UIContainer>
         <ButtonContainer
-          buttonid="land-page-log-in-button"
-          buttonstyle="logButton"
-          isnavbutton={true}
-          navigateto="/Login"
+          buttonId="land-page-log-in-button"
+          buttonStyle="logButton"
+          isNavButton={true}
+          navigateTo="/Login"
           buttonTitlePrimary="Log "
           buttonTitleSecondary="in"
         />
         <ButtonContainer
-          buttonid="land-page-register-button"
-          buttonstyle="logButton"
-          isnavbutton={true}
-          navigateto="/Registration"
+          buttonId="land-page-register-button"
+          buttonStyle="logButton"
+          isNavButton={true}
+          navigateTo="/Registration"
           buttonTitlePrimary="Register "
           buttonTitleSecondary=""
         />
