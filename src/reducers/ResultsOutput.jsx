@@ -9,8 +9,7 @@ const outputInitialized = (state, action) => {
     outputs: {
       ...state.outputs,
       [action.payload.outputId]: {
-        converter: action.payload.converter,
-        calculator: action.payload.calculator,
+        outputType: action.payload.outputType,
         header: action.payload.header,
         downMeasurement: action.payload.downMeasurement,
         measurement: action.payload.measurement,

@@ -5,8 +5,7 @@ export const outputInitialized = (props) => {
     type: actionTypes.OUTPUT_INITIALIZED,
     payload: {
       outputId: props.outputId,
-      converter: props.converter,
-      calculator: props.calculator,
+      outputType: props.outputType,
       header: props.header,
       downMeasurement: props.downMeasurement,
       measurement: props.measurement,

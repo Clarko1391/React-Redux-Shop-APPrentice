@@ -80,16 +80,15 @@ function LandingPage(props) {
         />
       </UIContainer>
       <UIContainer>
-        <ResultsOutputContainer
+      <ResultsOutputContainer
           outputid="land-page-output-test"
-          converter={true}
-          calculator={false}
-          header="testing-output"
-          downMeasurement="one-down"
-          measurement="on-point"
-          upMeasurement="one-up"
-          decimalResult="test"
-          fractionalResult="test"
+          outputtype="converter"
+          Header="testing-output"
+          downmeasurement="one-down"
+          Measurement="on-point"
+          upmeasurement="one-up"
+          decimalresult="test"
+          fractionalresult="test"
         />
       </UIContainer>
       {/* <UIContainer>

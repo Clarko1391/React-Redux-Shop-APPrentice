@@ -1,7 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import styled from "styled-components";
-
 // CSS
 const OutputBox = styled.div`
   width: 80%;
@@ -14,7 +13,6 @@ const OutputBox = styled.div`
   align-items: center;
   border-radius: 4px;
 `;
-
 const OutputHeader = styled.h2`
   margin: 0px;
   padding: 0px;
@@ -27,8 +25,22 @@ const MeasurementContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
 `;
+const CalculationOutput = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+const CalculationContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+`;
 const OutputMeasurement = styled.h3`
   padding: 0px;
+  padding-top: 10px;
   margin: 0px;
   font-size: 1.5vh;
   color: #fcfbfc;
@@ -37,8 +49,7 @@ const OutputMeasurement = styled.h3`
 // Proptypes
 const propTypes = {
   outputid: PropTypes.string,
-  converter: PropTypes.bool,
-  calculator: PropTypes.bool,
+  outputType: PropTypes.string,
   header: PropTypes.string,
   downMeasurement: PropTypes.string,
   measurement: PropTypes.string,
@@ -49,8 +60,7 @@ const propTypes = {
 
 function ResultsOutput({
   outputid,
-  converter,
-  calculator,
+  outputType,
   header,
   downMeasurement,
   measurement,
@@ -60,8 +70,8 @@ function ResultsOutput({
 }) {
   return (
     <OutputBox className={outputid}>
-      {/* Render only if 'converter' is true */}
-      {converter ? (
+      {/* Render only if 'outputType' is set to 'converter' */}
+      {({outputType} === "converter") ? (
         <div>
           <OutputHeader>{header}</OutputHeader>
           <MeasurementContainer>
@@ -73,18 +83,18 @@ function ResultsOutput({
       ) : (
         ""
       )}
-      {/* Render only if 'calculator' is true */}
-      {calculator ? (
-        <div>
-          <MeasurementContainer>
+      {/* Render only if 'outputType' is set to 'calculator' */}
+      {({outputType} === "calculator") ? (
+        <CalculationOutput>
+          <CalculationContainer>
             <OutputHeader>Decimal Result</OutputHeader>
             <OutputMeasurement>{decimalResult}</OutputMeasurement>
-          </MeasurementContainer>
-          <MeasurementContainer>
+          </CalculationContainer>
+          <CalculationContainer>
             <OutputHeader>Fractional Result</OutputHeader>
             <OutputMeasurement>{fractionalResult}</OutputMeasurement>
-          </MeasurementContainer>
-        </div>
+          </CalculationContainer>
+        </CalculationOutput>
       ) : (
         ""
       )}

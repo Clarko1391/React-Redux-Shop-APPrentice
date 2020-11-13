@@ -6,30 +6,29 @@ import React from "react";
 class ResultsOutputContainer extends React.Component {
   constructor(props) {
     super(props);
-
     const initialState = {
       outputId: props.outputid,
-      converter: props.converter,
-      calculator: props.calculator,
-      header: props.header,
-      downMeasurement: props.downMeasurement,
-      measurement: props.measurement,
-      upMeasurement: props.upMeasurement,
-      decimalResult: props.decimalResult,
-      fractionalResult: props.fractionalResult,
+      outputType: props.outputtype,
+      header: props.Header,
+      downMeasurement: props.downmeasurement,
+      measurement: props.Measurement,
+      upMeasurement: props.upmeasurement,
+      decimalResult: props.decimalresult,
+      fractionalResult: props.fractionalresult
     };
 
     this.outputId = props.outputid;
-    this.converter = props.converter;
-    this.calculator = props.calculator;
-    this.header = props.header;
-    this.downMeasurement = props.downMeasurement;
-    this.measurement = props.measurement;
-    this.upMeasurement = props.upMeasurement;
-    this.decimalResult = props.decimalResult;
-    this.fractionalResult = props.fractionalResult;
-
+    this.outputType = props.outputtype;
+    this.header = props.Header;
+    this.downMeasurement = props.downmeasurement;
+    this.measurement = props.Measurement;
+    this.upMeasurement = props.upmeasurement;
+    this.decimalResult = props.decimalresult;
+    this.fractionalResult = props.fractionalresult;
     props.dispatch(actions.outputInitialized(initialState));
+    // rebind functions to 'this' within the constructor, these functions are for local use
+    // this.buttonClicked = props.buttonClicked.bind(this);
+    // this.buttonInitialized = props.buttonInitialized.bind(this);
   }
 
 
@@ -38,8 +37,7 @@ class ResultsOutputContainer extends React.Component {
     return (
       <ResultsOutput
         outputid={this.outputId}
-        converter={this.converter}
-        calculator={this.calculator}
+        outputType={this.outputType}
         header={this.header}
         downMeasurement={this.downMeasurement}
         measurement={this.measurement}
@@ -55,8 +53,7 @@ class ResultsOutputContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     outputId: state.outputId,
-    converter: state.converter,
-    calculator: state.calculator,
+    outputType: state.outputType,
     header: state.header,
     downMeasurement: state.downMeasurement,
     measurement: state.measurement,
