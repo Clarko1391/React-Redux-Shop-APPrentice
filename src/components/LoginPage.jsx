@@ -43,21 +43,21 @@ function LoginPage() {
     <HeroContainer>
       <UIContainer>
         <UserInputStringContainer
-          inputid="log-in-userName-input"
-          inputstyle="userInputString"
-          placeholder="enter your user name"
+          inputId="log-in-userName-input"
+          inputStyle="userInputString"
+          placeHolder="enter your user name"
           value=""
         />
         <UserInputStringContainer
-          inputid="log-in-password-input"
-          inputstyle="userInputString"
-          placeholder="enter your password"
+          inputId="log-in-password-input"
+          inputStyle="userInputString"
+          placeHolder="enter your password"
           value=""
         />
         <UserInputDropdownContainer 
-        inputid="log-in-dropdown-input"
-        inputstyle="userInputDropdown"
-        inputoptions={dropdownOptions}
+        inputId="log-in-dropdown-input"
+        inputStyle="userInputDropdown"
+        inputOptions={dropdownOptions}
         
         />
         <ButtonContainer

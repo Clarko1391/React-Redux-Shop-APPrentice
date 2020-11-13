@@ -7,19 +7,12 @@ class UserInputStringContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    const initialState = {
-        placeHolder: props.placeholder,
-        value: props.value,
-        inputStyle: props.inputstyle,
-        inputId: props.inputid,
-    };
-
-    this.placeHolder = props.placeholder;
+    this.placeHolder = props.placeHolder;
     this.value = props.value;
-    this.inputStyle = props.inputstyle;
-    this.inputId = props.inputid;
+    this.inputStyle = props.inputStyle;
+    this.inputId = props.inputId;
 
-    props.dispatch(actions.inputInitialized(initialState));
+    props.dispatch(actions.inputInitialized(props));
   }
 
   render() {
@@ -34,14 +27,27 @@ class UserInputStringContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    placeHolder: state.placeHolder,
-    value: state.value,
-    inputStyle: state.inputStyle,
-    inputId: state.inputId,
-  };
+const mapStateToProps = (state, ownProps) => {
+  if (state.UserInputString.inputsSTR && state.UserInputString.inputsSTR[ownProps.inputId]) {
+    return {
+      buttonId: ownProps.inputId,
+      ...state.UserInputString.inputsSTR[ownProps.inputId] 
+    };
+  } else {
+    return {
+      ownProps
+    };        
+  }
 };
+
+// const mapStateToProps = (state) => {
+//   return {
+//     placeHolder: state.placeHolder,
+//     value: state.value,
+//     inputStyle: state.inputStyle,
+//     inputId: state.inputId,
+//   };
+// };
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {

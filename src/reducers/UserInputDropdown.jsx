@@ -15,10 +15,8 @@ const dropdownInitialized = (state, action) => {
     ...state,
     inputsDropdown: {
       ...state.inputsDropdown,
-      [action.payload.inputId]: {
-        defaultOption: action.payload.defaultOption,
-        inputStyle: action.payload.inputStyle,
-        inputOptions: action.payload.inputOptions,
+      [action.id]: {
+        ...action.payload
       },
     },
   };

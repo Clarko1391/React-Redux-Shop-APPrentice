@@ -7,17 +7,11 @@ class UserInputNumericContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    const initialState = {
-        placeHolder: props.placeholder,
-        inputStyle: props.inputstyle,
-        inputId: props.inputid,
-    };
+    this.placeHolder = props.placeHolder;
+    this.inputStyle = props.inputStyle;
+    this.inputId = props.inputId;
 
-    this.placeHolder = props.placeholder;
-    this.inputStyle = props.inputstyle;
-    this.inputId = props.inputid;
-
-    props.dispatch(actions.inputInitialized(initialState));
+    props.dispatch(actions.inputInitialized(props));
   }
 
   render() {
@@ -31,13 +25,26 @@ class UserInputNumericContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    placeHolder: state.placeHolder,
-    inputStyle: state.inputStyle,
-    inputId: state.inputId,
-  };
+const mapStateToProps = (state, ownProps) => {
+  if (state.UserInputNumeric.inputsNUM && state.UserInputNumeric.inputsNUM[ownProps.inputId]) {
+    return {
+      buttonId: ownProps.inputId,
+      ...state.UserInputNumeric.inputsNUM[ownProps.inputId] 
+    };
+  } else {
+    return {
+      ownProps
+    };        
+  }
 };
+
+// const mapStateToProps = (state) => {
+//   return {
+//     placeHolder: state.placeHolder,
+//     inputStyle: state.inputStyle,
+//     inputId: state.inputId,
+//   };
+// };
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {

@@ -8,14 +8,8 @@ const outputInitialized = (state, action) => {
     ...state,
     outputs: {
       ...state.outputs,
-      [action.payload.outputId]: {
-        outputType: action.payload.outputType,
-        header: action.payload.header,
-        downMeasurement: action.payload.downMeasurement,
-        measurement: action.payload.measurement,
-        upMeasurement: action.payload.upMeasurement,
-        decimalResult: action.payload.decimalResult,
-        fractionalResult: action.payload.fractionalResult,
+      [action.id]: {
+        ...action.payload
       },
     },
   };

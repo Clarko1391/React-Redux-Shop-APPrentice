@@ -12,12 +12,11 @@ export const onChange = (event) => {
 export const checkBoxInitialized = (props) => {
   return {
     type: actionTypes.CHECKBOX_INITIALIZED,
+    id: props.inputId,
     payload: {
-      inputId: props.inputId,
       inputStyle: props.inputStyle,
       checked: props.checked,
       onChange: props.onChange,
-
     },
   };
 };

@@ -12,8 +12,8 @@ export const onChange = (event) => {
 export const dropdownInitialized = (props) => {
   return {
     type: actionTypes.DROPDOWN_INITIALIZED,
+    id: props.inputId,
     payload: {
-      inputId: props.inputId,
       inputOptions: props.inputOptions,
       defaultOption: props.defaultOption,
       onChange: props.onChange,

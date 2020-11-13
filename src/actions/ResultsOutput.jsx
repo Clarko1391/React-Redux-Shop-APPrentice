@@ -3,8 +3,8 @@ import actionTypes from "./actionTypes";
 export const outputInitialized = (props) => {
   return {
     type: actionTypes.OUTPUT_INITIALIZED,
+    id: props.outputId,
     payload: {
-      outputId: props.outputId,
       outputType: props.outputType,
       header: props.header,
       downMeasurement: props.downMeasurement,

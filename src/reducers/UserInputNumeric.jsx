@@ -15,9 +15,8 @@ const inputInitialized = (state, action) => {
     ...state,
     inputsNUM: {
       ...state.inputsNUM,
-      [action.payload.inputId]: {
-        inputStyle: action.payload.inputStyle,
-        placeHolder: action.payload.placeHolder,
+      [action.id]: {
+        ...action.payload
       },
     },
   };

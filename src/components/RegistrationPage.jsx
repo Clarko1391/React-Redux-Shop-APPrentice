@@ -64,27 +64,27 @@ function RegistrationPage() {
           <TitleText2>unlock access to more features!</TitleText2>
         </TextContainer>
         <UserInputStringContainer
-          inputid="reg-username-input"
-          inputstyle="userInputString"
-          placeholder="enter a user name"
+          inputId="reg-username-input"
+          inputStyle="userInputString"
+          placeHolder="enter a user name"
           value=""
         />
         <UserInputStringContainer
-          inputid="reg-email-address-input"
-          inputstyle="userInputString"
-          placeholder="enter a valid email address"
+          inputId="reg-email-address-input"
+          inputStyle="userInputString"
+          placeHolder="enter a valid email address"
           value=""
         />
         <UserInputStringContainer
-          inputid="reg-password-input"
-          inputstyle="userInputString"
-          placeholder="enter a password"
+          inputId="reg-password-input"
+          inputStyle="userInputString"
+          placeHolder="enter a password"
           value=""
         />
         <UserInputStringContainer
-          inputid="reg-confirm-password-input"
-          inputstyle="userInputString"
-          placeholder="confirm your password"
+          inputId="reg-confirm-password-input"
+          inputStyle="userInputString"
+          placeHolder="confirm your password"
           value=""
         />
         <ButtonContainer

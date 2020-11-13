@@ -15,9 +15,8 @@ const checkBoxInitialized = (state, action) => {
     ...state,
     checkboxes: {
       ...state.checkboxes,
-      [action.payload.inputId]: {
-        inputStyle: action.payload.inputStyle,
-        checked: action.payload.checked,
+      [action.id]: {
+        ...action.payload
       },
     },
   };

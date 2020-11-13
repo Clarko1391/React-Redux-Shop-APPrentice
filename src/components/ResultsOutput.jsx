@@ -57,7 +57,7 @@ const OutputMeasurement = styled.h3`
 
 // Proptypes
 const propTypes = {
-  outputid: PropTypes.string,
+  outputId: PropTypes.string,
   outputType: PropTypes.string,
   header: PropTypes.string,
   downMeasurement: PropTypes.string,
@@ -68,7 +68,7 @@ const propTypes = {
 };
 
 function ResultsOutput({
-  outputid,
+  outputId,
   outputType,
   header,
   downMeasurement,
@@ -78,7 +78,7 @@ function ResultsOutput({
   fractionalResult,
 }) {
   return (
-    <OutputBox className={outputid}>
+    <OutputBox className={outputId}>
       {/* Render only if 'outputType' is set to 'converter' */}
       {outputType === 'converter' ? (
         <MeasurementOutput>

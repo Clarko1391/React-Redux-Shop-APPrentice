@@ -12,8 +12,8 @@ export const onChange = (event) => {
 export const inputInitialized = (props) => {
   return {
     type: actionTypes.NUMERIC_INPUT_INITIALIZED,
+    id: props.inputId,
     payload: {
-      inputId: props.inputId,
       placeHolder: props.placeHolder,
       onChange: props.onChange,
       inputStyle: props.inputStyle,

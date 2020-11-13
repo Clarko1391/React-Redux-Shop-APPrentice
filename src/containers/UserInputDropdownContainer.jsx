@@ -7,22 +7,15 @@ class UserInputDropdownContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    const defaultOption = props.inputoptions[0];
-
-    const initialState = {
-      inputOptions: [...props.inputoptions],
-      defaultOption: defaultOption,
-      inputStyle: props.inputstyle,
-      inputId: props.inputid,
-    };
+    const defaultOption = props.inputOptions[0];
 
 
-    this.inputOptions = [...props.inputoptions];
-    this.inputStyle = props.inputstyle;
-    this.inputId = props.inputid;
+    this.inputOptions = [...props.inputOptions];
+    this.inputStyle = props.inputStyle;
+    this.inputId = props.inputId;
     this.defaultOption = defaultOption;
 
-    props.dispatch(actions.dropdownInitialized(initialState));
+    props.dispatch(actions.dropdownInitialized(props));
   }
 
   render() {
@@ -37,14 +30,27 @@ class UserInputDropdownContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    inputOptions: state.inputOptions,
-    defaultOption: state.defaultOption,
-    inputStyle: state.inputStyle,
-    inputId: state.inputId,
-  };
+const mapStateToProps = (state, ownProps) => {
+  if (state.UserInputDropdown.inputsDropdown && state.UserInputDropdown.inputsDropdown[ownProps.inputId]) {
+    return {
+      buttonId: ownProps.inputId,
+      ...state.UserInputDropdown.inputsDropdown[ownProps.inputId] 
+    };
+  } else {
+    return {
+      ownProps
+    };        
+  }
 };
+
+// const mapStateToProps = (state) => {
+//   return {
+//     inputOptions: state.inputOptions,
+//     defaultOption: state.defaultOption,
+//     inputStyle: state.inputStyle,
+//     inputId: state.inputId,
+//   };
+// };
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {
