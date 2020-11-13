@@ -25,6 +25,7 @@ class ResultsOutputContainer extends React.Component {
     this.upMeasurement = props.upmeasurement;
     this.decimalResult = props.decimalresult;
     this.fractionalResult = props.fractionalresult;
+    
     props.dispatch(actions.outputInitialized(initialState));
     // rebind functions to 'this' within the constructor, these functions are for local use
     // this.buttonClicked = props.buttonClicked.bind(this);

@@ -19,6 +19,14 @@ const OutputHeader = styled.h2`
   font-size: 2vh;
   color: #fcfbfc;
 `;
+const MeasurementOutput = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+`;
 const MeasurementContainer = styled.div`
   width: 100%;
   display: flex;
@@ -27,6 +35,7 @@ const MeasurementContainer = styled.div`
 `;
 const CalculationOutput = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -71,20 +80,20 @@ function ResultsOutput({
   return (
     <OutputBox className={outputid}>
       {/* Render only if 'outputType' is set to 'converter' */}
-      {({outputType} === "converter") ? (
-        <div>
+      {outputType === 'converter' ? (
+        <MeasurementOutput>
           <OutputHeader>{header}</OutputHeader>
           <MeasurementContainer>
             <OutputMeasurement>{downMeasurement}</OutputMeasurement>
             <OutputMeasurement>{measurement}</OutputMeasurement>
             <OutputMeasurement>{upMeasurement}</OutputMeasurement>
           </MeasurementContainer>
-        </div>
+        </MeasurementOutput>
       ) : (
         ""
       )}
       {/* Render only if 'outputType' is set to 'calculator' */}
-      {({outputType} === "calculator") ? (
+      {outputType === 'calculator' ? (
         <CalculationOutput>
           <CalculationContainer>
             <OutputHeader>Decimal Result</OutputHeader>
