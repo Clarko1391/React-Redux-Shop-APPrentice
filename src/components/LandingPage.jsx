@@ -3,9 +3,9 @@ import { PropTypes } from "prop-types";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
-// import UserInputCheckBoxContainer from '../containers/UserInputCheckBoxContainer';
-// import UserInputNumericContainer from '../containers/UserInputNumericContainer';
-// import UserInputStringContainer from '../containers/UserInputStringContainer';
+import UserInputCheckBoxContainer from '../containers/UserInputCheckBoxContainer';
+import UserInputNumericContainer from '../containers/UserInputNumericContainer';
+import UserInputStringContainer from '../containers/UserInputStringContainer';
 import ResultsOutputContainer from "../containers/ResultsOutputContainer";
 
 // CSS
@@ -83,32 +83,32 @@ function LandingPage(props) {
       <ResultsOutputContainer
           outputId="land-page-output-test"
           outputType="converter"
-          Header="testing-output"
+          header="testing-output"
           downMeasurement="one-down"
-          Measurement="on-point"
+          measurement="on-point"
           upMeasurement="one-up"
           decimalResult="test"
           fractionalResult="test"
         />
       </UIContainer>
-      {/* <UIContainer>
+      <UIContainer>
         <UserInputCheckBoxContainer 
-            inputid="land-page-check-box"
-            inputstyle="checkBox"
+            inputId="land-page-check-box"
+            inputStyle="checkBox"
             checked={true}
         />
         <UserInputNumericContainer 
-            inputid="land-page-numeric-test"
+            inputId="land-page-numeric-test"
             className="test"
             placeholder="test"
         />
         <UserInputStringContainer 
-          inputid="land-page-numeric-test"
+          inputId="land-page-numeric-test"
           className="test"
           placeholder="test"
           value="test"
         />
-      </UIContainer> */}
+      </UIContainer>
       <SubTitle> or </SubTitle>
       <STContainer>
         <SubTitle> Select an option </SubTitle>

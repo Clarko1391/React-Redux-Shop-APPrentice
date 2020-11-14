@@ -7,19 +7,21 @@ class UserInputCheckBoxContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.inputId = props.inputId;
-    this.inputStyle = props.inputStyle;
-    this.checked = props.checked;
+    this.internalProps = props;
 
-    props.dispatch(actions.checkBoxInitialized(props));
+    this.checkBoxInitialized = props.checkBoxInitialized.bind(this);
+  }
+
+  componentDidMount(){
+    this.checkBoxInitialized(this.internalProps);
   }
 
   render() {
     return (
       <UserInputCheckBox
-        inputId={this.inputId}
-        inputStyle={this.inputStyle}
-        checked={this.checked}
+        inputId={this.internalProps.inputId}
+        inputStyle={this.internalProps.inputStyle}
+        checked={this.internalProps.checked}
       />
     );
   }
@@ -39,11 +41,15 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onChange: (event) => {
-//       dispatch(actions.onChange(event));
-//     },
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChange: (event) => {
+      dispatch(actions.onChange(event));
+    },
+    checkBoxInitialized: (props) => {
+      dispatch(actions.checkBoxInitialized(props))
+    }
+  }
+};
 
-export default connect(mapStateToProps)(UserInputCheckBoxContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(UserInputCheckBoxContainer)

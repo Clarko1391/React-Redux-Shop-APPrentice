@@ -7,33 +7,28 @@ class ResultsOutputContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.outputId = props.outputId;
-    this.outputType = props.outputType;
-    this.header = props.Header;
-    this.downMeasurement = props.downMeasurement;
-    this.measurement = props.Measurement;
-    this.upMeasurement = props.upMeasurement;
-    this.decimalResult = props.decimalResult;
-    this.fractionalResult = props.fractionalResult;
+    this.internalProps = props;
 
-    props.dispatch(actions.outputInitialized(props));
     // rebind functions to 'this' within the constructor, these functions are for local use
-    // this.buttonClicked = props.buttonClicked.bind(this);
-    // this.buttonInitialized = props.buttonInitialized.bind(this);
+    this.outputInitialized = props.outputInitialized.bind(this);
+  }
+
+  componentDidMount(){
+    this.outputInitialized(this.internalProps);
   }
 
   // This render is used to pass props only, no JSX should be coded here
   render() {
     return (
       <ResultsOutput
-        outputId={this.outputId}
-        outputType={this.outputType}
-        header={this.header}
-        downMeasurement={this.downMeasurement}
-        measurement={this.measurement}
-        upMeasurement={this.upMeasurement}
-        decimalResult={this.decimalResult}
-        fractionalResult={this.fractionalResult}
+        outputId={this.internalProps.outputId}
+        outputType={this.internalProps.outputType}
+        header={this.internalProps.header}
+        downMeasurement={this.internalProps.downMeasurement}
+        measurement={this.internalProps.measurement}
+        upMeasurement={this.internalProps.upMeasurement}
+        decimalResult={this.internalProps.decimalResult}
+        fractionalResult={this.internalProps.fractionalResult}
       />
     );
   }
@@ -53,4 +48,12 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-export default connect(mapStateToProps)(ResultsOutputContainer);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    outputInitialized: (props) => {
+      dispatch(actions.outputInitialized(props));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResultsOutputContainer);
