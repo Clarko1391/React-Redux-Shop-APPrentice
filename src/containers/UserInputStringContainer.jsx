@@ -7,21 +7,22 @@ class UserInputStringContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.placeHolder = props.placeHolder;
-    this.value = props.value;
-    this.inputStyle = props.inputStyle;
-    this.inputId = props.inputId;
+    this.internalProps = props;
+    
+    this.inputInitialized = props.inputInitialized.bind(this);
+  }
 
-    props.dispatch(actions.inputInitialized(props));
+  componentDidMount(){
+    this.inputInitialized(this.internalProps);
   }
 
   render() {
     return (
       <UserInputString
-        placeHolder={this.placeHolder}
-        value={this.value}
-        inputStyle={this.inputStyle}
-        inputId={this.inputId}
+        placeHolder={this.internalProps.placeHolder}
+        value={this.internalProps.value}
+        inputStyle={this.internalProps.inputStyle}
+        inputId={this.internalProps.inputId}
       />
     );
   }
@@ -49,11 +50,15 @@ const mapStateToProps = (state, ownProps) => {
 //   };
 // };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onChange: (event) => {
-//       dispatch(actions.onChange(event));
-//     },
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChange: (event) => {
+      dispatch(actions.onChange(event))    
+    },
+    inputInitialized: (props) => {
+      dispatch(actions.inputInitialized(props))
+    }
+  }
+}
 
-export default connect(mapStateToProps)(UserInputStringContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(UserInputStringContainer);

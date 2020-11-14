@@ -99,13 +99,13 @@ function LandingPage(props) {
         />
         <UserInputNumericContainer 
             inputId="land-page-numeric-test"
-            className="test"
-            placeholder="test"
+            inputStyle="test"
+            placeHolder="test"
         />
         <UserInputStringContainer 
-          inputId="land-page-numeric-test"
-          className="test"
-          placeholder="test"
+          inputId="land-page-string-test"
+          inputStyle="test"
+          placeHolder="test"
           value="test"
         />
       </UIContainer>

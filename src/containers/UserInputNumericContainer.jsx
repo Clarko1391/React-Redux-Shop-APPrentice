@@ -7,19 +7,21 @@ class UserInputNumericContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.placeHolder = props.placeHolder;
-    this.inputStyle = props.inputStyle;
-    this.inputId = props.inputId;
+    this.internalProps = props;
 
-    props.dispatch(actions.inputInitialized(props));
+    this.inputInitialized = props.inputInitialized.bind(this);
+  }
+
+  componentDidMount(){
+    this.inputInitialized(this.internalProps);
   }
 
   render() {
     return (
       <UserInputNumeric
-        placeHolder={this.placeHolder}
-        inputStyle={this.inputStyle}
-        inputId={this.inputId}
+        placeHolder={this.internalProps.placeHolder}
+        inputStyle={this.internalProps.inputStyle}
+        inputId={this.internalProps.inputId}
       />
     );
   }
@@ -38,19 +40,16 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     placeHolder: state.placeHolder,
-//     inputStyle: state.inputStyle,
-//     inputId: state.inputId,
-//   };
-// };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onChange: (event) => {
-//       dispatch(actions.onChange(event));
-//     },
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChange: (event) => {
+      dispatch(actions.onChange(event));
+    },
+    inputInitialized: (props) => {
+      dispatch(actions.inputInitialized(props));
+    }
+  }
+};
 
-export default connect(mapStateToProps)(UserInputNumericContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(UserInputNumericContainer);

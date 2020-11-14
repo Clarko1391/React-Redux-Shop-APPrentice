@@ -9,54 +9,53 @@ class UserInputDropdownContainer extends React.Component {
 
     const defaultOption = props.inputOptions[0];
 
-
-    this.inputOptions = [...props.inputOptions];
-    this.inputStyle = props.inputStyle;
-    this.inputId = props.inputId;
+    this.internalProps = props;
     this.defaultOption = defaultOption;
 
-    props.dispatch(actions.dropdownInitialized(props));
+    this.dropdownInitialized = props.dropdownInitialized.bind(this);
+  }
+
+  componentDidMount() {
+    this.dropdownInitialized(this.internalProps);
   }
 
   render() {
     return (
       <UserInputDropdown
-        inputOptions={this.inputOptions}
+        inputOptions={this.internalProps.inputOptions}
         defaultOption={this.defaultOption}
-        inputStyle={this.inputStyle}
-        inputId={this.inputId}
+        inputStyle={this.internalProps.inputStyle}
+        inputId={this.internalProps.inputId}
       />
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  if (state.UserInputDropdown.inputsDropdown && state.UserInputDropdown.inputsDropdown[ownProps.inputId]) {
+  if (
+    state.UserInputDropdown.inputsDropdown &&
+    state.UserInputDropdown.inputsDropdown[ownProps.inputId]
+  ) {
     return {
       buttonId: ownProps.inputId,
-      ...state.UserInputDropdown.inputsDropdown[ownProps.inputId] 
+      ...state.UserInputDropdown.inputsDropdown[ownProps.inputId],
     };
   } else {
     return {
-      ownProps
-    };        
+      ownProps,
+    };
   }
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     inputOptions: state.inputOptions,
-//     defaultOption: state.defaultOption,
-//     inputStyle: state.inputStyle,
-//     inputId: state.inputId,
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChange: (event) => {
+      dispatch(actions.onChange(event));
+    },
+    dropdownInitialized: (props) => {
+      dispatch(actions.dropdownInitialized(props));
+    },
+  };
+};
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onChange: (event) => {
-//       dispatch(actions.onChange(event));
-//     },
-// };
-
-export default connect(mapStateToProps)(UserInputDropdownContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(UserInputDropdownContainer);
