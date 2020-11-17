@@ -1,8 +1,9 @@
 import actionTypes from "./actionTypes";
 
-export const onChange = (event) => {
+export const onChange = (id, event) => {
   return {
     type: actionTypes.INPUT_ENTERED,
+    id: id,
     payload: {
       userInput: event.target.value,
     },

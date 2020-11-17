@@ -10,10 +10,15 @@ class UserInputStringContainer extends React.Component {
     this.internalProps = props;
     
     this.inputInitialized = props.inputInitialized.bind(this);
+    this.onChange = props.onChange.bind(this);
   }
 
   componentDidMount(){
     this.inputInitialized(this.internalProps);
+  }
+
+  onChange(event) {
+    this.onChange(this.internalProps.inputId, event)
   }
 
   render() {
@@ -23,6 +28,7 @@ class UserInputStringContainer extends React.Component {
         value={this.internalProps.value}
         inputStyle={this.internalProps.inputStyle}
         inputId={this.internalProps.inputId}
+        onChange={this.onChange}
       />
     );
   }
@@ -41,19 +47,10 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     placeHolder: state.placeHolder,
-//     value: state.value,
-//     inputStyle: state.inputStyle,
-//     inputId: state.inputId,
-//   };
-// };
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChange: (event) => {
-      dispatch(actions.onChange(event))    
+    onChange: (id, event) => {
+      dispatch(actions.onChange(id, event))    
     },
     inputInitialized: (props) => {
       dispatch(actions.inputInitialized(props))

@@ -18,7 +18,7 @@ function UserInputString({placeHolder, value, onChange, inputStyle, inputId}) {
       className={inputStyle}
       placeholder={placeHolder}
       value={value}
-      onChange={() => onChange}
+      onChange={onChange}
     />
   );
 }
