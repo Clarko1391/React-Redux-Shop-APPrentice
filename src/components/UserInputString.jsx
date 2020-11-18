@@ -8,6 +8,7 @@ const propTypes = {
   onChange: PropTypes.func,
   inputStyle: PropTypes.string,
   inputId: PropTypes.string,
+  userInput: PropTypes.string,
 };
 
 function UserInputString({placeHolder, value, onChange, inputStyle, inputId}) {

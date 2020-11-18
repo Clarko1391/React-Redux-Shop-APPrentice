@@ -1,7 +1,7 @@
 import actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  userId: "",
+  // userId: "",
   userName: "",
   password: "",
   isLogged: false,
@@ -17,7 +17,7 @@ const userLoginAttempted = (state, action) => {
   };
 };
 
-const Button = (state = initialState, action) => {
+const LoginPage = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.USER_LOGIN_ATTEMPTED:
       return userLoginAttempted(state, action);
@@ -26,4 +26,4 @@ const Button = (state = initialState, action) => {
   }
 };
 
-export default Button;
+export default LoginPage;

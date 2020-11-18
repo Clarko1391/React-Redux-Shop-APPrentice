@@ -32,7 +32,7 @@ function App( {store} ) {
             <Navbar />
             <Switch>
                 <Route path='/' exact component={LandingPageContainer} />
-                <Route path='/Login' component={LoginPageContainer} />
+                <Route path='/Login' render={(props) => (<LoginPageContainer {...props} userName={null} password={null} isLogged={false} />)} />
                 <Route path='/Registration' component={RegistrationPageContainer} />
                 <Route path='/UserSettings' component={UserSettingsContainer} />
                 <Route path='/MeasurementConverter' component={MeasurementConverter} />
