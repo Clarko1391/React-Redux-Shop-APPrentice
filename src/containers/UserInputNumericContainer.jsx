@@ -3,8 +3,33 @@ import * as actions from "../actions/UserInputNumeric";
 import React from "react";
 import NumericInput from "react-numeric-input";
 import { PropTypes } from "prop-types";
+import styled from "styled-components";
 import "../components/css/UserInputNumeric.css";
 
+// CSS
+const Input = styled(NumericInput)`
+  width: 100%;
+  height: 40px;
+  background-color: #da1622;
+  border: none;
+  border-radius: 2px;
+  color: #383838;
+  text-align: center;
+  padding: auto 0px;
+  margin: 0px;
+  font-size: 2vh;
+  &::placeholder {
+    color: #c4d0dc;
+    text-align: center;
+    font-size: 2vh;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+//PropTypes
 const propTypes = {
   inputId: PropTypes.string,
   inputStyle: PropTypes.string,
@@ -27,35 +52,37 @@ class UserInputNumericContainer extends React.Component {
     this.internalProps.onChange(this.internalProps, value);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.inputInitialized(this.internalProps);
   }
 
   render() {
     return (
-      <NumericInput
-      placeholder={this.internalProps.placeHolder}
-      className={this.internalProps.inputStyle}
-      inputid={this.internalProps.inputId}
-      onChange={(valueAsNumber) => this.onChange(valueAsNumber)}
-    />
+      <Input
+        placeholder={this.internalProps.placeHolder}
+        style={false}
+        inputid={this.internalProps.inputId}
+        onChange={(valueAsNumber) => this.onChange(valueAsNumber)}
+      />
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  if (state.UserInputNumeric.inputsNUM && state.UserInputNumeric.inputsNUM[ownProps.inputId]) {
+  if (
+    state.UserInputNumeric.inputsNUM &&
+    state.UserInputNumeric.inputsNUM[ownProps.inputId]
+  ) {
     return {
       buttonId: ownProps.inputId,
-      ...state.UserInputNumeric.inputsNUM[ownProps.inputId] 
+      ...state.UserInputNumeric.inputsNUM[ownProps.inputId],
     };
   } else {
     return {
-      ownProps
-    };        
+      ownProps,
+    };
   }
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -64,10 +91,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     inputInitialized: (props) => {
       dispatch(actions.inputInitialized(props));
-    }
-  }
+    },
+  };
 };
 
 UserInputNumericContainer.propTypes = propTypes;
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserInputNumericContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserInputNumericContainer);

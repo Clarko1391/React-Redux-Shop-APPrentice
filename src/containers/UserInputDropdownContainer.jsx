@@ -4,12 +4,31 @@ import React from "react";
 import Dropdown from "react-dropdown";
 import { PropTypes } from "prop-types";
 import "../components/css/UserInputDropdown.css";
+import styled from "styled-components";
 
+// CSS
+const DropdownInput = styled(Dropdown)`
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background-color: #da1622;
+  color: #fcfbfc;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  font-size: 2vh;
+  &:focus {
+    outline: none;
+  }
+`;
+
+// PropTypes
 const propTypes = {
   inputId: PropTypes.string,
   inputStyle: PropTypes.string,
   inputOptions: PropTypes.array,
   defaultOption: PropTypes.string,
+  placeholder: PropTypes.string,
   onChange: PropTypes.func,
 };
 
@@ -36,14 +55,13 @@ class UserInputDropdownContainer extends React.Component {
 
   render() {
     return (
-      <Dropdown
-      className={this.internalProps.inputStyle}
-      inputid={this.internalProps.inputId}
-      value={this.defaultOption}
-      options={this.internalProps.inputOptions}
-      onChange={this.onChange}
-      placeholder={this.internalProps.placeholder}
-    />
+      <DropdownInput
+        className={this.internalProps.inputStyle}
+        inputid={this.internalProps.inputId}
+        options={this.internalProps.inputOptions}
+        onChange={this.onChange}
+        placeholder={this.internalProps.placeholder}
+      />
     );
   }
 }
@@ -77,4 +95,7 @@ const mapDispatchToProps = (dispatch) => {
 
 UserInputDropdownContainer.propTypes = propTypes;
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserInputDropdownContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserInputDropdownContainer);

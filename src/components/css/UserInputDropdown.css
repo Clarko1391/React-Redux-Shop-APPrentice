@@ -1,0 +1,10 @@
+.Dropdown-menu {
+    position: absolute;
+    width: 100%;
+    top: 40px;
+}
+
+.Dropdown-option {
+    font-size: 2vh;
+    padding-bottom: 5px;
+}

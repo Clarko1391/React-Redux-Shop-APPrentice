@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 // CSS
 const OutputBox = styled.div`
-  width: 80%;
+  width: 100%;
   height: 15vh;
   max-height: 120px;
   background-color: rgba(78, 77, 78, 0.5);
@@ -15,6 +15,7 @@ const OutputBox = styled.div`
   justify-content: space-evenly;
   align-items: center;
   border-radius: 4px;
+  margin: 10px 0px;
 `;
 const OutputHeader = styled.h2`
   margin: 0px;

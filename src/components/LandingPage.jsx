@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
-import UserInputDropdownContainer from "../containers/UserInputDropdownContainer";
+// import UserInputDropdownContainer from "../containers/UserInputDropdownContainer";
 
 // CSS
 const HeroContainer = styled.div`
@@ -81,12 +81,12 @@ function LandingPage(props) {
         />
       </UIContainer>
       <UIContainer>
-        <UserInputDropdownContainer 
+        {/* <UserInputDropdownContainer 
           inputId = "landing-dropdown-test"
           inputStyle = "dropdown"
           inputOptions = {dropdownOptions}
           placeholder = "select an option"
-        />
+        /> */}
       {/* <ResultsOutputContainer
           outputId="land-page-output-test"
           outputType="converter"
@@ -105,9 +105,7 @@ function LandingPage(props) {
             checked={true}
         />
         <UserInputNumericContainer 
-            inputId="land-page-numeric-test"
-            inputStyle="test"
-            placeHolder="test"
+            
         />
         <UserInputStringContainer 
           inputId="land-page-string-test"

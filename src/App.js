@@ -8,9 +8,9 @@ import LandingPageContainer from './containers/LandingPageContainer';
 import LoginPageContainer from './containers/LoginPageContainer';
 import RegistrationPageContainer from './containers/RegistrationPageContainer'
 import UserSettingsContainer from './containers/UserSettingsContainer';
-import MeasurementConverter from './pages/MeasurementConverter'
-import FractionalCalculator from './pages/FractionalCalculator'
-import ReferenceManual from './pages/ReferenceManual'
+import MeasurementConverterContainer from "./containers/MeasurementConverterContainer";
+import FractionalCalculatorContainer from './containers/FractionalCalculatorContainer'
+import ReferenceManualContainer from './containers/ReferenceManualContainer'
 import TapAndDie from './pages/refManualPages/TapAndDie'
 import WrenchSize from './pages/refManualPages/WrenchSize'
 import DrillSize from './pages/refManualPages/DrillSize'
@@ -35,9 +35,9 @@ function App( {store} ) {
                 <Route path='/Login' render={(props) => (<LoginPageContainer {...props} userName={null} password={null} isLogged={false} />)} />
                 <Route path='/Registration' component={RegistrationPageContainer} />
                 <Route path='/UserSettings' component={UserSettingsContainer} />
-                <Route path='/MeasurementConverter' component={MeasurementConverter} />
-                <Route path='/FractionalCalculator' component={FractionalCalculator} />
-                <Route path='/ReferenceManual' exact component={ReferenceManual} />
+                <Route path='/MeasurementConverter' component={MeasurementConverterContainer} />
+                <Route path='/FractionalCalculator' component={FractionalCalculatorContainer} />
+                <Route path='/ReferenceManual' exact component={ReferenceManualContainer} />
                 <Route path='/ReferenceManual/TapAndDie' component={TapAndDie} />
                 <Route path='/ReferenceManual/WrenchSize' component={WrenchSize} />
                 <Route path='/ReferenceManual/DrillSize' component={DrillSize} />
