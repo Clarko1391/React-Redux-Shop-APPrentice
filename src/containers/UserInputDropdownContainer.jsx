@@ -23,10 +23,15 @@ class UserInputDropdownContainer extends React.Component {
     this.defaultOption = defaultOption;
 
     this.dropdownInitialized = props.dropdownInitialized.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
     this.dropdownInitialized(this.internalProps);
+  }
+
+  onChange(option) {
+    this.internalProps.onChange(this.internalProps, option);
   }
 
   render() {
@@ -34,9 +39,10 @@ class UserInputDropdownContainer extends React.Component {
       <Dropdown
       className={this.internalProps.inputStyle}
       inputid={this.internalProps.inputId}
-      value={this.internalProps.defaultOption}
+      value={this.defaultOption}
       options={this.internalProps.inputOptions}
-      onChange={this.internalProps.onChange}
+      onChange={this.onChange}
+      placeholder={this.internalProps.placeholder}
     />
     );
   }
@@ -60,8 +66,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChange: (event) => {
-      dispatch(actions.onChange(event));
+    onChange: (props, value) => {
+      dispatch(actions.onChange(props, value));
     },
     dropdownInitialized: (props) => {
       dispatch(actions.dropdownInitialized(props));

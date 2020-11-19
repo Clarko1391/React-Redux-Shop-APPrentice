@@ -3,10 +3,7 @@ import { PropTypes } from "prop-types";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
-import UserInputCheckBoxContainer from '../containers/UserInputCheckBoxContainer';
-import UserInputNumericContainer from '../containers/UserInputNumericContainer';
-import UserInputStringContainer from '../containers/UserInputStringContainer';
-import ResultsOutputContainer from "../containers/ResultsOutputContainer";
+import UserInputDropdownContainer from "../containers/UserInputDropdownContainer";
 
 // CSS
 const HeroContainer = styled.div`
@@ -53,6 +50,10 @@ const propTypes = {
   userName: PropTypes.string,
 };
 
+const dropdownOptions = [
+  "testing1", "testing2", "testing3"
+];
+
 // Functional Component
 function LandingPage(props) {
   return (
@@ -80,7 +81,13 @@ function LandingPage(props) {
         />
       </UIContainer>
       <UIContainer>
-      <ResultsOutputContainer
+        <UserInputDropdownContainer 
+          inputId = "landing-dropdown-test"
+          inputStyle = "dropdown"
+          inputOptions = {dropdownOptions}
+          placeholder = "select an option"
+        />
+      {/* <ResultsOutputContainer
           outputId="land-page-output-test"
           outputType="converter"
           header="testing-output"
@@ -106,7 +113,7 @@ function LandingPage(props) {
           inputId="land-page-string-test"
           inputStyle="test"
           placeHolder="test"
-        />
+        /> */}
       </UIContainer>
       <SubTitle> or </SubTitle>
       <STContainer>

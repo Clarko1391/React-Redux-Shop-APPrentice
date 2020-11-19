@@ -1,10 +1,15 @@
 import actionTypes from "./actionTypes";
 
-export const onChange = (event) => {
+export const onChange = (props, value) => {
   return {
     type: actionTypes.INPUT_ENTERED,
+    id: props.inputId,
     payload: {
-      userInput: event.target.value,
+      inputOptions: props.inputOptions,
+      defaultOption: props.defaultOption,
+      onChange: props.onChange,
+      inputStyle: props.inputStyle,
+      userInput: value.value,
     },
   };
 };
