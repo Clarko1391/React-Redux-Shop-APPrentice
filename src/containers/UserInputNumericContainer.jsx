@@ -23,8 +23,8 @@ class UserInputNumericContainer extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(event) {
-    this.internalProps.onChange(this.internalProps, event);
+  onChange(value) {
+    this.internalProps.onChange(this.internalProps, value);
   }
 
   componentDidMount(){
@@ -37,7 +37,7 @@ class UserInputNumericContainer extends React.Component {
       placeholder={this.internalProps.placeHolder}
       className={this.internalProps.inputStyle}
       inputid={this.internalProps.inputId}
-      onChange={e => this.onChange(e)}
+      onChange={(valueAsNumber) => this.onChange(valueAsNumber)}
     />
     );
   }
@@ -59,8 +59,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChange: (props, event) => {
-      dispatch(actions.onChange(props, event));
+    onChange: (props, value) => {
+      dispatch(actions.onChange(props, value));
     },
     inputInitialized: (props) => {
       dispatch(actions.inputInitialized(props));

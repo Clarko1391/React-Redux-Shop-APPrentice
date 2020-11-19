@@ -1,14 +1,14 @@
 import actionTypes from "./actionTypes";
 
-export const onChange = (props, event) => {
+export const onChange = (props, value) => {
   return {
-    type: actionTypes.INPUT_ENTERED,
+    type: actionTypes.NUMERIC_INPUT_ENTERED,
     id: props.inputId,
     payload: {
       placeHolder: props.placeHolder,
       value: props.value,
       inputStyle: props.inputStyle,
-      userInput: event.target.value,
+      userInput: value,
     },
   };
 };

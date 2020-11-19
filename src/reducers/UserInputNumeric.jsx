@@ -30,7 +30,7 @@ const inputInitialized = (state, action) => {
 
 const UserInputNumeric = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.INPUT_ENTERED:
+    case actionTypes.NUMERIC_INPUT_ENTERED:
       return onChange(state, action);
     case actionTypes.NUMERIC_INPUT_INITIALIZED:
       return inputInitialized(state, action);

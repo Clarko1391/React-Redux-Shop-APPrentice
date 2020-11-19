@@ -2,7 +2,7 @@ import actionTypes from "./actionTypes";
 
 export const onChange = (props, event) => {
   return {
-    type: actionTypes.INPUT_ENTERED,
+    type: actionTypes.STRING_INPUT_ENTERED,
     id: props.inputId,
     payload: {
       placeHolder: props.placeHolder,

@@ -30,7 +30,7 @@ const inputInitialized = (state, action) => {
 
 const UserInputString = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.INPUT_ENTERED:
+    case actionTypes.STRING_INPUT_ENTERED:
       return onChange(state, action);
     case actionTypes.STRING_INPUT_INITIALIZED:
       return inputInitialized(state, action);

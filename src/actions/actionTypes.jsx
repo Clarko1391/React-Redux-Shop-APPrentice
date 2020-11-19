@@ -3,6 +3,8 @@ import keyMirror from "keymirror";
 export default keyMirror({
   BUTTON_CLICKED: null,
   BUTTON_INITIALIZED: null,
+  STRING_INPUT_ENTERED: null,
+  NUMERIC_INPUT_ENTERED: null,
   INPUT_ENTERED: null,
   STRING_INPUT_INITIALIZED: null,
   NUMERIC_INPUT_INITIALIZED: null,
