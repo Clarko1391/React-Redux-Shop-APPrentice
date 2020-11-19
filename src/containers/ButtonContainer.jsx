@@ -1,7 +1,19 @@
 import { connect } from "react-redux";
-import Button from "../components/Button";
 import * as actions from "../actions/Button";
+import { PropTypes } from "prop-types";
+import { Link } from "react-router-dom";
+import "../components/css/Button.css";
 import React from "react";
+
+const propTypes = {
+  buttonId: PropTypes.string,
+  buttonStyle: PropTypes.string,
+  navigateTo: PropTypes.string,
+  isNavButton: PropTypes.bool,
+  buttonClicked: PropTypes.func,
+  buttonTitlePrimary: PropTypes.string,
+  buttonTitleSecondary: PropTypes.string,
+};
 
 class ButtonContainer extends React.Component {
   constructor(props) {
@@ -23,14 +35,11 @@ class ButtonContainer extends React.Component {
   // This render is used to pass props only, no JSX should be coded here
   render() {
     return (
-      <Button
-        buttonId={this.internalProps.buttonId}
-        buttonStyle={this.internalProps.buttonStyle}
-        isNavButton={this.internalProps.isNavButton}
-        navigateTo={this.internalProps.navigateTo}
-        buttonTitlePrimary={this.internalProps.buttonTitlePrimary}
-        buttonTitleSecondary={this.internalProps.buttonTitleSecondary}
-      />
+      <button buttonid={this.internalProps.buttonId} className={this.internalProps.buttonStyle} onClick={this.internalProps.buttonClicked}>
+      {this.internalProps.buttonTitlePrimary}
+      {this.internalProps.buttonTitleSecondary}
+      {this.internalProps.isNavButton ? <Link className="buttonLink" to={this.internalProps.navigateTo}></Link> : ""}
+    </button>
     );
   }
 }
@@ -59,5 +68,8 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
+
+
+ButtonContainer.propTypes = propTypes;
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonContainer);

@@ -1,7 +1,17 @@
 import { connect } from "react-redux";
-import UserInputDropdown from "../components/UserInputDropdown";
 import * as actions from "../actions/UserInputDropdown";
 import React from "react";
+import Dropdown from "react-dropdown";
+import { PropTypes } from "prop-types";
+import "../components/css/UserInputDropdown.css";
+
+const propTypes = {
+  inputId: PropTypes.string,
+  inputStyle: PropTypes.string,
+  inputOptions: PropTypes.array,
+  defaultOption: PropTypes.string,
+  onChange: PropTypes.func,
+};
 
 class UserInputDropdownContainer extends React.Component {
   constructor(props) {
@@ -21,12 +31,13 @@ class UserInputDropdownContainer extends React.Component {
 
   render() {
     return (
-      <UserInputDropdown
-        inputOptions={this.internalProps.inputOptions}
-        defaultOption={this.defaultOption}
-        inputStyle={this.internalProps.inputStyle}
-        inputId={this.internalProps.inputId}
-      />
+      <Dropdown
+      className={this.internalProps.inputStyle}
+      inputid={this.internalProps.inputId}
+      value={this.internalProps.defaultOption}
+      options={this.internalProps.inputOptions}
+      onChange={this.internalProps.onChange}
+    />
     );
   }
 }
@@ -57,5 +68,7 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
+
+UserInputDropdownContainer.propTypes = propTypes;
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInputDropdownContainer);

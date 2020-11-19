@@ -1,7 +1,15 @@
 import { connect } from "react-redux";
-import UserInputCheckBox from "../components/UserInputCheckBox";
 import * as actions from "../actions/UserInputCheckBox";
 import React from "react";
+import { PropTypes } from "prop-types";
+import "../components/css/UserInputCheckBox.css";
+
+const propTypes = {
+  inputId: PropTypes.string,
+  inputStyle: PropTypes.string,
+  checked: PropTypes.bool,
+  onChange: PropTypes.func,
+};
 
 class UserInputCheckBoxContainer extends React.Component {
   constructor(props) {
@@ -18,11 +26,13 @@ class UserInputCheckBoxContainer extends React.Component {
 
   render() {
     return (
-      <UserInputCheckBox
-        inputId={this.internalProps.inputId}
-        inputStyle={this.internalProps.inputStyle}
-        checked={this.internalProps.checked}
-      />
+      <input
+      type="checkbox"
+      inputid={this.internalProps.inputId}
+      className={this.internalProps.inputStyle}
+      checked={this.internalProps.ticked}
+      onChange={this.internalProps.onChange}
+    />
     );
   }
 }
@@ -51,5 +61,7 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 };
+
+UserInputCheckBoxContainer.propTypes = propTypes;
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInputCheckBoxContainer)

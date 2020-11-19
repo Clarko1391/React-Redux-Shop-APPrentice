@@ -8,11 +8,19 @@ class LoginPageContainer extends React.Component {
     super(props);
 
     this.internalProps = props;
+
+    // this.userLoginAttempted = this.userLoginAttempted.bind(this);
   }
 
+  // This function will be passed through Loginage to ButtonContainer and will carry the username and password props,
+  // LoginAttempt (props) {
+  //   this.userLoginAttempted(props);
+  // }
+
   render() {
-    console.log(this.props.userName, this.props.password);
-    return <LoginPage />;
+    return <LoginPage 
+      // onClick={this.LoginAttempt}
+    />;
   }
 }
 const mapStateToProps = (state) => {

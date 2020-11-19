@@ -106,7 +106,6 @@ function LandingPage(props) {
           inputId="land-page-string-test"
           inputStyle="test"
           placeHolder="test"
-          value="test"
         />
       </UIContainer>
       <SubTitle> or </SubTitle>
