@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import Button from './Button';
+import StyledButton from './StyledButton';
 import LoginPage from './LoginPage';
 import RegistrationPage from './RegistrationPage';
 import UserInputString from './UserInputString';
@@ -11,6 +12,7 @@ import ResultsOutput from './ResultsOutput';
 const allReducer = combineReducers({
   // add individual state reducers here
   Button,
+  StyledButton,
   LoginPage,
   RegistrationPage,
   UserInputString,

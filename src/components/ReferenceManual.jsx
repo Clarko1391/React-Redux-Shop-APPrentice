@@ -1,7 +1,7 @@
 import React from "react";
 // import { PropTypes } from "prop-types";
 import styled from "styled-components";
-import ButtonContainer from "../containers/ButtonContainer";
+import StyledButtonContainer from "../containers/StyledButtonContainer";
 import img from "../assets/img/right.png";
 
 // CSS
@@ -34,41 +34,37 @@ function ReferenceManual() {
   return (
     <HeroContainer>
       <UIContainer>
-        <ButtonContainer
+        <StyledButtonContainer
           buttonId="tap-and-die-button"
-          buttonStyle="referenceButton"
           isNavButton={true}
-          navigateTo="/TapAndDie"
+          navigateTo="/ReferenceManual/TapAndDie"
           buttonTitlePrimary="Tap and Die Chart"
           buttonTitleSecondary= "Standard tap and die sizes covering Metric and SAE up to 1/2"
         />
       </UIContainer>
       <UIContainer>
-        <ButtonContainer
+        <StyledButtonContainer
           buttonId="wrench-size-button"
-          buttonStyle="referenceButton"
           isNavButton={true}
-          navigateTo="/WrenchSize"
+          navigateTo="/ReferenceManual/WrenchSize"
           buttonTitlePrimary="Wrench Size Chart"
           buttonTitleSecondary= "Wrench size chart covering Metric and SAE based on nut/bolt size"
         />
       </UIContainer>
       <UIContainer>
-        <ButtonContainer
+        <StyledButtonContainer
           buttonId="drill-size-button"
-          buttonStyle="referenceButton"
           isNavButton={true}
-          navigateTo="/DrillSize"
+          navigateTo="/ReferenceManual/DrillSize"
           buttonTitlePrimary="Drill Bit Size"
           buttonTitleSecondary= "Extensive drill bit size chart covering a wide range of sizes in Metric and SAE"
         />
       </UIContainer>
       <UIContainer>
-        <ButtonContainer
+        <StyledButtonContainer
           buttonId="user-add-button"
-          buttonStyle="referenceButton"
           isNavButton={true}
-          navigateTo="/UserAdd"
+          navigateTo="/ReferenceManual/UserAdd"
           buttonTitlePrimary="Add your own references"
           buttonTitleSecondary= "This option will be added in a future update!"
         />

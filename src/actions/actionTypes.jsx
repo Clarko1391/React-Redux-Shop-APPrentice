@@ -3,6 +3,7 @@ import keyMirror from "keymirror";
 export default keyMirror({
   BUTTON_CLICKED: null,
   BUTTON_INITIALIZED: null,
+  STYLED_BUTTON_INITIALIZED: null,
   STRING_INPUT_ENTERED: null,
   NUMERIC_INPUT_ENTERED: null,
   INPUT_ENTERED: null,
@@ -11,6 +12,7 @@ export default keyMirror({
   DROPDOWN_INITIALIZED: null,
   CHECKBOX_INITIALIZED: null,
   OUTPUT_INITIALIZED: null,
+  CHART_INITIALIZED: null,
   USER_LOGIN_ATTEMPTED: null,
   USER_REGISTRATION_COMPLETED: null,
 });
