@@ -2,7 +2,7 @@ import actionTypes from "./actionTypes";
 
 
 
-export const ChartInitialized = (props) => {
+export const chartInitialized = (props) => {
   return {
     type: actionTypes.CHART_INITIALIZED,
     id: props.referenceId,
