@@ -166,9 +166,9 @@ class MeasurementConverterContainer extends React.Component {
 const mapStateToProps = (state) => {
   if (
     ((state.UserInputNumeric.inputsNUM) &&
-    (state.UserInputNumeric.inputsNUM.mcUserInput.userInput)) &&
-    ((state.UserInputDropdown.inputsDropdown) &&
-    (state.UserInputDrowdown.inputsDropdown.mcConversionInput.userInput))
+    (state.UserInputNumeric.inputsNUM.mcUserInput.userInput))
+    // ((state.UserInputDropdown.inputsDropdown) &&
+    // (state.UserInputDrowdown.inputsDropdown.mcConversionInput.userInput))
   ) {
     return {
       userInput: state.UserInputNumeric.inputsNUM.mcUserInput.userInput,
