@@ -15,4 +15,5 @@ export default keyMirror({
   CHART_INITIALIZED: null,
   USER_LOGIN_ATTEMPTED: null,
   USER_REGISTRATION_COMPLETED: null,
+  OUTPUT_MEASUREMENT_CHANGED: null
 });

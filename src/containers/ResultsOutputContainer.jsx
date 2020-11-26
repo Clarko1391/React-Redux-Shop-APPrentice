@@ -3,6 +3,7 @@ import * as actions from "../actions/ResultsOutput";
 import React from "react";
 import { PropTypes } from "prop-types";
 import styled from "styled-components";
+import deepClone from 'lodash.clonedeep';
 
 // CSS
 const OutputBox = styled.div`
@@ -75,7 +76,7 @@ class ResultsOutputContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.internalProps = props;
+    this.internalProps = deepClone(props);
 
     // rebind functions to 'this' within the constructor, these functions are for local use
     this.outputInitialized = props.outputInitialized.bind(this);
@@ -84,6 +85,14 @@ class ResultsOutputContainer extends React.Component {
   componentDidMount(){
     this.outputInitialized(this.internalProps);
   }
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.measurement !== this.internalProps.measurement) {
+      this.internalProps.measurement = nextProps.measurement;
+    }
+    return true;
+  }
+
 
   // This render is used to pass props only, no JSX should be coded here
   render() {

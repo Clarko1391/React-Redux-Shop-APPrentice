@@ -1,5 +1,5 @@
 import React from "react";
-// import { PropTypes } from "prop-types";
+import { PropTypes } from "prop-types";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
 import UserInputDropdownContainer from "../containers/UserInputDropdownContainer";
@@ -33,18 +33,17 @@ const OutputContainer = styled.div`
   align-items: center;
 `;
 
-// // PropTypes
-// const propTypes = {
-//   isLogged: PropTypes.bool,
-//   userName: PropTypes.string,
-// };
+// PropTypes
+const propTypes = {
+  convertMeasurement: PropTypes.func
+};
 
 const dropdownOptions = [
   "mm to Inches", "Inches to mm"
 ];
 
 // Functional Component
-function MeasurementConverter() {
+function MeasurementConverter({convertMeasurement = f => f}) {
   return (
     <HeroContainer>
       <UIContainer>
@@ -70,6 +69,7 @@ function MeasurementConverter() {
           navigateTo=""
           buttonTitlePrimary="Convert"
           buttonTitleSecondary=""
+          buttonClicked={convertMeasurement}
         />
         <ButtonContainer
           buttonId="mcClearButton"
@@ -117,6 +117,6 @@ function MeasurementConverter() {
   );
 }
 
-// MeasurementConverter.propTypes = propTypes;
+MeasurementConverter.propTypes = propTypes;
 
 export default MeasurementConverter;

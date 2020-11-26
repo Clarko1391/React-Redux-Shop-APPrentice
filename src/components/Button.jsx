@@ -23,7 +23,7 @@ function Button({
   buttonTitleSecondary,
 }) {
   return (
-    <button buttonid={buttonId} className={buttonStyle} onClick={buttonClicked}>
+    <button buttonid={buttonId} className={buttonStyle} onClick={buttonClicked ? () => buttonClicked : ''}>
       {buttonTitlePrimary}
       {buttonTitleSecondary}
       {isNavButton ? <Link className="buttonLink" to={navigateTo}></Link> : ""}

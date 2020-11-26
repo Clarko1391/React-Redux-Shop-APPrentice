@@ -1,58 +1,75 @@
-import React, { useState } from "react";
+import React from "react";
+import * as resultsActions from "../actions/ResultsOutput";
 import { connect } from "react-redux";
 import { fraction, number, floor, round } from 'mathjs'
 import MeasurementConverter from "../components/MeasurementConverter";
-// import * as actions from "../actions";
 import deepClone from 'lodash.clonedeep';
-
-
 
 class MeasurementConverterContainer extends React.Component {
   constructor(props) {
     super(props)
 
     this.internalProps = deepClone(props);
-    this.convertMeasurement = this.convertMeasurement.bind(this)
+    this.convertMeasurement = this.convertMeasurement.bind(this);
   };
 
-  convertMeasurement (props) {
-    const userInput = props.userInput;
-    const fractionValidate = props.userInput.split("");
-    let conversionUnit;
+  convertMeasurement() {
+    let userInput = this.internalProps.userInput;
+    const fractionValidate = this.internalProps.userInput.split("");
+    const conversionUnit = this.internalProps.conversionUnit;
 
-    let convertValidate, measurement;
+    let convertValidate = true, measurement;
 
     if (fractionValidate.includes("/") && conversionUnit === "MMtoInches") {
-         alert("please enter whole number metric values only");
-         convertValidate = false;
-     } else if (fractionValidate.includes("/")) {
-         measurement = fraction(userInput);
-         measurement = number(measurement);
-         convertValidate = true;
-     } else {
-         measurement = number(userInput);
-         convertValidate = true;
+      alert("please enter whole number metric values only");
+      convertValidate = false;
+    } else if (fractionValidate.includes("/")) {
+      const temp = fraction(userInput);
+      userInput = temp;
+    }
+    if (isNaN(userInput)) {
+      alert("Measurement should be a number or a fraction");
+      convertValidate = false;
+    } else {
+      measurement = number(userInput);
+    }
 
+    if (convertValidate) {
+      this.updateOutput(conversionUnit, measurement);
+    }
   }
-}
+
+  updateOutput(conversionUnit, measurement) {
+    switch (conversionUnit) {
+      case ("mm to Inches"):
+        // build an oject with measurements that you are going to trigger an action with
+        this.internalProps.updateDecimalMM(measurement.toString());
+        break;
+      case ("Inches to mm"):
+        break;
+      default:
+        break;
+    }
+  }
 
   shouldComponentUpdate(nextProps) {
-    if (
-      (nextProps.userInput !== this.internalProps.userInput) ||
-      (nextProps.conversionUnit !== this.internalProps.conversionUnit)) {
-      console.log("state has changed!");
+    if (nextProps.userInput !== this.internalProps.userInput) {
+      console.log("userInput has changed!");
       this.internalProps.userInput = nextProps.userInput;
+    }
+    if (nextProps.conversionUnit !== this.internalProps.conversionUnit) {
+      console.log("conversionUnit has changed!");
       this.internalProps.conversionUnit = nextProps.conversionUnit;
     }
     return true;
   }
-  
+
 
   render() {
     return (
-    <>
-      <MeasurementConverter />
-    </>
+      <>
+        <MeasurementConverter convertMeasurement={this.convertMeasurement} />
+      </>
     );
   }
 }
@@ -162,35 +179,37 @@ class MeasurementConverterContainer extends React.Component {
 
 //     }
 
-      // This is broken, trying to pull in multiple pieces of state but throws an error for "inputsDropdown" is undefined
 const mapStateToProps = (state) => {
+  let mcUserInput = "default";
+  let mcConversionInput = "default";
   if (
-    ((state.UserInputNumeric.inputsNUM) &&
-    (state.UserInputNumeric.inputsNUM.mcUserInput.userInput)) &&
-    ((state.UserInputDropdown.inputsDropdown) &&
-    (state.UserInputDrowdown.inputsDropdown.mcConversionInput.userInput))
+    state.UserInputNumeric.inputsNUM &&
+    state.UserInputNumeric.inputsNUM.mcUserInput.userInput
   ) {
-    return {
-      userInput: state.UserInputNumeric.inputsNUM.mcUserInput.userInput,
-      conversionUnit: state.UserInputDrowdown.inputsDropdown.mcConversionInput.userInput
-    };
-  } else {
-    return {
-      userInput: "default",
-      conversionUnit: "default",
-    };
+    mcUserInput = state.UserInputNumeric.inputsNUM.mcUserInput.userInput;
   }
+  if (
+    state.UserInputDropdown &&
+    state.UserInputDropdown.inputsDropdown &&
+    state.UserInputDropdown.inputsDropdown.mcConversionInput.userInput
+  ) {
+    mcConversionInput = state.UserInputDropdown.inputsDropdown.mcConversionInput.userInput;
+  }
+  return {
+    userInput: mcUserInput,
+    conversionUnit: mcConversionInput,
+  };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     buttonClicked: (event) => {
-//       dispatch(actions.buttonClicked(event));
-//     },
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateDecimalMM: (measurement) => {
+      dispatch(resultsActions.changeMeasurement('mcDecMMOutput',measurement));
+    }
+  };
+};
 
 export default connect(
-  mapStateToProps
-  /*mapDispatchToProps,*/
+  mapStateToProps,
+  mapDispatchToProps
 )(MeasurementConverterContainer);

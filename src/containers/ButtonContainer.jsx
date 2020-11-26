@@ -22,13 +22,18 @@ class ButtonContainer extends React.Component {
     this.internalProps = props;
 
     // rebind functions to 'this' within the constructor, these functions are for local use
-    this.buttonClicked = props.buttonClicked.bind(this);
+    this.buttonClicked = this.buttonClicked.bind(this);
     this.buttonInitialized = props.buttonInitialized.bind(this);
   }
 
   componentDidMount(){
     this.buttonInitialized(this.internalProps);
   }
+
+  buttonClicked(event) {
+    this.internalProps.buttonClicked();
+  }
+
 
   // write local functions here, these are specifically for callback functions and dispatching actions to the reducer
 
@@ -54,15 +59,12 @@ const mapStateToProps = (state, ownProps) => {
   } else {
     return {
       ownProps
-    };        
+    };
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    buttonClicked: (event) => {
-      dispatch(actions.buttonClicked(event));
-    },
     buttonInitialized: (props) => {
       dispatch(actions.buttonInitialized(props));
     },
