@@ -49,7 +49,7 @@ function MeasurementConverter() {
     <HeroContainer>
       <UIContainer>
         <UserInputDropdownContainer 
-          inputId = "mc-coversion-input"
+          inputId = "mcConversionInput"
           inputStyle = "dropdown"
           inputOptions = {dropdownOptions}
           placeholder = "select the units you wish to convert"
@@ -57,14 +57,14 @@ function MeasurementConverter() {
       </UIContainer>
       <UIContainer >
         <UserInputNumericContainer 
-            inputId="mc-numeric-input"
+            inputId="mcUserInput"
             inputStyle="test"
             placeHolder="Enter your measurement to convert"
         />
       </UIContainer>
       <UIContainer>
         <ButtonContainer
-          buttonId="mc-convert-button"
+          buttonId="mcConvertButton"
           buttonStyle="calcButton"
           isNavButton={false}
           navigateTo=""
@@ -72,7 +72,7 @@ function MeasurementConverter() {
           buttonTitleSecondary=""
         />
         <ButtonContainer
-          buttonId="mc-clear-button"
+          buttonId="mcClearButton"
           buttonStyle="calcButton"
           isNavButton={false}
           navigateTo=""
@@ -82,7 +82,7 @@ function MeasurementConverter() {
       </UIContainer>
       <OutputContainer >
           <ResultsOutputContainer 
-            outputId="mc-dec-mm-output"
+            outputId="mcDecMMOutput"
             outputType="converter"
             header="Decimal (mm)"
             downMeasurement="-1"
@@ -92,7 +92,7 @@ function MeasurementConverter() {
             fractionalResult=""
           />
           <ResultsOutputContainer 
-            outputId="mc-dec-inch-output"
+            outputId="mcDecInchOutput"
             outputType="converter"
             header="Decimal (inch)"
             downMeasurement="-1"
@@ -102,7 +102,7 @@ function MeasurementConverter() {
             fractionalResult=""
           />
           <ResultsOutputContainer 
-            outputId="mc-frac-inch-output"
+            outputId="mcFracInchOutput"
             outputType="converter"
             header="Fractional"
             downMeasurement="-1"

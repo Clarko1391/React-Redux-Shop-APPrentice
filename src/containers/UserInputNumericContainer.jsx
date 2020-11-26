@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import * as actions from "../actions/UserInputNumeric";
 import React from "react";
-import NumericInput from "react-numeric-input";
+// import NumericInput from "react-numeric-input";
 import { PropTypes } from "prop-types";
 import styled from "styled-components";
 import "../components/css/UserInputNumeric.css";
 
 // CSS
-const Input = styled(NumericInput)`
+const Input = styled.input`
   width: 100%;
   height: 40px;
   background-color: #da1622;
@@ -35,7 +35,7 @@ const propTypes = {
   inputStyle: PropTypes.string,
   placeHolder: PropTypes.string,
   onChange: PropTypes.func,
-  userInput: PropTypes.number,
+  userInput: PropTypes.string,
 };
 
 class UserInputNumericContainer extends React.Component {
@@ -48,8 +48,8 @@ class UserInputNumericContainer extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(value) {
-    this.internalProps.onChange(this.internalProps, value);
+  onChange(event) {
+    this.internalProps.onChange(this.internalProps, event);
   }
 
   componentDidMount() {
@@ -59,10 +59,10 @@ class UserInputNumericContainer extends React.Component {
   render() {
     return (
       <Input
+        type="text"
         placeholder={this.internalProps.placeHolder}
-        style={false}
         inputid={this.internalProps.inputId}
-        onChange={(valueAsNumber) => this.onChange(valueAsNumber)}
+        onChange={this.onChange}
       />
     );
   }
@@ -86,8 +86,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChange: (props, value) => {
-      dispatch(actions.onChange(props, value));
+    onChange: (props, event) => {
+      dispatch(actions.onChange(props, event));
     },
     inputInitialized: (props) => {
       dispatch(actions.inputInitialized(props));

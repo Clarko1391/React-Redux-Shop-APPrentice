@@ -20,7 +20,7 @@ const OutputBox = styled.div`
 const OutputHeader = styled.h2`
   margin: 0px;
   padding: 0px;
-  font-size: 2vh;
+  font-size: 2.5vh;
   color: #fcfbfc;
 `;
 const MeasurementOutput = styled.div`
@@ -55,7 +55,7 @@ const OutputMeasurement = styled.h3`
   padding: 0px;
   padding-top: 10px;
   margin: 0px;
-  font-size: 1.5vh;
+  font-size: 2vh;
   color: #fcfbfc;
 `;
 

@@ -16,6 +16,7 @@ const ReferenceContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin-bottom: 10px;
 `;
 const ReferenceContent = styled.div`
   height: 100%;

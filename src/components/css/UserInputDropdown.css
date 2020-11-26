@@ -7,4 +7,12 @@
 .Dropdown-option {
     font-size: 2vh;
     padding-bottom: 5px;
+    width: 100%;
+    z-index: 5;
+    background-color: #da1622;
+    color: #fcfbfc;
+}
+
+.Dropdown-option:hover {
+    background-color: #6b2b2f;
 }

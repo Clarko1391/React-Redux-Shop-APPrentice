@@ -10,6 +10,7 @@ import styled from "styled-components";
 const DropdownInput = styled(Dropdown)`
   position: relative;
   width: 100%;
+  min-width: 160px;
   height: 40px;
   background-color: #da1622;
   color: #fcfbfc;

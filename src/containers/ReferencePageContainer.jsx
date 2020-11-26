@@ -3,7 +3,7 @@ import ReferencePage from "../components/ReferencePage";
 import React from "react";
 import * as actions from "../actions/ReferencePage";
 
-class ReferenceManualContainer extends React.Component {
+class ReferencePageContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -28,11 +28,9 @@ class ReferenceManualContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    referenceId: state.userName,
-    referenceType: state.isLogged,
-    chartTitle: state.chartTitle,
+    ownProps
   };
 };
 
@@ -47,4 +45,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ReferenceManualContainer);
+)(ReferencePageContainer);

@@ -1,6 +1,6 @@
 import actionTypes from "./actionTypes";
 
-export const onChange = (props, value) => {
+export const onChange = (props, event) => {
   return {
     type: actionTypes.NUMERIC_INPUT_ENTERED,
     id: props.inputId,
@@ -8,7 +8,7 @@ export const onChange = (props, value) => {
       placeHolder: props.placeHolder,
       value: props.value,
       inputStyle: props.inputStyle,
-      userInput: value,
+      userInput: event.target.value,
     },
   };
 };
@@ -20,6 +20,7 @@ export const inputInitialized = (props) => {
     payload: {
       placeHolder: props.placeHolder,
       inputStyle: props.inputStyle,
+      userInput: '',
     },
   };
 };

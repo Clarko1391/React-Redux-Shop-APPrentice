@@ -12,9 +12,6 @@ import MeasurementConverterContainer from "./containers/MeasurementConverterCont
 import FractionalCalculatorContainer from './containers/FractionalCalculatorContainer'
 import ReferenceManualContainer from './containers/ReferenceManualContainer'
 import ReferencePageContainer from './containers/ReferencePageContainer'
-import TapAndDie from './containers/TapAndDieEntryContainer'
-import WrenchSize from './pages/refManualPages/WrenchSize'
-import DrillSize from './pages/refManualPages/DrillSize'
 import UserAdd from './pages/refManualPages/UserAdd'
 
 // CSS
@@ -33,18 +30,15 @@ function App( {store} ) {
             <Navbar />
             <Switch>
                 <Route path='/' exact component={LandingPageContainer} />
-                <Route path='/Login' render={(props) => (<LoginPageContainer {...props} userName={null} password={null} isLogged={false} />)} />
+                <Route path='/Login' render={() => (<LoginPageContainer userName={null} password={null} isLogged={false} />)} />
                 <Route path='/Registration' component={RegistrationPageContainer} />
                 <Route path='/UserSettings' component={UserSettingsContainer} />
-                <Route path='/MeasurementConverter' component={MeasurementConverterContainer} />
+                <Route path='/MeasurementConverter'  render={() => (<MeasurementConverterContainer />)}/>
                 <Route path='/FractionalCalculator' component={FractionalCalculatorContainer} />
                 <Route path='/ReferenceManual' exact component={ReferenceManualContainer} />
-                {/* <Route path='/ReferenceManual/TapAndDie' component={TapAndDie} /> */}
                 <Route path='/ReferenceManual/TapAndDie' render={() => (<ReferencePageContainer referenceId="TapAndDie" referenceType="TapAndDie" chartTitle="Tap and Die Chart"/>)} />
-                <Route path='/ReferenceManual/WrenchSize' render={(props) => (<ReferencePageContainer {...props} referenceId="WrenchSize" referenceType="WrenchSize" chartTitle="Wrench Sizing Chart"/>)} />
-                <Route path='/ReferenceManual/DrillSize' render={(props) => (<ReferencePageContainer {...props} referenceId="DrillSize" referenceType="DrillSize" chartTitle="Drill Bit Size Chart"/>)} />
-                {/* <Route path='/ReferenceManual/WrenchSize' component={WrenchSize} />
-                <Route path='/ReferenceManual/DrillSize' component={DrillSize} /> */}
+                <Route path='/ReferenceManual/WrenchSize' render={() => (<ReferencePageContainer referenceId="WrenchSize" referenceType="WrenchSize" chartTitle="Wrench Sizing Chart"/>)} />
+                <Route path='/ReferenceManual/DrillSize' render={() => (<ReferencePageContainer referenceId="DrillSize" referenceType="DrillSize" chartTitle="Drill Bit Size Chart"/>)} />
                 <Route path='/ReferenceManual/UserAdd' component={UserAdd} />
             </Switch>
             <Footer />
