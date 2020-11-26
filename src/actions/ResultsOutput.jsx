@@ -1,5 +1,14 @@
 import actionTypes from "./actionTypes";
 
+
+export const changeMeasurement = (id, measurement) => {
+  return {
+    type: actionTypes.OUTPUT_MEASUREMENT_CHANGED,
+    id,
+    measurement
+  };
+};
+
 export const outputInitialized = (props) => {
   return {
     type: actionTypes.OUTPUT_INITIALIZED,

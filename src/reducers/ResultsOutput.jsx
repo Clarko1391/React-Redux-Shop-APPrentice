@@ -15,10 +15,26 @@ const outputInitialized = (state, action) => {
   };
 };
 
+const outputMeasurementChanged = (state, action) => {
+  console.log("Output changed!");
+  return {
+    ...state,
+    outputs: {
+      ...state.outputs,
+      [action.id]: {
+        ...state.outputs[action.id],
+        measurement: action.measurement
+      },
+    },
+  };
+};
+
 const ResultsOutput = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.OUTPUT_INITIALIZED:
       return outputInitialized(state, action);
+    case actionTypes.OUTPUT_MEASUREMENT_CHANGED:
+      return outputMeasurementChanged(state, action);
     default:
       return state;
   }

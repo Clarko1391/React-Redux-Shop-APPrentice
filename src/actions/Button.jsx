@@ -1,14 +1,5 @@
 import actionTypes from "./actionTypes";
 
-export const buttonClicked = (event) => {
-  return {
-    type: actionTypes.BUTTON_CLICKED,
-    payload: {
-      buttonName: event.target.value,
-    },
-  };
-};
-
 export const buttonInitialized = (props) => {
   return {
     type: actionTypes.BUTTON_INITIALIZED,
@@ -19,6 +10,7 @@ export const buttonInitialized = (props) => {
       navigateTo: props.navigateTo,
       buttonTitlePrimary: props.buttonTitlePrimary,
       buttonTitleSecondary: props.buttonTitleSecondary,
+      buttonClicked: props.buttonClicked
     },
   };
 };
