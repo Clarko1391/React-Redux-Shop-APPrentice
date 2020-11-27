@@ -1,6 +1,5 @@
 import React from "react";
-// import { PropTypes } from "prop-types";
-// import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
 import UserInputStringContainer from '../containers/UserInputStringContainer';
@@ -31,30 +30,33 @@ const UIContainer = styled.div`
 `;
 
 // PropTypes
- const propTypes = {};
+ const propTypes = {
+  userLoginAttempt: PropTypes.func,
+ };
 
 // Functional Component
-function LoginPage() {
+function LoginPage({userLoginAttempt = f => f}) {
   return (
     <HeroContainer>
       <UIContainer>
         <UserInputStringContainer
-          inputId="userName"
+          inputId="loginUserName"
           inputStyle="userInputString"
           placeHolder="enter your user name"
         />
         <UserInputStringContainer
-          inputId="password"
+          inputId="loginPassword"
           inputStyle="userInputString"
           placeHolder="enter your password"
         />
         <ButtonContainer
-          buttonId="log-in-button"
+          buttonId="loginButton"
           buttonStyle="logButton"
           isNavButton={true}
           navigateTo="/"
           buttonTitlePrimary="Log"
           buttonTitleSecondary=" in"
+          buttonClicked={userLoginAttempt}
         />
       </UIContainer>
     </HeroContainer>

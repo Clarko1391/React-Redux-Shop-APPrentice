@@ -12,7 +12,6 @@ import MeasurementConverterContainer from "./containers/MeasurementConverterCont
 import FractionalCalculatorContainer from './containers/FractionalCalculatorContainer'
 import ReferenceManualContainer from './containers/ReferenceManualContainer'
 import ReferencePageContainer from './containers/ReferencePageContainer'
-import UserAdd from './pages/refManualPages/UserAdd'
 
 // CSS
 const Body = styled.div`
@@ -39,7 +38,6 @@ function App( {store} ) {
                 <Route path='/ReferenceManual/TapAndDie' render={() => (<ReferencePageContainer referenceId="TapAndDie" referenceType="TapAndDie" chartTitle="Tap and Die Chart"/>)} />
                 <Route path='/ReferenceManual/WrenchSize' render={() => (<ReferencePageContainer referenceId="WrenchSize" referenceType="WrenchSize" chartTitle="Wrench Sizing Chart"/>)} />
                 <Route path='/ReferenceManual/DrillSize' render={() => (<ReferencePageContainer referenceId="DrillSize" referenceType="DrillSize" chartTitle="Drill Bit Size Chart"/>)} />
-                <Route path='/ReferenceManual/UserAdd' component={UserAdd} />
             </Switch>
             <Footer />
         </Router>

@@ -9,6 +9,9 @@ export const changeMeasurement = (id, measurements) => {
     measurement: measurements.measurement,
     downMeasurement: measurements.oneDown,
     upMeasurement: measurements.oneUp,
+    decimalResult: measurements.decResult,
+    fractionalResult: measurements.fracResult,
+    
     }
   };
 };

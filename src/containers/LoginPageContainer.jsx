@@ -2,49 +2,71 @@ import { connect } from "react-redux";
 import LoginPage from "../components/LoginPage";
 import React from "react";
 import * as actions from "../actions/LoginPage";
+import deepClone from "lodash.clonedeep";
 
 class LoginPageContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.internalProps = props;
+    this.internalProps = deepClone(props);
 
-    // this.userLoginAttempted = this.userLoginAttempted.bind(this);
+    this.userLoginAttempt = this.userLoginAttempt.bind(this);
   }
 
-  // This function will be passed through Loginage to ButtonContainer and will carry the username and password props,
-  // LoginAttempt (props) {
-  //   this.userLoginAttempted(props);
-  // }
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.userName !== this.internalProps.userName) {
+      console.log("userInput has changed!");
+      this.internalProps.userName = nextProps.userName;
+    }
+    if (nextProps.password !== this.internalProps.password) {
+      console.log("conversionUnit has changed!");
+      this.internalProps.password = nextProps.password;
+    }
+    return true;
+  }
+
+  userLoginAttempt() {
+    // Need to check user entry data in userName and password against existing database to see if that user exists or needs to register
+    let username = this.internalProps.userName;
+    let password = this.internalProps.password;
+    let userObject = {
+      username: username,
+      password: password,
+      isLogged: true,
+    }
+
+    this.userLoginAttempt(userObject);    
+  }
 
   render() {
-    return <LoginPage 
-      // onClick={this.LoginAttempt}
-    />;
+    return <LoginPage userLoginAttempt={this.userLoginAttempt} />;
   }
 }
+
 const mapStateToProps = (state) => {
+  let userName = "";
+  let password = "";
   if (
-    (state.UserInputString.inputsSTR &&
-    state.UserInputString.inputsSTR.userName.userInput) &&
-    (state.UserInputString.inputsSTR &&
-    state.UserInputString.inputsSTR.password.userInput)
+    state.UserInputString.inputsSTR &&
+    state.UserInputString.inputsSTR.userName.userInput
   ) {
-    return {
-      userName: state.UserInputString.inputsSTR.userName.userInput,
-      password: state.UserInputString.inputsSTR.password.userInput,
-    };
-  } else {
-    return {
-      userName: "default Value",
-      password: "default Value",
-    };
+    userName = state.UserInputString.inputsSTR.userName.userInput;
   }
+  if (
+    state.UserInputString.inputsSTR &&
+    state.UserInputString.inputsSTR.password.userInput
+  ) {
+    password = state.UserInputString.inputsSTR.password.userInput;
+  }
+  return {
+    userName: userName,
+    password: password,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    userLoginAttempted: (props) => {
+    userLoginAttempt: (props) => {
       dispatch(actions.userLoginAttempted(props));
     },
   };

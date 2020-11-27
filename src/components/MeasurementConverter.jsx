@@ -35,7 +35,8 @@ const OutputContainer = styled.div`
 
 // PropTypes
 const propTypes = {
-  convertMeasurement: PropTypes.func
+  convertMeasurement: PropTypes.func,
+  clearConverter: PropTypes.func,
 };
 
 const dropdownOptions = [

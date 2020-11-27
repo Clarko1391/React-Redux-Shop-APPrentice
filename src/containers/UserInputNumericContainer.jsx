@@ -58,9 +58,9 @@ class UserInputNumericContainer extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if (nextProps.userInput !== this.internalProps.inputValue) {
+    if (nextProps.inputValue !== this.internalProps.inputValue) {
       console.log("userInput has changed!");
-      this.internalProps.inputValue = nextProps.userInput;
+      this.internalProps.inputValue = nextProps.inputValue;
     }
     return true;
   }
@@ -79,10 +79,12 @@ class UserInputNumericContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let inputValue = '';
+  let inputValue;
   if (state.UserInputNumeric.inputsNUM &&
       state.UserInputNumeric.inputsNUM[ownProps.inputId].userInput) {
         inputValue = (state.UserInputNumeric.inputsNUM[ownProps.inputId].userInput).toString();
+      } else {
+        inputValue = '';
       }
   return {
     inputValue: inputValue,

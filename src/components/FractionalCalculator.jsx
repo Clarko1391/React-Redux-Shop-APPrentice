@@ -1,5 +1,5 @@
 import React from "react";
-// import { PropTypes } from "prop-types";
+import { PropTypes } from "prop-types";
 import styled from "styled-components";
 import ButtonContainer from "../containers/ButtonContainer";
 import UserInputDropdownContainer from "../containers/UserInputDropdownContainer";
@@ -42,36 +42,36 @@ const OutputContainer = styled.div`
   align-items: center;
 `;
 
-// // PropTypes
-// const propTypes = {
-//   isLogged: PropTypes.bool,
-//   userName: PropTypes.string,
-// };
+// PropTypes
+const propTypes = {
+  calculateValue: PropTypes.func,
+};
 
 const dropdownOptions = ["+", "-", "x", "/"];
 
 // Functional Component
-function MeasurementConverter() {
+function FractionalCalculator({calculateValue = f => f, clearNumericInput1 = f => f, clearNumericInput2 = f => f, clearAll = f => f}) {
   return (
     <HeroContainer>
       <UIContainer>
         <UserInputNumericContainer
-          inputId="fc-numeric-input-1"
+          inputId="fcInput1"
           inputStyle="test"
           placeHolder="Enter your first value"
         />
         <ButtonContainer
-          buttonId="fc-clear-1"
+          buttonId="fcClear1"
           buttonStyle="resetButton"
           isNavButton={false}
           navigateTo=""
           buttonTitlePrimary="X"
           buttonTitleSecondary=""
+          buttonClicked={clearNumericInput1}
         />
       </UIContainer>
       <UIDropdownContainer>
         <UserInputDropdownContainer
-          inputId="fc-calculation-input"
+          inputId="fcCalculationInput"
           inputStyle="dropdown"
           inputOptions={dropdownOptions}
           placeholder="select an operator"
@@ -79,40 +79,43 @@ function MeasurementConverter() {
       </UIDropdownContainer>
       <UIContainer>
         <UserInputNumericContainer
-          inputId="fc-numeric-input-2"
+          inputId="fcInput2"
           inputStyle="test"
           placeHolder="Enter your second value"
         />
         <ButtonContainer
-          buttonId="fc-clear-2"
+          buttonId="fcClear2"
           buttonStyle="resetButton"
           isNavButton={false}
           navigateTo=""
           buttonTitlePrimary="X"
           buttonTitleSecondary=""
+          buttonClicked={clearNumericInput2}
         />
       </UIContainer>
       <UIContainer>
         <ButtonContainer
-          buttonId="mc-convert-button"
+          buttonId="fcCalculateButton"
           buttonStyle="calcButton"
           isNavButton={false}
           navigateTo=""
           buttonTitlePrimary="Convert"
           buttonTitleSecondary=""
+          buttonClicked={calculateValue}
         />
         <ButtonContainer
-          buttonId="mc-clear-button"
+          buttonId="fcClearButton"
           buttonStyle="calcButton"
           isNavButton={false}
           navigateTo=""
-          buttonTitlePrimary="Clear"
-          buttonTitleSecondary=""
+          buttonTitlePrimary="Clear "
+          buttonTitleSecondary="all"
+          buttonClicked={clearAll}
         />
       </UIContainer>
       <OutputContainer>
         <ResultsOutputContainer
-          outputId="mc-dec-mm-output"
+          outputId="fcResultsOutput"
           outputType="calculator"
           header="Results"
           downMeasurement=""
@@ -126,6 +129,6 @@ function MeasurementConverter() {
   );
 }
 
-// MeasurementConverter.propTypes = propTypes;
+FractionalCalculator.propTypes = propTypes;
 
-export default MeasurementConverter;
+export default FractionalCalculator;

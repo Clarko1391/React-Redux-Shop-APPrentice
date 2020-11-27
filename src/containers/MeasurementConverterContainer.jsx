@@ -166,6 +166,7 @@ const mapStateToProps = (state) => {
   let mcUserInput = "default";
   let mcConversionInput = "default";
   if (
+    state.UserInputNumeric &&
     state.UserInputNumeric.inputsNUM &&
     state.UserInputNumeric.inputsNUM.mcUserInput.userInput
   ) {

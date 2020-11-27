@@ -96,6 +96,12 @@ class ResultsOutputContainer extends React.Component {
     if (nextProps.downMeasurement !== this.internalProps.downMeasurement) {
       this.internalProps.downMeasurement = nextProps.downMeasurement;
     }
+    if (nextProps.decimalResult !== this.internalProps.decimalResult) {
+      this.internalProps.decimalResult = nextProps.decimalResult;
+    }
+    if (nextProps.fractionalResult !== this.internalProps.fractionalResult) {
+      this.internalProps.fractionalResult = nextProps.fractionalResult;
+    }
     return true;
   }
 
