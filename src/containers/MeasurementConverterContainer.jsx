@@ -140,7 +140,7 @@ class MeasurementConverterContainer extends React.Component {
   }
 
   clearConverter() {
-    let clearInput;
+    let clearInput = "";
 
     let clearOutputs = {
       measurement: "measurement",

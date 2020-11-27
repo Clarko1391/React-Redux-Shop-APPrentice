@@ -5,6 +5,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import styled from "styled-components";
 import "../components/css/UserInputNumeric.css";
+import deepClone from "lodash.clonedeep";
 
 // CSS
 const Input = styled.input`
@@ -42,7 +43,7 @@ class UserInputNumericContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.internalProps = props;
+    this.internalProps = deepClone(props);
 
     this.inputInitialized = props.inputInitialized.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -56,6 +57,14 @@ class UserInputNumericContainer extends React.Component {
     this.inputInitialized(this.internalProps);
   }
 
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.userInput !== this.internalProps.inputValue) {
+      console.log("userInput has changed!");
+      this.internalProps.inputValue = nextProps.userInput;
+    }
+    return true;
+  }
+
   render() {
     return (
       <Input
@@ -63,25 +72,34 @@ class UserInputNumericContainer extends React.Component {
         placeholder={this.internalProps.placeHolder}
         inputid={this.internalProps.inputId}
         onChange={this.onChange}
+        value={this.internalProps.inputValue}
       />
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  if (
-    state.UserInputNumeric.inputsNUM &&
-    state.UserInputNumeric.inputsNUM[ownProps.inputId]
-  ) {
-    return {
-      buttonId: ownProps.inputId,
-      ...state.UserInputNumeric.inputsNUM[ownProps.inputId],
-    };
-  } else {
-    return {
-      ownProps,
-    };
+  let inputValue = '';
+  if (state.UserInputNumeric.inputsNUM &&
+      state.UserInputNumeric.inputsNUM[ownProps.inputId].userInput) {
+        inputValue = (state.UserInputNumeric.inputsNUM[ownProps.inputId].userInput).toString();
+      }
+  return {
+    inputValue: inputValue,
   }
+  // if (
+  //   state.UserInputNumeric.inputsNUM &&
+  //   state.UserInputNumeric.inputsNUM[ownProps.inputId]
+  // ) {
+  //   return {
+  //     buttonId: ownProps.inputId,
+  //     ...state.UserInputNumeric.inputsNUM[ownProps.inputId],
+  //   };
+  // } else {
+  //   return {
+  //     ownProps,
+  //   };
+  // }
 };
 
 const mapDispatchToProps = (dispatch) => {

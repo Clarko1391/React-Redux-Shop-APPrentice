@@ -35,7 +35,7 @@ const inputCleared = (state, action) => {
     inputsNUM: {
       ...state.inputsNUM,
       [action.id]: {
-        ...action.payload,
+        userInput: action.payload.userInput,
       },
     },
   };
