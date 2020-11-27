@@ -5,7 +5,7 @@ import ButtonContainer from "../containers/ButtonContainer";
 import UserInputCheckBoxContainer from "../containers/UserInputCheckBoxContainer";
 // CSS
 const HeroContainer = styled.div`
-  min-height: 75vh;
+  height: 85vh;
   width: 100%;
   background: linear-gradient(
     to bottom,
@@ -88,7 +88,7 @@ function UserSettings({ userName, isLogged }) {
   return (
     <HeroContainer>
       <UserName>
-        {isLogged ? `Welcome ${userName}` : "log in to customize your app"}
+        {isLogged ? `Welcome ${userName}, customize your preferences below:` : "log in to customize your app"}
       </UserName>
       <PrimaryBox>
         <OptionContainer>

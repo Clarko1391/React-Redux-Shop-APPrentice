@@ -1,11 +1,41 @@
 import { connect } from "react-redux";
 import UserSettings from "../components/UserSettings";
 import React from "react";
+import deepClone from "lodash.clonedeep";
+
+
+class UserSettingsContainer extends React.Component {
+  constructor (props) {
+    super (props);
+
+    this.internalProps = deepClone(props);
+  }
+  
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.userName !== this.internalProps.userName) {
+      this.internalProps.userName = nextProps.userName;
+    }
+    return true;
+  }
+
+  render() {
+    return <UserSettings userName={this.internalProps.userName} isLogged={this.internalProps.isLogged}/>;
+  }
+}
 
 const mapStateToProps = (state) => {
+  let userName = "";
+  let isLogged = false;
+  if (
+    state.LoginPage.users &&
+    state.LoginPage.users.user1.isLogged
+  ) {
+    userName = state.LoginPage.users.user1.userName;
+    isLogged = state.LoginPage.users.user1.isLogged;
+  }
   return {
-    userName: state.userName,
-    isLogged: state.isLogged,
+    userName: userName,
+    isLogged: isLogged,
   };
 };
 
@@ -16,12 +46,6 @@ const mapStateToProps = (state) => {
 //     },
 //   };
 // };
-
-class UserSettingsContainer extends React.Component {
-  render() {
-    return <UserSettings userName={this.userName} />;
-  }
-}
 
 export default connect(mapStateToProps, {
   /*mapDispatchToProps*/
