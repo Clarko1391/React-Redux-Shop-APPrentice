@@ -1,11 +1,15 @@
 import actionTypes from "./actionTypes";
 
 
-export const changeMeasurement = (id, measurement) => {
+export const changeMeasurement = (id, measurements) => {
   return {
     type: actionTypes.OUTPUT_MEASUREMENT_CHANGED,
     id,
-    measurement
+    payload: {
+    measurement: measurements.measurement,
+    downMeasurement: measurements.oneDown,
+    upMeasurement: measurements.oneUp,
+    }
   };
 };
 

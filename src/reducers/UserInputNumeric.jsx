@@ -28,12 +28,27 @@ const inputInitialized = (state, action) => {
   };
 };
 
+const inputCleared = (state, action) => {
+  console.log("Output changed");
+  return {
+    ...state,
+    inputsNUM: {
+      ...state.inputsNUM,
+      [action.id]: {
+        ...action.payload,
+      },
+    },
+  };
+};
+
 const UserInputNumeric = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.NUMERIC_INPUT_ENTERED:
       return onChange(state, action);
     case actionTypes.NUMERIC_INPUT_INITIALIZED:
       return inputInitialized(state, action);
+    case actionTypes.INPUT_CLEARED:
+      return inputCleared(state, action);
     default:
       return state;
   }

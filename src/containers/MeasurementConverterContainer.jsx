@@ -1,24 +1,27 @@
 import React from "react";
 import * as resultsActions from "../actions/ResultsOutput";
+import * as inputActions from "../actions/UserInputNumeric";
 import { connect } from "react-redux";
-import { fraction, number, floor, round } from 'mathjs'
+import { fraction, number, floor, round } from "mathjs";
 import MeasurementConverter from "../components/MeasurementConverter";
-import deepClone from 'lodash.clonedeep';
+import deepClone from "lodash.clonedeep";
 
 class MeasurementConverterContainer extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.internalProps = deepClone(props);
     this.convertMeasurement = this.convertMeasurement.bind(this);
-  };
+    this.clearConverter = this.clearConverter.bind(this);
+  }
 
   convertMeasurement() {
     let userInput = this.internalProps.userInput;
     const fractionValidate = this.internalProps.userInput.split("");
     const conversionUnit = this.internalProps.conversionUnit;
 
-    let convertValidate = true, measurement;
+    let convertValidate = true,
+      measurement;
 
     if (fractionValidate.includes("/") && conversionUnit === "MMtoInches") {
       alert("please enter whole number metric values only");
@@ -40,12 +43,84 @@ class MeasurementConverterContainer extends React.Component {
   }
 
   updateOutput(conversionUnit, measurement) {
+    //Initialize variables for switch statement to build output objects
+    let oneUp, oneDown, decMMOutputs, decInchOutputs, fracInchOutputs;
+
+    // Converts numbers into fractions in LCD and returns template string as output
+    const fracConvert = (value) => {
+      let decimalNum = value;
+      let decValue = decimalNum - floor(decimalNum);
+      let wholeNum = floor(decimalNum);
+      let fracNum = round(decValue * 16);
+
+      if (fracNum === 16 || fracNum === 0) {
+        fracNum = ``;
+      } else if (fracNum > 0 && fracNum % 8 === 0) {
+        fracNum = `1/2`;
+      } else if (fracNum > 0 && fracNum % 4 === 0) {
+        fracNum = `${fracNum / 4}/4`;
+      } else if (fracNum > 0 && fracNum % 2 === 0) {
+        fracNum = `${fracNum / 2}/8`;
+      } else {
+        fracNum = `${fracNum}/16`;
+      }
+
+      if (wholeNum > 0) {
+        return `${wholeNum} ${fracNum}`;
+      } else {
+        return `${fracNum}`;
+      }
+    };
+
+    // Builds ouput objects to send to ResultsOutputContainer actions / reducers to modify appropriate states
     switch (conversionUnit) {
-      case ("mm to Inches"):
+      case "mm to Inches":
         // build an oject with measurements that you are going to trigger an action with
-        this.internalProps.updateDecimalMM(measurement.toString());
+
+        oneUp = measurement + 1;
+        oneDown = measurement - 1;
+
+        decMMOutputs = {
+          measurement: measurement.toString(),
+          oneUp: oneUp.toString(),
+          oneDown: oneDown.toString(),
+        };
+        decInchOutputs = {
+          measurement: (+(measurement * 0.0393701).toFixed(2)).toString(),
+          oneUp: (+(oneUp * 0.0393701)).toFixed(2).toString(),
+          oneDown: (+(oneDown * 0.0393701)).toFixed(2).toString(),
+        };
+        fracInchOutputs = {
+          measurement: fracConvert(measurement * 0.0393701),
+          oneUp: fracConvert(oneUp * 0.0393701),
+          oneDown: fracConvert(oneDown * 0.0393701),
+        };
+        this.internalProps.updateDecimalMM(decMMOutputs);
+        this.internalProps.updateDecimalInch(decInchOutputs);
+        this.internalProps.updateFracInch(fracInchOutputs);
         break;
-      case ("Inches to mm"):
+      case "Inches to mm":
+        oneUp = measurement + 0.0625;
+        oneDown = measurement - 0.0625;
+
+        decMMOutputs = {
+          measurement: (+(measurement / 0.0393701).toFixed(2)).toString(),
+          oneUp: (+(oneUp / 0.0393701)).toFixed(2).toString(),
+          oneDown: (+(oneDown / 0.0393701)).toFixed(2).toString(),
+        };
+        decInchOutputs = {
+          measurement: measurement.toString(),
+          oneUp: oneUp.toString(),
+          oneDown: oneDown.toString(),
+        };
+        fracInchOutputs = {
+          measurement: fracConvert(measurement),
+          oneUp: fracConvert(oneUp),
+          oneDown: fracConvert(oneDown),
+        };
+        this.internalProps.updateDecimalMM(decMMOutputs);
+        this.internalProps.updateDecimalInch(decInchOutputs);
+        this.internalProps.updateFracInch(fracInchOutputs);
         break;
       default:
         break;
@@ -64,120 +139,28 @@ class MeasurementConverterContainer extends React.Component {
     return true;
   }
 
+  clearConverter() {
+    let clearInput;
+
+    let clearOutputs = {
+      measurement: "measurement",
+      oneUp: "+1",
+      oneDown: "-1",
+    };
+    this.internalProps.clearNumericInput(clearInput);
+    this.internalProps.updateDecimalMM(clearOutputs);
+    this.internalProps.updateDecimalInch(clearOutputs);
+    this.internalProps.updateFracInch(clearOutputs);
+  }
 
   render() {
     return (
       <>
-        <MeasurementConverter convertMeasurement={this.convertMeasurement} />
+        <MeasurementConverter convertMeasurement={this.convertMeasurement} clearConverter={this.clearConverter}/>
       </>
     );
   }
 }
-
-// Use variables instead of state hooks within the container scope. Send a props object to output container and let it handle its own state dispatch / update
-
-
-// const [userInput, setUserInput] = useState("");
-//     const [conversionUnit, setConvertUnitValue] = useState('MMtoInches');
-//     const [decMM, setDecMM] = useState("Measurement");
-//     const [decMMUp, setDecMMUp] = useState("+ 1");
-//     const [decMMDown, setDecMMDown] = useState("- 1");
-//     const [decInch, setDecInch] = useState("Measurement");
-//     const [decInchUp, setDecInchUp] = useState("+ 1");
-//     const [decInchDown, setDecInchDown] = useState("- 1");
-//     const [fracInch, setFracInch] = useState("Measurement");
-//     const [fracInchUp, setFracInchUp] = useState("+ 1");
-//     const [fracInchDown, setFracInchDown] = useState("- 1");
-//     const outputHeaders = { decMM:"Decimal (mm)", decInch: "Decimal (inch)", fracInch: "Fractional (inch)"}
-
-//     // Functions
-//     let measurement, oneUp, oneDown, answer, answerUp, answerDown;
-//     let fractionValidate = userInput.split("");
-//     let convertValidate;
-
-//     const convert = () => {
-//         // Prep userInput for math operations
-//         
-//         }
-
-//         // Use conversionUnit to perform conversion
-//         if (convertValidate) {
-//             switch (conversionUnit) {
-//                 case ("MMtoInches"):
-//                     oneUp = (measurement + 1);
-//                     oneDown = (measurement - 1);
-//                     answer = measurement * .0393701;
-//                     answerUp = oneUp * .0393701;
-//                     answerDown = oneDown * .0393701;
-//                     outputConversionMetric();
-//                     break;
-//                 case ("inchesToMM"):
-//                     oneUp = (measurement + .0625);
-//                     oneDown = (measurement - .0625);
-//                     answer = measurement / .0393701;
-//                     answerUp = oneUp / .0393701;
-//                     answerDown = oneDown / .0393701;
-//                     outputConversionSAE();
-//                     break;
-//                 default:
-//                     break;
-//             }
-//         }
-//     }
-
-//     const outputConversionMetric = () => {
-//         setDecMM(measurement);
-//         setDecMMUp(+oneUp.toFixed(2));
-//         setDecMMDown(+oneDown.toFixed(2));
-//         setDecInch(+answer.toFixed(2));
-//         setDecInchUp(+answerUp.toFixed(2));
-//         setDecInchDown(+answerDown.toFixed(2));
-
-//         fracConvert(answer, setFracInch);
-//         fracConvert(answerUp, setFracInchUp);
-//         fracConvert(answerDown, setFracInchDown);
-//     }
-
-//     const outputConversionSAE = () => {
-//         setDecInch(measurement);
-//         setDecInchUp(+oneUp.toFixed(2));
-//         setDecInchDown(+oneDown.toFixed(2));
-//         setDecMM(+answer.toFixed(2));
-//         setDecMMUp(+answerUp.toFixed(2));
-//         setDecMMDown(+answerDown.toFixed(2));
-
-//         fracConvert(measurement, setFracInch);
-//         fracConvert(oneUp, setFracInchUp);
-//         fracConvert(oneDown, setFracInchDown);
-//     }
-
-//     //Display decimal remainders as fractions in 16ths of an inch as well as converting to the lowest common denominator of the fraction
-//     // Declare local variables to keep them from becoming globals, write parameters to new variables for better readability
-//     const fracConvert = (value, setState) => {
-//         let decimalNum = value;
-//         let decValue = decimalNum - floor(decimalNum);
-//         let wholeNum = floor(decimalNum);
-//         let fracNum = round(decValue * 16);
-
-//         if (fracNum === 16 || fracNum === 0) {
-//             fracNum = ``;
-//         } else if (fracNum > 0 && fracNum % 8 === 0) {
-//             fracNum = `1/2`;
-//         } else if (fracNum > 0 && fracNum % 4 === 0) {
-//             fracNum = `${fracNum / 4}/4`;
-//         } else if (fracNum > 0 && fracNum % 2 === 0) {
-//             fracNum = `${fracNum / 2}/8`;
-//         } else {
-//             fracNum = `${fracNum}/16`;
-//         }
-
-//         if (wholeNum > 0) {
-//             setState(`${wholeNum} ${fracNum}`);
-//         } else {
-//             setState(`${fracNum}`);
-//         }
-
-//     }
 
 const mapStateToProps = (state) => {
   let mcUserInput = "default";
@@ -193,7 +176,8 @@ const mapStateToProps = (state) => {
     state.UserInputDropdown.inputsDropdown &&
     state.UserInputDropdown.inputsDropdown.mcConversionInput.userInput
   ) {
-    mcConversionInput = state.UserInputDropdown.inputsDropdown.mcConversionInput.userInput;
+    mcConversionInput =
+      state.UserInputDropdown.inputsDropdown.mcConversionInput.userInput;
   }
   return {
     userInput: mcUserInput,
@@ -203,8 +187,23 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateDecimalMM: (measurement) => {
-      dispatch(resultsActions.changeMeasurement('mcDecMMOutput',measurement));
+    updateDecimalMM: (measurements) => {
+      dispatch(resultsActions.changeMeasurement("mcDecMMOutput", measurements));
+    },
+    updateDecimalInch: (measurements) => {
+      dispatch(
+        resultsActions.changeMeasurement("mcDecInchOutput", measurements)
+      );
+    },
+    updateFracInch: (measurements) => {
+      dispatch(
+        resultsActions.changeMeasurement("mcFracInchOutput", measurements)
+      );
+    },
+    clearNumericInput: (clearValue) => {
+      dispatch(
+      inputActions.inputCleared("mcUserInput", clearValue)
+      );
     }
   };
 };

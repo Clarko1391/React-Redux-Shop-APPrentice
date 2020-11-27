@@ -13,6 +13,16 @@ export const onChange = (props, event) => {
   };
 };
 
+export const inputCleared = (id, clearValue) => {
+  return {
+    type: actionTypes.INPUT_CLEARED,
+    id: id,
+    payload: {
+      userInput: clearValue,
+    },
+  };
+};
+
 export const inputInitialized = (props) => {
   return {
     type: actionTypes.NUMERIC_INPUT_INITIALIZED,
@@ -20,7 +30,7 @@ export const inputInitialized = (props) => {
     payload: {
       placeHolder: props.placeHolder,
       inputStyle: props.inputStyle,
-      userInput: '',
+      userInput: "",
     },
   };
 };

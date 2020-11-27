@@ -90,6 +90,12 @@ class ResultsOutputContainer extends React.Component {
     if (nextProps.measurement !== this.internalProps.measurement) {
       this.internalProps.measurement = nextProps.measurement;
     }
+    if (nextProps.upMeasurement !== this.internalProps.upMeasurement) {
+      this.internalProps.upMeasurement = nextProps.upMeasurement;
+    }
+    if (nextProps.downMeasurement !== this.internalProps.downMeasurement) {
+      this.internalProps.downMeasurement = nextProps.downMeasurement;
+    }
     return true;
   }
 

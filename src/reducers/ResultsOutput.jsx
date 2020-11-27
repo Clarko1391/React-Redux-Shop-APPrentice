@@ -3,27 +3,27 @@ import actionTypes from "../actions/actionTypes";
 const initialState = {};
 
 const outputInitialized = (state, action) => {
-  console.log("Output initialized!");
+  console.log("Output initialized");
   return {
     ...state,
     outputs: {
       ...state.outputs,
       [action.id]: {
-        ...action.payload
+        ...action.payload,
       },
     },
   };
 };
 
 const outputMeasurementChanged = (state, action) => {
-  console.log("Output changed!");
+  console.log("Output changed");
   return {
     ...state,
     outputs: {
       ...state.outputs,
       [action.id]: {
         ...state.outputs[action.id],
-        measurement: action.measurement
+        ...action.payload,
       },
     },
   };

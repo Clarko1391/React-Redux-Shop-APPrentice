@@ -43,7 +43,7 @@ const dropdownOptions = [
 ];
 
 // Functional Component
-function MeasurementConverter({convertMeasurement = f => f}) {
+function MeasurementConverter({convertMeasurement = f => f, clearConverter = f => f}) {
   return (
     <HeroContainer>
       <UIContainer>
@@ -78,6 +78,7 @@ function MeasurementConverter({convertMeasurement = f => f}) {
           navigateTo=""
           buttonTitlePrimary="Clear"
           buttonTitleSecondary=""
+          buttonClicked={clearConverter}
         />
       </UIContainer>
       <OutputContainer >
