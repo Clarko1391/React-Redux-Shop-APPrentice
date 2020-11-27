@@ -1,11 +1,45 @@
 import { connect } from "react-redux";
 import LandingPage from "../components/LandingPage";
 import React from "react";
+import deepClone from "lodash.clonedeep";
+
+
+class LandingPageContainer extends React.Component {
+
+  constructor (props) {
+    super(props);
+
+    this.internalProps = deepClone(props);
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.userName !== this.internalProps.userName) {
+      this.internalProps.userName = nextProps.userName;
+    }
+    if (nextProps.isLogged !== this.internalProps.isLogged) {
+      this.internalProps.isLogged = nextProps.isLogged;
+    }
+    return true;
+  }
+
+  render() {
+    return <LandingPage userName={this.internalProps.userName} isLogged={this.internalProps.isLogged} />;
+  }
+}
 
 const mapStateToProps = (state) => {
+  let userName = "";
+  let isLogged = false;
+  if (
+    state.LoginPage.users &&
+    state.LoginPage.users.user1.isLogged
+  ) {
+    userName = state.LoginPage.users.user1.userName;
+    isLogged = state.LoginPage.users.user1.isLogged;
+  }
   return {
-    userName: state.userName,
-    isLogged: state.isLogged,
+    userName: userName,
+    isLogged: isLogged,
   };
 };
 
@@ -17,12 +51,6 @@ const mapStateToProps = (state) => {
 //   };
 // };
 
-class LandingPageContainer extends React.Component {
-  render() {
-    return <LandingPage userName={this.userName} isLogged={this.isLogged} />;
-  }
-}
-
-export default connect(mapStateToProps, {
+export default connect(mapStateToProps,
   /*mapDispatchToProps*/
-})(LandingPageContainer);
+)(LandingPageContainer);

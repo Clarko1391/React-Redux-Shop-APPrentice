@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import styled from 'styled-components'
 import { Provider } from 'react-redux';
-import Navbar from './components/Navbar'
+import NavbarContainer from './containers/NavbarContainer'
 import Footer from './components/Footer';
 import LandingPageContainer from './containers/LandingPageContainer';
 import LoginPageContainer from './containers/LoginPageContainer';
@@ -26,7 +26,7 @@ function App( {store} ) {
     <Body>
       <Provider store={store} >
         <Router>
-            <Navbar />
+            <NavbarContainer />
             <Switch>
                 <Route path='/' exact component={LandingPageContainer} />
                 <Route path='/Login' render={() => (<LoginPageContainer userName={null} password={null} isLogged={false} />)} />

@@ -1,9 +1,6 @@
 import actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  userName: "",
-  password: "",
-  isLogged: false,
 };
 
 const userRegistrationCompleted = (state, action) => {
@@ -18,7 +15,7 @@ const userRegistrationCompleted = (state, action) => {
 
 const Button = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.USER_LOGIN_ATTEMPTED:
+    case actionTypes.USER_REGISTRATION_COMPLETED:
       return userRegistrationCompleted(state, action);
     default:
       return state;

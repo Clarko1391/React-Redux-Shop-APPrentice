@@ -34,9 +34,8 @@ class LoginPageContainer extends React.Component {
       username: username,
       password: password,
       isLogged: true,
-    }
-
-    this.userLoginAttempt(userObject);    
+    }   
+    this.internalProps.userLoginAttempt(userObject);
   }
 
   render() {

@@ -1,18 +1,18 @@
 import actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  userName: "",
-  password: "",
-  isLogged: false,
 };
 
 const userLoginAttempted = (state, action) => {
   console.log("user login attempted");
   return {
     ...state,
-    userName: action.payload.userName,
-    password: action.payload.password,
-    isLogged: action.payload.isLogged,
+    users: {
+      ...state.users,
+      user1: {
+        ...action.payload
+      }
+    }
   };
 };
 

@@ -26,6 +26,11 @@ const Title = styled.h1`
   font-size: 4vh;
 `;
 
+const Username = styled.span`
+  color: #da1622;
+  font-size: 3vh;
+`
+
 const UIContainer = styled.div`
   width: 80%;
   display: flex;
@@ -34,7 +39,7 @@ const UIContainer = styled.div`
 
 const SubTitle = styled.h3`
   color: #fcfbfc;
-  font-size: 3vh;
+  font-size: 4vh;
   padding: 0px;
   margin: 0px;
 `;
@@ -50,9 +55,6 @@ const propTypes = {
   userName: PropTypes.string,
 };
 
-const dropdownOptions = [
-  "testing1", "testing2", "testing3"
-];
 
 // Functional Component
 function LandingPage(props) {
@@ -60,7 +62,7 @@ function LandingPage(props) {
     <HeroContainer>
       <TitleContainer>
         <Title> Welcome </Title>
-        {props.isLogged ? <span> {props.userName} </span> : ""}
+        {props.isLogged ? <Username> {props.userName} </Username> : ""}
       </TitleContainer>
       <UIContainer>
         <ButtonContainer
@@ -79,39 +81,6 @@ function LandingPage(props) {
           buttonTitlePrimary="Register "
           buttonTitleSecondary=""
         />
-      </UIContainer>
-      <UIContainer>
-        {/* <UserInputDropdownContainer 
-          inputId = "landing-dropdown-test"
-          inputStyle = "dropdown"
-          inputOptions = {dropdownOptions}
-          placeholder = "select an option"
-        /> */}
-      {/* <ResultsOutputContainer
-          outputId="land-page-output-test"
-          outputType="converter"
-          header="testing-output"
-          downMeasurement="one-down"
-          measurement="on-point"
-          upMeasurement="one-up"
-          decimalResult="test"
-          fractionalResult="test"
-        />
-      </UIContainer>
-      <UIContainer>
-        <UserInputCheckBoxContainer 
-            inputId="land-page-check-box"
-            inputStyle="checkBox"
-            checked={true}
-        />
-        <UserInputNumericContainer 
-            
-        />
-        <UserInputStringContainer 
-          inputId="land-page-string-test"
-          inputStyle="test"
-          placeHolder="test"
-        /> */}
       </UIContainer>
       <SubTitle> or </SubTitle>
       <STContainer>
