@@ -15,11 +15,11 @@ class LoginPageContainer extends React.Component {
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.userName !== this.internalProps.userName) {
-      console.log("userInput has changed!");
+      console.log("username has changed!");
       this.internalProps.userName = nextProps.userName;
     }
     if (nextProps.password !== this.internalProps.password) {
-      console.log("conversionUnit has changed!");
+      console.log("password has changed!");
       this.internalProps.password = nextProps.password;
     }
     return true;
@@ -29,6 +29,7 @@ class LoginPageContainer extends React.Component {
     // Need to check user entry data in userName and password against existing database to see if that user exists or needs to register
     let username = this.internalProps.userName;
     let password = this.internalProps.password;
+
     let userObject = {
       username: username,
       password: password,
@@ -48,15 +49,15 @@ const mapStateToProps = (state) => {
   let password = "";
   if (
     state.UserInputString.inputsSTR &&
-    state.UserInputString.inputsSTR.userName.userInput
+    state.UserInputString.inputsSTR.loginUserName.userInput
   ) {
-    userName = state.UserInputString.inputsSTR.userName.userInput;
+    userName = state.UserInputString.inputsSTR.loginUserName.userInput;
   }
   if (
     state.UserInputString.inputsSTR &&
-    state.UserInputString.inputsSTR.password.userInput
+    state.UserInputString.inputsSTR.loginPassword.userInput
   ) {
-    password = state.UserInputString.inputsSTR.password.userInput;
+    password = state.UserInputString.inputsSTR.loginPassword.userInput;
   }
   return {
     userName: userName,

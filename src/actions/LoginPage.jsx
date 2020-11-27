@@ -5,7 +5,7 @@ export const userLoginAttempted = (props) => {
     type: actionTypes.USER_LOGIN_ATTEMPTED,
     payload: {
       isLogged: props.isLogged,
-      userName: props.userName,
+      userName: props.username,
       password: props.password,
     },
   };

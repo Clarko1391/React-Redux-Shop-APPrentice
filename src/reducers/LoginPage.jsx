@@ -1,7 +1,6 @@
 import actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  // userId: "",
   userName: "",
   password: "",
   isLogged: false,
