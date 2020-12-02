@@ -51,7 +51,11 @@ class ButtonContainer extends React.Component {
 
 // mapStateToProps will pull existing state from the store and connect it to this container
 const mapStateToProps = (state, ownProps) => {
-  if (state.Button.buttons && state.Button.buttons[ownProps.buttonId]) {
+  if (
+    state.Button && 
+    state.Button.buttons && 
+    state.Button.buttons[ownProps.buttonId]
+    ) {
     return {
       buttonId: ownProps.buttonId,
       ...state.Button.buttons[ownProps.buttonId] 

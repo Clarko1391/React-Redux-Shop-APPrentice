@@ -147,7 +147,7 @@ class FractionalCalculatorContainer extends React.Component {
 
       updateOutput(decResult, fracResult);
       break;
-      case "%":
+      case "/":
       decResult = number(userInput1 / userInput2);
       fracResult = calcFracConvert(decResult);
 
@@ -170,6 +170,7 @@ const mapStateToProps = (state) => {
   if (
     state.UserInputNumeric &&
     state.UserInputNumeric.inputsNUM &&
+    state.UserInputNumeric.inputsNUM.fcInput1 &&
     state.UserInputNumeric.inputsNUM.fcInput1.userInput
   ) {
     fcUserInput1 = state.UserInputNumeric.inputsNUM.fcInput1.userInput;
@@ -177,6 +178,7 @@ const mapStateToProps = (state) => {
   if (
     state.UserInputNumeric &&
     state.UserInputNumeric.inputsNUM &&
+    state.UserInputNumeric.inputsNUM.fcInput2 &&
     state.UserInputNumeric.inputsNUM.fcInput2.userInput
   ) {
     fcUserInput2 = state.UserInputNumeric.inputsNUM.fcInput2.userInput;
@@ -184,6 +186,7 @@ const mapStateToProps = (state) => {
   if (
     state.UserInputDropdown &&
     state.UserInputDropdown.inputsDropdown &&
+    state.UserInputDropdown.inputsDropdown.fcCalculationInput &&
     state.UserInputDropdown.inputsDropdown.fcCalculationInput.userInput
   ) {
     fcCalculationInput =

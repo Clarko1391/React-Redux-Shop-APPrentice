@@ -168,6 +168,7 @@ const mapStateToProps = (state) => {
   if (
     state.UserInputNumeric &&
     state.UserInputNumeric.inputsNUM &&
+    state.UserInputNumeric.inputsNUM.mcUserInput &&
     state.UserInputNumeric.inputsNUM.mcUserInput.userInput
   ) {
     mcUserInput = state.UserInputNumeric.inputsNUM.mcUserInput.userInput;
@@ -175,6 +176,7 @@ const mapStateToProps = (state) => {
   if (
     state.UserInputDropdown &&
     state.UserInputDropdown.inputsDropdown &&
+    state.UserInputDropdown.inputsDropdown.mcConversionInput &&
     state.UserInputDropdown.inputsDropdown.mcConversionInput.userInput
   ) {
     mcConversionInput =

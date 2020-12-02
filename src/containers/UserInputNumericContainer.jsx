@@ -80,8 +80,11 @@ class UserInputNumericContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   let inputValue;
-  if (state.UserInputNumeric.inputsNUM &&
-      state.UserInputNumeric.inputsNUM[ownProps.inputId].userInput) {
+  if (state.UserInputNumeric &&
+      state.UserInputNumeric.inputsNUM &&
+      state.UserInputNumeric.inputsNUM[ownProps.inputId] &&
+      state.UserInputNumeric.inputsNUM[ownProps.inputId].userInput
+      ) {
         inputValue = (state.UserInputNumeric.inputsNUM[ownProps.inputId].userInput).toString();
       } else {
         inputValue = '';
