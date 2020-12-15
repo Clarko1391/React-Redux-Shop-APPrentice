@@ -2,16 +2,16 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import styled from 'styled-components'
 import { Provider } from 'react-redux';
-import NavbarContainer from './containers/NavbarContainer'
-import Footer from './components/Footer';
-import LandingPageContainer from './containers/LandingPageContainer';
-import LoginPageContainer from './containers/LoginPageContainer';
-import RegistrationPageContainer from './containers/RegistrationPageContainer'
-import UserSettingsContainer from './containers/UserSettingsContainer';
-import MeasurementConverterContainer from "./containers/MeasurementConverterContainer";
-import FractionalCalculatorContainer from './containers/FractionalCalculatorContainer'
-import ReferenceManualContainer from './containers/ReferenceManualContainer'
-import ReferencePageContainer from './containers/ReferencePageContainer'
+import NavbarContainer from './client/containers/NavbarContainer'
+import Footer from './client/components/Footer';
+import LandingPageContainer from './client/containers/LandingPageContainer';
+import LoginPageContainer from './client/containers/LoginPageContainer';
+import RegistrationPageContainer from './client/containers/RegistrationPageContainer'
+import UserSettingsContainer from './client/containers/UserSettingsContainer';
+import MeasurementConverterContainer from "./client/containers/MeasurementConverterContainer";
+import FractionalCalculatorContainer from './client/containers/FractionalCalculatorContainer'
+import ReferenceManualContainer from './client/containers/ReferenceManualContainer'
+import ReferencePageContainer from './client/containers/ReferencePageContainer'
 
 // CSS
 const Body = styled.div`

@@ -110,7 +110,7 @@ function Navbar({ isLogged }) {
         </NavLinks>
         <Icon>
           <UserIcon>
-            <IconLink to={isLogged ? "/UserSettings" : page.pathname} />
+            <IconLink to={isLogged ? "/UserSettings" : "/Login"} />
           </UserIcon>
         </Icon>
       </NavBarContainer>
