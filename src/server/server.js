@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Shop APPrentice" });
 });
 
-require("./server/routes/user.routes")(app);
+require("./routes/user.routes")(app);
 // Set port, listen for requests
 app.listen(3000, () => {
   console.log("server is listening on port 3000");

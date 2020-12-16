@@ -9,9 +9,9 @@ import LoginPageContainer from './client/containers/LoginPageContainer';
 import RegistrationPageContainer from './client/containers/RegistrationPageContainer'
 import UserSettingsContainer from './client/containers/UserSettingsContainer';
 import MeasurementConverterContainer from "./client/containers/MeasurementConverterContainer";
-import FractionalCalculatorContainer from './client/containers/FractionalCalculatorContainer'
-import ReferenceManualContainer from './client/containers/ReferenceManualContainer'
-import ReferencePageContainer from './client/containers/ReferencePageContainer'
+import FractionalCalculatorContainer from './client/containers/FractionalCalculatorContainer';
+import ReferenceManualContainer from './client/containers/ReferenceManualContainer';
+import ReferencePageContainer from './client/containers/ReferencePageContainer';
 
 // CSS
 const Body = styled.div`

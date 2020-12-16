@@ -1,0 +1,1 @@
+Should include scripts that will create database or other scripts that will create pieces of the program
