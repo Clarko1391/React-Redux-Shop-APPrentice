@@ -1,7 +1,7 @@
 class userAPI {
   static requestHeaders() {
     // Not sure what to change this to yet  --> 'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`,
-    return { AUTHORIZATION: `Bearer ${sessionStorage.jwt}` };
+    return {};
   }
 
   static getUserbyId(user) {
@@ -50,6 +50,7 @@ class userAPI {
 
     return fetch(request)
       .then((res) => {
+          console.log(res.json());
         return res.json();
       })
       .catch((err) => {

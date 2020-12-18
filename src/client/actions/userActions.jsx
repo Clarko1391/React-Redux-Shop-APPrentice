@@ -1,17 +1,28 @@
 import actionTypes from "./actionTypes";
 import userAPI from "../api/userAPI";
 
-export const createUser = user => {
-  return async dispatch => {
-    return userAPI.createUser(user)
-      .then(users => {
-        dispatch(createUserSuccess(users));
-      })
-      .catch(err => {
-        throw err;
+// export const createUser = user => {
+//   return async dispatch => {
+//     return userAPI.createUser(user)
+//       .then(users => {
+//         dispatch(createUserSuccess(users));
+//       })
+//       .catch(err => {
+//         throw err;
+//       });
+//   };
+// };
+
+export function createUser(user) {
+    return function (dispatch) {
+      return userAPI.createUser(user).then(resUser => {
+        dispatch(createUserSuccess(resUser));
+        return resUser;
+      }).catch(error => {
+        throw(error);
       });
-  };
-};
+    };
+  }
 
 export const createUserSuccess = user => {
   return { 
