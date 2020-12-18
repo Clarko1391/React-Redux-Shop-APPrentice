@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
+const PORT = 3001
 
 // Parse requests of content-type: application / JSON
 app.use(bodyParser.json());
@@ -16,6 +17,6 @@ app.get("/", (req, res) => {
 
 require("./routes/user.routes")(app);
 // Set port, listen for requests
-app.listen(3000, () => {
-  console.log("server is listening on port 3000");
+app.listen(PORT, () => {
+  console.log(`server is listening on port ${PORT}`);
 });
