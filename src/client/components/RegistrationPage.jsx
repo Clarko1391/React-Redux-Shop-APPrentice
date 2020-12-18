@@ -55,45 +55,42 @@ const propTypes = {
   buttonClicked: PropTypes.func,
 };
 
-function RegistrationPage() {
+function RegistrationPage( {userRegistrationCompleted = f => f} ) {
   return (
     <HeroContainer>
       <UIContainer>
         <TextContainer>
           <TitleText1>Create an account to</TitleText1>
-          <TitleText2>unlock access to more features!</TitleText2>
+          <TitleText2>unlock more features!</TitleText2>
         </TextContainer>
         <UserInputStringContainer
-          inputId="reg-username-input"
+          inputId="regisNameInput"
           inputStyle="userInputString"
           placeHolder="enter a user name"
-          value=""
         />
         <UserInputStringContainer
-          inputId="reg-email-address-input"
+          inputId="regisEmailInput"
           inputStyle="userInputString"
           placeHolder="enter a valid email address"
-          value=""
         />
         <UserInputStringContainer
-          inputId="reg-password-input"
+          inputId="regisPasswordInput1"
           inputStyle="userInputString"
           placeHolder="enter a password"
-          value=""
         />
         <UserInputStringContainer
-          inputId="reg-confirm-password-input"
+          inputId="regisPasswordInput2"
           inputStyle="userInputString"
           placeHolder="confirm your password"
-          value=""
         />
         <ButtonContainer
-          buttonId="reg-button"
+          buttonId="regisButton"
           buttonStyle="logButton"
           isNavButton={false}
           navigateTo="/"
           buttonTitlePrimary="Register"
           buttonTitleSecondary=""
+          buttonClicked={userRegistrationCompleted}
         />
       </UIContainer>
     </HeroContainer>

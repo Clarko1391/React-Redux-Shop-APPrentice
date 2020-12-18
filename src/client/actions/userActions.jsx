@@ -1,9 +1,9 @@
 import actionTypes from "./actionTypes";
-import UserApi from "../api/userAPI";
+import userAPI from "../api/userAPI";
 
 export const createUser = user => {
   return async dispatch => {
-    return UserApi.createUser(user)
+    return userAPI.createUser(user)
       .then(users => {
         dispatch(createUserSuccess(users));
       })
@@ -13,16 +13,16 @@ export const createUser = user => {
   };
 };
 
-export const createUserSuccess = users => {
+export const createUserSuccess = user => {
   return { 
       type: actionTypes.CREATE_USER_SUCCESS, 
-      users 
+      payload: user, 
     };
 };
 
 export const getUserbyId = user => {
   return async dispatch => {
-    return UserApi.getUserbyId(user)
+    return userAPI.getUserbyId(user)
       .then(users => {
         dispatch(getUserSuccess(users));
       })
@@ -32,16 +32,16 @@ export const getUserbyId = user => {
   };
 };
 
-export const getUserSuccess = users => {
+export const getUserSuccess = user => {
     return { 
         type: actionTypes.GET_USER_SUCCESS, 
-        users 
+        payload: user, 
     };
 }
 
 export const updateUserbyId = (user) => {
     return async dispatch => {
-        return UserApi.updateUserbyId(user)
+        return userAPI.updateUserbyId(user)
           .then(users => {
             dispatch(updateUserSuccess(users));
           })
@@ -51,16 +51,16 @@ export const updateUserbyId = (user) => {
       };
 };
 
-export const updateUserSuccess = users => {
+export const updateUserSuccess = user => {
     return { 
         type: actionTypes.GET_USER_SUCCESS, 
-        users 
+        payload: user 
     };
 }
 
 export const deleteUserbyId = user => {
     return async dispatch => {
-        return UserApi.deleteUserbyId(user)
+        return userAPI.deleteUserbyId(user)
           .then(users => {
             dispatch(deleteUserSuccess(users));
           })
@@ -70,9 +70,9 @@ export const deleteUserbyId = user => {
       };
 };
 
-export const deleteUserSuccess = users => {
+export const deleteUserSuccess = user => {
     return { 
         type: actionTypes.GET_USER_SUCCESS, 
-        users 
+        payload: user 
     };
 }

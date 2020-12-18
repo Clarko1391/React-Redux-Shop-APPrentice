@@ -2,9 +2,9 @@ const sql = require("./db");
 
 //constructor
 const User = function (user) {
-  this.email = user.email;
-  this.name = user.name;
-  this.active = user.active;
+  this.email = user.userEmail;
+  this.name = user.userName;
+  this.active = user.isLogged;
 };
 
 User.create = (newUser, result) => {

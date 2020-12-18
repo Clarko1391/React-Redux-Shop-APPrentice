@@ -1,25 +1,25 @@
-import actionTypes from "../actions/actionTypes";
+// import actionTypes from "../actions/actionTypes";
 
-const initialState = {
-};
+// const initialState = {
+// };
 
-const userRegistrationCompleted = (state, action) => {
-  console.log("user registered");
-  return {
-    ...state,
-    userName: action.payload.userName,
-    password: action.payload.password,
-    isLogged: action.payload.isLogged,
-  };
-};
+// const userRegistrationCompleted = (state, action) => {
+//   console.log("user registered");
+//   return {
+//     ...state,
+//     userName: action.payload.name,
+//     password: action.payload.password,
+//     isLogged: action.payload.active,
+//   };
+// };
 
-const Button = (state = initialState, action) => {
-  switch (action.type) {
-    case actionTypes.USER_REGISTRATION_COMPLETED:
-      return userRegistrationCompleted(state, action);
-    default:
-      return state;
-  }
-};
+// const RegistrationPage = (state = initialState, action) => {
+//   switch (action.type) {
+//     case actionTypes.CREATE_USER_SUCCESS:
+//       return userRegistrationCompleted(state, action);
+//     default:
+//       return state;
+//   }
+// };
 
-export default Button;
+// export default RegistrationPage;

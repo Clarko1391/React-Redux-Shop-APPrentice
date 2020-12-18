@@ -8,6 +8,7 @@ import UserInputNumeric from './UserInputNumeric';
 import UserInputDropdown from './UserInputDropdown';
 import UserInputCheckBox from './UserInputCheckBox';
 import ResultsOutput from './ResultsOutput';
+import userReducer from "./userReducer";
 
 const allReducer = combineReducers({
   // add individual state reducers here
@@ -20,6 +21,7 @@ const allReducer = combineReducers({
   UserInputDropdown,
   UserInputCheckBox,
   ResultsOutput,
+  userReducer,
 });
 
 export default allReducer;
