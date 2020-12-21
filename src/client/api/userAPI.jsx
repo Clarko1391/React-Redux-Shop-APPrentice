@@ -11,6 +11,8 @@ class userAPI {
       headers: headers,
     });
 
+    // get user by id will act as login function... get full user object based on usernme from DB and return to react where you can check if username and password match with returned values
+
     return fetch(request)
       .then((res) => {
         return res.json();
@@ -51,13 +53,19 @@ class userAPI {
     const request = new Request('http://localhost:3001/users', myInit); 
 
     return fetch(request, myInit)
-      .then((res) => {
-          console.log(res.json());
-        return res.json();
+      .then( async (res) => {
+        const resObject = await res.json();
+        const user = {
+          email: resObject.email, 
+          name: resObject.name,
+          active: resObject.active
+        };
+        return user;
       })
       .catch((err) => {
         return err;
       });
+      
   }
 
   static deleteUserbyId(user) {

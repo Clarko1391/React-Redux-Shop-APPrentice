@@ -22,8 +22,9 @@ const userCreateCompleted = (state, action) => {
     ...state,
     users: {
       ...state.users,
-      [action.name]: {
-        ...action.payload
+      [action.payload.name]: {
+        userName: action.payload.name,
+        isLogged: action.payload.active
       }
     }
   };
