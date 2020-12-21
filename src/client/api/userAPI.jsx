@@ -1,7 +1,7 @@
 class userAPI {
   static requestHeaders() {
     // Not sure what to change this to yet  --> 'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`,
-    return {};
+    return {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`};
   }
 
   static getUserbyId(user) {
@@ -41,14 +41,16 @@ class userAPI {
   }
 
   static async createUser(user) {
-    const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders());
-    const request = new Request(`http://localhost:3001/users`, {
+    const headers = {'Content-Type': 'application/json'};
+    const body = JSON.stringify({ ...user });
+    const myInit = {
       method: "POST",
-      headers: headers,
-      body: JSON.stringify({ user: user }),
-    });
+      headers,
+      body
+    };
+    const request = new Request('http://localhost:3001/users', myInit); 
 
-    return fetch(request)
+    return fetch(request, myInit)
       .then((res) => {
           console.log(res.json());
         return res.json();
