@@ -1,20 +1,9 @@
 import actionTypes from "./actionTypes";
 import userAPI from "../api/userAPI";
 
-// export const createUser = user => {
-//   return async dispatch => {
-//     return userAPI.createUser(user)
-//       .then(users => {
-//         dispatch(createUserSuccess(users));
-//       })
-//       .catch(err => {
-//         throw err;
-//       });
-//   };
-// };
-
 export function createUser(user) {
     return function (dispatch) {
+      // validate unique email address
       return userAPI.createUser(user).then(resUser => {
         dispatch(createUserSuccess(resUser));
         return resUser;
@@ -31,24 +20,40 @@ export const createUserSuccess = user => {
     };
 };
 
-export const getUserbyId = user => {
-  return async dispatch => {
-    return userAPI.getUserbyId(user)
-      .then(users => {
-        dispatch(getUserSuccess(users));
-      })
+// export const getUserbyName = user => {
+//   return function (dispatch) {
+//     return userAPI.getUserbyName(user)
+//       .then(resUser => {
+//         dispatch(getUserSuccess(resUser, user));
+//       })
+//       .catch(err => {
+//         throw err;
+//       });
+//   };
+// };
+
+export const getUserbyEmail = user => {
+  return function (dispatch) {
+    return userAPI.getUserbyEmail(user)
+      .then(resUser => {
+        dispatch(getUserSuccess(resUser)
+      )})
       .catch(err => {
         throw err;
       });
   };
 };
 
-export const getUserSuccess = user => {
+export const getUserSuccess = (resUser) => {
+  if (resUser.active === 1) {
+    resUser.active = true;
+  } else resUser.active = false;
     return { 
         type: actionTypes.GET_USER_SUCCESS, 
-        payload: user, 
+        payload: resUser, 
+
     };
-}
+  };
 
 export const updateUserbyId = (user) => {
     return async dispatch => {

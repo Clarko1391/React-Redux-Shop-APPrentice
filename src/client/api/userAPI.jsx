@@ -4,18 +4,26 @@ class userAPI {
     return {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`};
   }
 
-  static getUserbyId(user) {
-    const headers = this.requestHeaders();
-    const request = new Request(`http://localhost:3001/users/${user.id}`, {
+  static async getUserbyEmail(user) {
+    const headers = {'Content-Type': 'application/json'};
+    const myInit = {
       method: "GET",
-      headers: headers,
-    });
+      headers
+    };
+
+    const request = new Request(`http://localhost:3001/users/${user.email}`, myInit); 
 
     // get user by id will act as login function... get full user object based on usernme from DB and return to react where you can check if username and password match with returned values
 
-    return fetch(request)
-      .then((res) => {
-        return res.json();
+    return fetch(request, myInit)
+      .then( async res => {
+        const resObject = await res.json();
+        const user = {
+          email: resObject.email, 
+          name: resObject.name,
+          active: resObject.active
+        };
+        return user;
       })
       .catch((err) => {
         return err;

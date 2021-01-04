@@ -10,7 +10,7 @@ const inputEntered = (state, action) => {
 };
 
 const checkBoxInitialized = (state, action) => {
-  console.log("Input initialized!");
+  // console.log("Input initialized!");
   return {
     ...state,
     checkboxes: {

@@ -3,7 +3,7 @@ import actionTypes from "../actions/actionTypes";
 const initialState = {};
 
 const onChange = (state, action) => {
-  console.log("Input Changed!");
+  // console.log("Input Changed!");
   return {
     ...state,
     inputsDropdown: {
@@ -16,7 +16,7 @@ const onChange = (state, action) => {
 };
 
 const dropdownInitialized = (state, action) => {
-  console.log("Input initialized!");
+  // console.log("Input initialized!");
   return {
     ...state,
     inputsDropdown: {

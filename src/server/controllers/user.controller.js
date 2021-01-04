@@ -19,11 +19,9 @@ exports.create = (req, res) => {
   // Save User in database
   User.create(user, (err, data) => {
     if (err)
-      res
-        .status(500)
-        .send({
-          message: err.message || "Some error occurred while creating the user",
-        });
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the user",
+      });
     else res.send(data);
     console.log("user created");
   });
@@ -33,26 +31,24 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   User.getAll((err, data) => {
     if (err)
-      res
-        .status(500)
-        .send({
-          message: err.message || "Some error occurred while retrieiving users",
-        });
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieiving users",
+      });
     else res.send(data);
   });
 };
 
-// Find a single User with a userId in req
+// Find a single User with a userName in req
 exports.findOne = (req, res) => {
-  User.findById(req.params.userId, (err, data) => {
+  User.findByEmail(req.params.email, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found User with id ${req.params.userId}.`,
+          message: `Not found User with email ${req.params.email}.`,
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving User with id " + req.params.userId,
+          message: `Error retrieving User with email ${req.params.email}`,
         });
       }
     } else res.send(data);

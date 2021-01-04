@@ -29,7 +29,7 @@ const Title = styled.h1`
 const Username = styled.span`
   color: #da1622;
   font-size: 3vh;
-`
+`;
 
 const UIContainer = styled.div`
   width: 80%;
@@ -45,6 +45,8 @@ const SubTitle = styled.h3`
 `;
 const TitleContainer = styled.div``;
 
+const ButtonWrapper = styled.div``;
+
 const STContainer = styled.div`
   margin-bottom: 30px;
 `;
@@ -55,7 +57,6 @@ const propTypes = {
   userName: PropTypes.string,
 };
 
-
 // Functional Component
 function LandingPage(props) {
   return (
@@ -65,24 +66,36 @@ function LandingPage(props) {
         {props.isLogged ? <Username> {props.userName} </Username> : ""}
       </TitleContainer>
       <UIContainer>
-        <ButtonContainer
-          buttonId="land-page-log-in-button"
-          buttonStyle="logButton"
-          isNavButton={true}
-          navigateTo="/Login"
-          buttonTitlePrimary="Log "
-          buttonTitleSecondary="in"
-        />
-        <ButtonContainer
-          buttonId="land-page-register-button"
-          buttonStyle="logButton"
-          isNavButton={true}
-          navigateTo="/Registration"
-          buttonTitlePrimary="Register "
-          buttonTitleSecondary=""
-        />
+        <ButtonWrapper>
+          {!props.isLogged ? (
+            <ButtonContainer
+              buttonId="land-page-log-in-button"
+              buttonStyle="logButton"
+              isNavButton={true}
+              navigateTo="/Login"
+              buttonTitlePrimary="Log "
+              buttonTitleSecondary="in"
+            />
+          ) : (
+            ""
+          )}
+        </ButtonWrapper>
+        <ButtonWrapper>
+          {!props.isLogged ? (
+            <ButtonContainer
+              buttonId="land-page-register-button"
+              buttonStyle="logButton"
+              isNavButton={true}
+              navigateTo="/Registration"
+              buttonTitlePrimary="Register "
+              buttonTitleSecondary=""
+            />
+          ) : (
+            ""
+          )}
+        </ButtonWrapper>
       </UIContainer>
-      <SubTitle> or </SubTitle>
+      <SubTitle> {!props.isLogged ? `or` : "" }</SubTitle>
       <STContainer>
         <SubTitle> Select an option </SubTitle>
         <SubTitle>above to get started </SubTitle>

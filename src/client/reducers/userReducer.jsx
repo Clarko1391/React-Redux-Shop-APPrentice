@@ -4,20 +4,18 @@ const initialState = {
 };
 
 const userLoginCompleted = (state, action) => {
-  console.log("user login attempted");
   return {
     ...state,
     users: {
-      ...state.users,
-      [action.name]: {
-        ...action.payload
+      'user1': {
+        isLogged: action.payload.active,
+        userName: action.payload.name
       }
     }
   };
 };
 
 const userCreateCompleted = (state, action) => {
-  console.log("user login attempted");
   return {
     ...state,
     users: {
@@ -30,31 +28,31 @@ const userCreateCompleted = (state, action) => {
   };
 };
 
-const userUpdateCompleted = (state, action) => {
-  console.log("user login attempted");
-  return {
-    ...state,
-    users: {
-      ...state.users,
-      [action.name]: {
-        ...action.payload
-      }
-    }
-  };
-};
+// const userUpdateCompleted = (state, action) => {
+//   console.log("user login attempted");
+//   return {
+//     ...state,
+//     users: {
+//       ...state.users,
+//       [action.name]: {
+//         ...action.payload
+//       }
+//     }
+//   };
+// };
 
-const userDeleteCompleted = (state, action) => {
-  console.log("user login attempted");
-  return {
-    ...state,
-    users: {
-      ...state.users,
-      [action.name]: {
-        ...action.payload
-      }
-    }
-  };
-};
+// const userDeleteCompleted = (state, action) => {
+//   console.log("user login attempted");
+//   return {
+//     ...state,
+//     users: {
+//       ...state.users,
+//       [action.name]: {
+//         ...action.payload
+//       }
+//     }
+//   };
+// };
 
 
 
@@ -64,10 +62,10 @@ const userReducer = (state = initialState, action) => {
       return userLoginCompleted(state, action);
     case actionTypes.CREATE_USER_SUCCESS:
       return userCreateCompleted(state, action);
-    case actionTypes.UPDATE_USER_SUCCESS:
-      return userUpdateCompleted(state, action);
-    case actionTypes.DELETE_USER_SUCCESS:
-      return userDeleteCompleted(state, action);
+    // case actionTypes.UPDATE_USER_SUCCESS:
+    //   return userUpdateCompleted(state, action);
+    // case actionTypes.DELETE_USER_SUCCESS:
+    //   return userDeleteCompleted(state, action);
     default:
       return state;
   }

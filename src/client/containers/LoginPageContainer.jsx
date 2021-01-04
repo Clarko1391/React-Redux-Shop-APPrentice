@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import LoginPage from "../components/LoginPage";
 import React from "react";
-import * as actions from "../actions/LoginPage";
+import * as actions from "../actions/userActions";
 import deepClone from "lodash.clonedeep";
 
 class LoginPageContainer extends React.Component {
@@ -15,25 +15,23 @@ class LoginPageContainer extends React.Component {
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.userName !== this.internalProps.userName) {
-      console.log("username has changed!");
       this.internalProps.userName = nextProps.userName;
     }
     if (nextProps.password !== this.internalProps.password) {
-      console.log("password has changed!");
       this.internalProps.password = nextProps.password;
     }
     return true;
   }
 
   userLoginAttempt() {
-    // Need to check user entry data in userName and password against existing database to see if that user exists or needs to register
     let username = this.internalProps.userName;
-    let password = this.internalProps.password;
+    
+    // let password = this.internalProps.password;
 
     let userObject = {
-      username: username,
-      password: password,
-      isLogged: true,
+      name: username,
+      email: username,
+      // password: password,
     }   
     this.internalProps.userLoginAttempt(userObject);
   }
@@ -67,7 +65,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     userLoginAttempt: (props) => {
-      dispatch(actions.userLoginAttempted(props));
+      dispatch(actions.getUserbyEmail(props));
     },
   };
 };

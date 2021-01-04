@@ -27,11 +27,11 @@ const mapStateToProps = (state) => {
   let userName = "";
   let isLogged = false;
   if (
-    state.LoginPage.users &&
-    state.LoginPage.users.user1.isLogged
+    state.userReducer.users &&
+    state.userReducer.users.user1.isLogged
   ) {
-    userName = state.LoginPage.users.user1.userName;
-    isLogged = state.LoginPage.users.user1.isLogged;
+    userName = state.userReducer.users.user1.userName;
+    isLogged = state.userReducer.users.user1.isLogged;
   }
   return {
     userName: userName,

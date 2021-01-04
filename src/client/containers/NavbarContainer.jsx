@@ -24,8 +24,8 @@ class NavbarContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   let isLogged = false;
-  if (state.LoginPage.users && state.LoginPage.users.user1.isLogged) {
-    isLogged = state.LoginPage.users.user1.isLogged;
+  if (state.userReducer.users && state.userReducer.users.user1.isLogged) {
+    isLogged = state.userReducer.users.user1.isLogged;
   }
   return {
     isLogged: isLogged,
