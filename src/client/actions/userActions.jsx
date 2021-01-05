@@ -20,6 +20,12 @@ export const createUserSuccess = user => {
     };
 };
 
+export const clearUserSuccess = () => {
+  return {
+    type: actionTypes.CLEAR_USER_SUCCESS,
+  }
+}
+
 // export const getUserbyName = user => {
 //   return function (dispatch) {
 //     return userAPI.getUserbyName(user)

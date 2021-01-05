@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import UserSettings from "../components/UserSettings";
 import React from "react";
 import deepClone from "lodash.clonedeep";
+import * as actions from "../actions/userActions";
 
 
 class UserSettingsContainer extends React.Component {
@@ -9,6 +10,7 @@ class UserSettingsContainer extends React.Component {
     super (props);
 
     this.internalProps = deepClone(props);
+    this.userLogout = this.userLogout.bind(this);
   }
   
   shouldComponentUpdate(nextProps) {
@@ -18,8 +20,12 @@ class UserSettingsContainer extends React.Component {
     return true;
   }
 
+  userLogout() {
+    this.internalProps.userLogout();
+  }
+
   render() {
-    return <UserSettings userName={this.internalProps.userName} isLogged={this.internalProps.isLogged}/>;
+    return <UserSettings userName={this.internalProps.userName} isLogged={this.internalProps.isLogged} userLogout={this.userLogout} />;
   }
 }
 
@@ -39,14 +45,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     buttonClicked: (event) => {
-//       dispatch(actions.buttonClicked(event));
-//     },
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userLogout: (props) => {
+      dispatch(actions.clearUserSuccess(props));
+    },
+  };
+};
 
-export default connect(mapStateToProps, {
-  /*mapDispatchToProps*/
-})(UserSettingsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(UserSettingsContainer);

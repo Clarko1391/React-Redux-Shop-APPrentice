@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import img from "../assets/img/shopAPPrenticeLogo.png";
 import userIcon from "../assets/img/userIcon.png";
+import userIconActive from "../assets/img/userIconActive.png";
 
 // CSS
 const NavBarContainer = styled.div`
@@ -36,6 +37,14 @@ const LogoIMG = styled.div`
 
 const UserIcon = styled.i`
   background: url(${userIcon}) center no-repeat;
+  background-size: contain;
+  position: relative;
+  height: 50%;
+  width: 50%;
+`;
+
+const UserIconActive = styled.i`
+  background: url(${userIconActive}) center no-repeat;
   background-size: contain;
   position: relative;
   height: 50%;
@@ -109,9 +118,15 @@ function Navbar({ isLogged }) {
           </NavLink>
         </NavLinks>
         <Icon>
-          <UserIcon>
-            <IconLink to={isLogged ? "/UserSettings" : "/Login"} />
-          </UserIcon>
+          {isLogged ? (
+            <UserIconActive>
+              <IconLink to="/UserSettings" />
+            </UserIconActive>
+          ) : (
+            <UserIcon>
+              <IconLink to="/Login" />
+            </UserIcon>
+          )}
         </Icon>
       </NavBarContainer>
     </>

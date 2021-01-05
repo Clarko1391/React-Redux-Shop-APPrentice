@@ -19,10 +19,21 @@ const userCreateCompleted = (state, action) => {
   return {
     ...state,
     users: {
-      ...state.users,
-      [action.payload.name]: {
+      'user1': {
         userName: action.payload.name,
         isLogged: action.payload.active
+      }
+    }
+  };
+};
+
+const userLogoutCompleted = (state) => {
+  return {
+    ...state,
+    users: {
+      'user1': {
+        userName: "",
+        isLogged: false
       }
     }
   };
@@ -62,6 +73,8 @@ const userReducer = (state = initialState, action) => {
       return userLoginCompleted(state, action);
     case actionTypes.CREATE_USER_SUCCESS:
       return userCreateCompleted(state, action);
+    case actionTypes.CLEAR_USER_SUCCESS:
+      return userLogoutCompleted(state, action);
     // case actionTypes.UPDATE_USER_SUCCESS:
     //   return userUpdateCompleted(state, action);
     // case actionTypes.DELETE_USER_SUCCESS:

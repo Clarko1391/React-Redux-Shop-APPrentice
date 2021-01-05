@@ -34,10 +34,11 @@ const OptionsSecondary = styled.h3`
 `;
 const OptionContainer = styled.div`
   width: 100%;
-  padding: 10px;
+  padding: 0px 5% 0px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
 `;
 
 const OptionContainerSecondary = styled.div`
@@ -46,6 +47,14 @@ const OptionContainerSecondary = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+const AddBtnContainer = styled.div`
+  width: 90%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const PrimaryBox = styled.div`
@@ -84,12 +93,25 @@ const propTypes = {
   isLogged: PropTypes.bool,
 };
 
-function UserSettings({ userName, isLogged }) {
+function UserSettings({ userName, isLogged, userLogout = f => f }) {
   return (
     <HeroContainer>
       <UserName>
-        {isLogged ? `Welcome ${userName}, customize your preferences below:` : "log in to customize your app"}
+        {isLogged ? `Welcome ${userName}, customize your preferences` : "log in to customize your app"}
       </UserName>
+      <AddBtnContainer>
+        {isLogged ? 
+        (<ButtonContainer 
+          buttonId="uspLogoutBtn"
+          buttonStyle="logButton"
+          isNavButton={true}
+          navigateTo="/"
+          buttonTitlePrimary="Log Out"
+          buttonTitleSecondary=""
+          buttonClicked={userLogout} 
+          />)
+        : ""}
+      </AddBtnContainer>
       <PrimaryBox>
         <OptionContainer>
           <OptionsPrimary>Stay Logged In:</OptionsPrimary>
@@ -144,14 +166,16 @@ function UserSettings({ userName, isLogged }) {
               checked={true}
             />
           </OptionContainerSecondary>
-          <ButtonContainer
-            buttonId="user-settings-add-button"
-            buttonStyle="chartAddButton"
-            isNavButton={false}
-            navigateTo=""
-            buttonTitlePrimary="+"
-            buttonTitleSecondary=""
-          />
+          <AddBtnContainer>
+            <ButtonContainer
+              buttonId="uspAddBtn"
+              buttonStyle="backButton"
+              isNavButton={false}
+              navigateTo=""
+              buttonTitlePrimary="Add More"
+              buttonTitleSecondary=""
+            />
+          </AddBtnContainer>
         </OptionBox>
       </PrimaryBox>
     </HeroContainer>

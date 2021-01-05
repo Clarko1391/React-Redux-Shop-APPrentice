@@ -16,6 +16,7 @@ export default keyMirror({
   OUTPUT_MEASUREMENT_CHANGED: null,
   INPUT_CLEARED: null,
   CREATE_USER_SUCCESS: null, 
+  CLEAR_USER_SUCCESS: null, 
   GET_USER_SUCCESS: null, 
   UPDATE_USER_SUCCESS: null, 
   DELETE_USER_SUCCESS: null, 
