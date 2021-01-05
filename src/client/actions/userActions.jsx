@@ -6,7 +6,9 @@ export function createUser(user) {
       // validate unique email address here
       return userAPI.createUser(user).then(resUser => {
         dispatch(createUserSuccess(resUser));
-        return resUser;
+        // Why is there a return after the dispatch is completed?
+        // "createUserSuccess" is already hitting the reducer, where does the following return go to?
+        // return resUser;
       }).catch(error => {
         throw(error);
       });

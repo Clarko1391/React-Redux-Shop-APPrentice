@@ -11,6 +11,7 @@ class RegistrationPageContainer extends React.Component {
     
     this.internalProps = deepClone(props);
     this.internalProps.userEmail = "";
+    this.internalProps.isLogged = false;
 
     this.userRegistrationCompleted = this.userRegistrationCompleted.bind(this);
     // this.state = {
@@ -27,6 +28,9 @@ class RegistrationPageContainer extends React.Component {
     }
     if (nextProps.password !== this.internalProps.password) {
       this.internalProps.password = nextProps.password;
+    }
+    if (nextProps.isLogged !== this.internalProps.isLogged) {
+      this.internalProps.isLogged = nextProps.isLogged;
     }
     return true;
   }
@@ -53,7 +57,7 @@ class RegistrationPageContainer extends React.Component {
 
   render() {
     return (
-      <RegistrationPage  userRegistrationCompleted={this.userRegistrationCompleted}/>
+      <RegistrationPage  userRegistrationCompleted={this.userRegistrationCompleted} isLogged={this.internalProps.isLogged} />
     );
   }
 }
@@ -61,6 +65,7 @@ const mapStateToProps = (state) => {
   let userName = "";
   let userEmail = "";
   let password = "";
+  let isLogged;
   if (
     state.UserInputString &&
     state.UserInputString.inputsSTR &&
@@ -91,9 +96,18 @@ const mapStateToProps = (state) => {
     password = state.UserInputString.inputsSTR.regisPasswordInput1.userInput;
     }
   }
+  if (
+    state.userReducer &&
+    state.userReducer.users &&
+    state.userReducer.users.user1 &&
+    state.userReducer.users.user1.isLogged
+  ) {
+    isLogged = state.userReducer.users.user1.isLogged;
+  }
   return {
     userName: userName,
     userEmail: userEmail,
+    isLogged: isLogged,
     password: password,
   };
 };

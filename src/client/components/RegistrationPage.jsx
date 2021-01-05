@@ -55,10 +55,11 @@ const propTypes = {
   buttonClicked: PropTypes.func,
 };
 
-function RegistrationPage( {userRegistrationCompleted = f => f} ) {
+function RegistrationPage( {userRegistrationCompleted = f => f, isLogged} ) {
   return (
     <HeroContainer>
-      <UIContainer>
+      { !isLogged ? 
+      (<UIContainer>
         <TextContainer>
           <TitleText1>Create an account to</TitleText1>
           <TitleText2>unlock more features!</TitleText2>
@@ -87,12 +88,27 @@ function RegistrationPage( {userRegistrationCompleted = f => f} ) {
           buttonId="regisButton"
           buttonStyle="logButton"
           isNavButton={false}
-          navigateTo="/"
+          navigateTo=""
           buttonTitlePrimary="Register"
           buttonTitleSecondary=""
           buttonClicked={userRegistrationCompleted}
         />
-      </UIContainer>
+      </UIContainer>) : (
+      <UIContainer>
+        <TextContainer>
+          <TitleText1>Account created successfully</TitleText1>
+          <TitleText2>Select an option above to get started</TitleText2>
+        </TextContainer>
+        <ButtonContainer
+          buttonId="settingsButton"
+          buttonStyle="logButton"
+          isNavButton={true}
+          navigateTo="/UserSettings"
+          buttonTitlePrimary="Customize your profile"
+          buttonTitleSecondary=""
+          buttonClicked={userRegistrationCompleted}
+        />
+      </UIContainer>) }
     </HeroContainer>
   );
 }
