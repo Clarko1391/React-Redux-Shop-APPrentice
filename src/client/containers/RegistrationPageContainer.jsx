@@ -35,14 +35,20 @@ class RegistrationPageContainer extends React.Component {
     // Need to check user entry data in userName and password against existing database to see if that user exists or needs to register
     let username = this.internalProps.userName;
     let userEmail = this.internalProps.userEmail;
-    // let password = this.internalProps.password;
+    let password = this.internalProps.password;
 
     let userObject = {
       name: username,
       email: userEmail,
+      password: password,
       active: true,
-    }   
+    };
+
+    if (username && userEmail && password) {
     this.internalProps.userRegistrationCompleted(userObject);
+    } else {
+      alert(`Please ensure all fields are correctly filled out and that your password is entered the same in both fields`);
+    };
   }
 
   render() {

@@ -3,7 +3,7 @@ import userAPI from "../api/userAPI";
 
 export function createUser(user) {
     return function (dispatch) {
-      // validate unique email address
+      // validate unique email address here
       return userAPI.createUser(user).then(resUser => {
         dispatch(createUserSuccess(resUser));
         return resUser;
