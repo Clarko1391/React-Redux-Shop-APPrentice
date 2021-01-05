@@ -7,8 +7,11 @@ module.exports = (app) => {
   // Retrieve all Users
   app.get("/users", users.findAll);
 
+  // Retrieve a single User with name
+  app.get("/users/byName/:name", users.findOneByName);
+
   // Retrieve a single User with email
-  app.get("/users/:email", users.findOne);
+  app.get("/users/byEmail/:email", users.findOneByEmail);
 
   // Update a User with userName
   app.put("/users/:userName", users.update);

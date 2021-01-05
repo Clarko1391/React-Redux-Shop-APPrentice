@@ -39,8 +39,8 @@ exports.findAll = (req, res) => {
   });
 };
 
-// Find a single User with a userName in req
-exports.findOne = (req, res) => {
+// Find a single User with an email in req
+exports.findOneByEmail = (req, res) => {
   User.findByEmail(req.params.email, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
@@ -50,6 +50,23 @@ exports.findOne = (req, res) => {
       } else {
         res.status(500).send({
           message: `Error retrieving User with email ${req.params.email}`,
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+// Find a single User with a name in req
+exports.findOneByName = (req, res) => {
+  User.findByName(req.params.name, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found User with name ${req.params.name}.`,
+        });
+      } else {
+        res.status(500).send({
+          message: `Error retrieving User with name ${req.params.name}`,
         });
       }
     } else res.send(data);

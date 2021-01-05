@@ -6,9 +6,6 @@ export function createUser(user) {
       // validate unique email address here
       return userAPI.createUser(user).then(resUser => {
         dispatch(createUserSuccess(resUser));
-        // Why is there a return after the dispatch is completed?
-        // "createUserSuccess" is already hitting the reducer, where does the following return go to?
-        // return resUser;
       }).catch(error => {
         throw(error);
       });
@@ -26,19 +23,19 @@ export const clearUserSuccess = () => {
   return {
     type: actionTypes.CLEAR_USER_SUCCESS,
   }
-}
+};
 
-// export const getUserbyName = user => {
-//   return function (dispatch) {
-//     return userAPI.getUserbyName(user)
-//       .then(resUser => {
-//         dispatch(getUserSuccess(resUser, user));
-//       })
-//       .catch(err => {
-//         throw err;
-//       });
-//   };
-// };
+export const getUserbyName = user => {
+  return function (dispatch) {
+    return userAPI.getUserbyName(user)
+      .then(resUser => {
+        dispatch(getUserSuccess(resUser, user));
+      })
+      .catch(err => {
+        throw err;
+      });
+  };
+};
 
 export const getUserbyEmail = user => {
   return function (dispatch) {
@@ -53,6 +50,7 @@ export const getUserbyEmail = user => {
 };
 
 export const getUserSuccess = (resUser) => {
+  // VALIDATE PASSWORD HERE, NEED TO PASS USER OBJECT FROM CONTAINER INTO THIS FUNCTION THROUGH ORIGINAL ACTION
   if (resUser.active === 1) {
     resUser.active = true;
   } else resUser.active = false;

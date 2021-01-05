@@ -29,6 +29,21 @@ const UIContainer = styled.div`
   align-items: center;
 `;
 
+const LineBreak = styled.div`
+  width: 80%;
+  border-bottom: 3px solid black;
+`;
+
+const TextContainer = styled.div`
+`;
+
+const TitleText1 = styled.h2`
+  font-size: 3vh;
+  color: #fcfbfc;
+  padding: 0px;
+  margin: 0px;
+`;
+
 // PropTypes
  const propTypes = {
   userLoginAttempt: PropTypes.func,
@@ -44,6 +59,15 @@ function LoginPage({userLoginAttempt = f => f}) {
           inputStyle="userInputString"
           placeHolder="enter your user name"
         />
+        <TextContainer>
+          <TitleText1>OR</TitleText1>
+        </TextContainer>
+        <UserInputStringContainer
+          inputId="loginEmail"
+          inputStyle="userInputString"
+          placeHolder="enter your email address"
+        />
+        <LineBreak />
         <UserInputStringContainer
           inputId="loginPassword"
           inputStyle="userInputString"

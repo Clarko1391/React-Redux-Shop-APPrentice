@@ -22,7 +22,7 @@ User.create = (newUser, result) => {
 };
 
 User.findByName = (userName, result) => {
-  sql.query(`SELECT name FROM users WHERE name = '${userName}'`, (err, res) => {
+  sql.query(`SELECT * FROM users WHERE name = '${userName}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

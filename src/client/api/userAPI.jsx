@@ -1,8 +1,4 @@
 class userAPI {
-  static requestHeaders() {
-    // Not sure what to change this to yet  --> 'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`,
-    return {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`};
-  }
 
   static async getUserbyEmail(user) {
     const headers = {'Content-Type': 'application/json'};
@@ -11,9 +7,7 @@ class userAPI {
       headers
     };
 
-    const request = new Request(`http://localhost:3001/users/${user.email}`, myInit); 
-
-    // get user by id will act as login function... get full user object based on usernme from DB and return to react where you can check if username and password match with returned values
+    const request = new Request(`http://localhost:3001/users/byEmail/${user.email}`, myInit); 
 
     return fetch(request, myInit)
       .then( async res => {
@@ -21,6 +15,7 @@ class userAPI {
         const user = {
           email: resObject.email, 
           name: resObject.name,
+          password: resObject.password,
           active: resObject.active
         };
         return user;
@@ -28,7 +23,32 @@ class userAPI {
       .catch((err) => {
         return err;
       });
-  }
+  };
+
+  static async getUserbyName(user) {
+    const headers = {'Content-Type': 'application/json'};
+    const myInit = {
+      method: "GET",
+      headers
+    };
+
+    const request = new Request(`http://localhost:3001/users/byName/${user.name}`, myInit); 
+
+    return fetch(request, myInit)
+      .then( async res => {
+        const resObject = await res.json();
+        const user = {
+          email: resObject.email, 
+          name: resObject.name,
+          password: resObject.password,
+          active: resObject.active
+        };
+        return user;
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
 
   static updateUserbyId(user) {
     const headers = Object.assign(
