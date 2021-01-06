@@ -1,5 +1,12 @@
 class userAPI {
 
+  static handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+  };
+
   static async getUserbyEmail(user) {
     const headers = {'Content-Type': 'application/json'};
     const myInit = {
@@ -7,9 +14,10 @@ class userAPI {
       headers
     };
 
-    const request = new Request(`http://localhost:3001/users/byEmail/${user.email}`, myInit); 
+    const request = new Request(`http://localhost:3001/users/${user.email}`, myInit); 
 
     return fetch(request, myInit)
+    .then(this.handleErrors)
       .then( async res => {
         const resObject = await res.json();
         const user = {
@@ -21,7 +29,7 @@ class userAPI {
         return user;
       })
       .catch((err) => {
-        return err;
+        throw err;
       });
   };
 
@@ -35,6 +43,7 @@ class userAPI {
     const request = new Request(`http://localhost:3001/users/byName/${user.name}`, myInit); 
 
     return fetch(request, myInit)
+    .then(this.handleErrors)
       .then( async res => {
         const resObject = await res.json();
         const user = {
@@ -46,7 +55,7 @@ class userAPI {
         return user;
       })
       .catch((err) => {
-        return err;
+        throw err;
       });
   };
 
@@ -62,6 +71,7 @@ class userAPI {
     });
 
     return fetch(request)
+    .then(this.handleErrors)
       .then((res) => {
         return res.json();
       })
@@ -81,6 +91,7 @@ class userAPI {
     const request = new Request('http://localhost:3001/users', myInit); 
 
     return fetch(request, myInit)
+    .then(this.handleErrors)
       .then( async (res) => {
         const resObject = await res.json();
         const user = {
@@ -107,6 +118,7 @@ class userAPI {
     });
 
     return fetch(request)
+    .then(this.handleErrors)
       .then((res) => {
         return res.json();
       })

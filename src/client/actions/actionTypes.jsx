@@ -16,6 +16,7 @@ export default keyMirror({
   OUTPUT_MEASUREMENT_CHANGED: null,
   INPUT_CLEARED: null,
   CREATE_USER_SUCCESS: null, 
+  CREATE_USER_FAILURE: null, 
   CLEAR_USER_SUCCESS: null, 
   GET_USER_SUCCESS: null, 
   GET_USER_FAILURE: null, 
@@ -23,6 +24,6 @@ export default keyMirror({
   DELETE_USER_SUCCESS: null, 
   USER_LOGIN_ATTEMPTED: null,
   USER_LOGIN_FAILED: null,
-  USER_REGISTRATION_COMPLETED: null,
-  USER_REGISTRATION_FAILED: null,
+  // USER_REGISTRATION_COMPLETED: null,
+  // USER_REGISTRATION_FAILED: null,
 });

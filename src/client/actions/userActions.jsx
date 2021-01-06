@@ -6,22 +6,23 @@ export function createUser(user) {
     // Validate unique username is entered
     return userAPI.getUserbyName(user)
       .then(resUser => {
-        if(resUser.name.len > 0) {
+        if(resUser && resUser.name && resUser.name.length > 0) {
           alert(`That user name is already in use, please enter a different username and try again`);
-          return createUserFailure();
+          dispatch(createUserFailure());
+          return;
         }
       })
-      .catch(err => {
+      .catch((error) => {
         //Validate unique email address is entered
         userAPI.getUserbyEmail(user)
           .then(resUser => {
-            if(resUser.email.len > 0) {
-              dispatch(createUserFailure());
+            if(resUser && resUser.email && resUser.email.length > 0) {
               alert(`That email address is already registered to an account, please use a different email address and try again`);
+              dispatch(createUserFailure());
               return;
             };
           })
-          .catch(err => {
+          .catch((error) => {
             //Create unique user in DB after validating unique email and username
             userAPI.createUser(user)
               .then((resUser) => {
@@ -42,10 +43,9 @@ export const createUserSuccess = (user) => {
   };
 };
 
-export const createUserFailure = (user) => {
+export const createUserFailure = () => {
   return {
     type: actionTypes.CREATE_USER_FAILURE,
-    payload: user,
   };
 };
 
