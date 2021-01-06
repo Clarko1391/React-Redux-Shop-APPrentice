@@ -15,6 +15,18 @@ const userLoginCompleted = (state, action) => {
   };
 };
 
+const userLoginFailed = (state, action) => {
+  return {
+    ...state,
+    users: {
+      'user1': {
+        isLogged: false,
+        userName: null
+      }
+    }
+  };
+};
+
 const userCreateCompleted = (state, action) => {
   return {
     ...state,
@@ -75,6 +87,8 @@ const userReducer = (state = initialState, action) => {
       return userCreateCompleted(state, action);
     case actionTypes.CLEAR_USER_SUCCESS:
       return userLogoutCompleted(state, action);
+    case actionTypes.USER_LOGIN_FAILED:
+      return userLoginFailed(state, action);
     // case actionTypes.UPDATE_USER_SUCCESS:
     //   return userUpdateCompleted(state, action);
     // case actionTypes.DELETE_USER_SUCCESS:

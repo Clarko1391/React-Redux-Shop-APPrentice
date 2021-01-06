@@ -21,5 +21,6 @@ export default keyMirror({
   UPDATE_USER_SUCCESS: null, 
   DELETE_USER_SUCCESS: null, 
   USER_LOGIN_ATTEMPTED: null,
+  USER_LOGIN_FAILED: null,
   USER_REGISTRATION_COMPLETED: null,
 });

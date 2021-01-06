@@ -38,11 +38,11 @@ class LoginPageContainer extends React.Component {
     }
 
     // Validate which login method to use
-    if(username && email) {
+    if(username !== null && email !== null) {
       alert(`please enter ONLY your user name OR your email, not both`);
-    } else if (username && !email) {
+    } else if (username !== null && email == null) {
       this.internalProps.userLoginByName(userObject);
-    } else if (!username && email) {
+    } else if (username == null && email !== null) {
       this.internalProps.userLoginByEmail(userObject);
     };
   }
@@ -53,9 +53,9 @@ class LoginPageContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let userName;
-  let password;
-  let email;
+  let userName = null;
+  let password = null;
+  let email = null;
   if (
     state.UserInputString &&
     state.UserInputString.inputsSTR &&

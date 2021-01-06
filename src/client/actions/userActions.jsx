@@ -41,7 +41,7 @@ export const getUserbyEmail = user => {
   return function (dispatch) {
     return userAPI.getUserbyEmail(user)
       .then(resUser => {
-        dispatch(getUserSuccess(resUser)
+        dispatch(getUserSuccess(resUser, user)
       )})
       .catch(err => {
         throw err;
@@ -49,15 +49,21 @@ export const getUserbyEmail = user => {
   };
 };
 
-export const getUserSuccess = (resUser) => {
-  // VALIDATE PASSWORD HERE, NEED TO PASS USER OBJECT FROM CONTAINER INTO THIS FUNCTION THROUGH ORIGINAL ACTION
+export const getUserSuccess = (resUser, user) => {
+  // password validation between front end and db
   if (resUser.active === 1) {
     resUser.active = true;
   } else resUser.active = false;
+  // console.log(resUser.password, user.password);
+  if (resUser.password === user.password) {
     return { 
-        type: actionTypes.GET_USER_SUCCESS, 
-        payload: resUser, 
-
+      type: actionTypes.GET_USER_SUCCESS, 
+      payload: resUser, 
+    };
+  } else {
+      return { 
+       type: actionTypes.USER_LOGIN_FAILED,
+      };
     };
   };
 
