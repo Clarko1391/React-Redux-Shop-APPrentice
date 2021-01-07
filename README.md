@@ -1,6 +1,10 @@
-The second rewrite of my original Shop APPrentice app, this time I am integrating the state management library redux. It has been an excellent learning experience to see how much my code has changed since I started learning just a few months ago. This has been, by far, the biggest challenge so far and I'm not ashamed to say that redux really gave me some tough issues to solve but I finally got all of the code rewritten and working as intended. This repo will be used to add a back-end (node.js) and database (MySQL) to my app and turn it into a full-stack project.
+The second rewrite of my original Shop APPrentice app, this time I am integrating the state management library redux as well as adding a back-end using Node.js / Express.js and a user database using MySQL to create a full-stack web-application and add to my skillset. This rewrite was by no means easy, however, it was the most rewarding experience on my path to learning software development so far. 
 
+This is the "final version" of my Shop APPrentice app as it includes almost all of the funtionality I had wanted it to have and more. I am nowhere near done with this project and still have plans to add mor to it in the future. This app was built using React.js / Redux, Node.js / Express.js, and MySQL
 
+This app requires Node Package Manager (NPM) to run, the latest version of which can be found here https://www.npmjs.com/get-npm. It also requires that MySQL be installed and a database file be linked to the app through the server file-structure.
+
+You can clone the repo and follow the directions below to run an offline version of this app on your local machine.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
