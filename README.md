@@ -6,7 +6,7 @@ The second rewrite of my original Shop APPrentice app, this time I am integratin
 
 ![Screen Cap 3](https://github.com/Clarko1391/React-Redux-Shop-APPrentice/blob/master/src/client/assets/img/shopAPPrenticeScreenCap5.png)
 
-This is the "final version" of my Shop APPrentice app as it includes almost all of the funtionality I had wanted it to have and more. I am nowhere near done with this project and still have plans to add mor to it in the future. This app was built using React.js / Redux, Node.js / Express.js, and MySQL
+This is the "final version" of my Shop APPrentice app as it includes almost all of the functionality I had wanted it to have and more. I am nowhere near done with this project and still have plans to add mor to it in the future. This app was built using React.js / Redux, Node.js / Express.js, and MySQL
 
 This app requires Node Package Manager (NPM) to run, the latest version of which can be found here https://www.npmjs.com/get-npm. It also requires that MySQL be installed and a database file be linked to the app through the server file-structure.
 
